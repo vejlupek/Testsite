@@ -1,4 +1,6 @@
 @import './tokens.css';
+@import '@fontsource-variable/bitter/wght.css';
+@import '@fontsource-variable/source-sans-3/wght.css';
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 

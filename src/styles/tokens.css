@@ -156,8 +156,8 @@
    *  <head> of index.html (or at the top of your main CSS)
    *  before tokens.css is applied.
    */
-  --font-display: 'Bitter', Georgia, 'Times New Roman', serif;
-  --font-body:    'Source Sans 3', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: 'Bitter Variable', 'Bitter', Georgia, 'Times New Roman', serif;
+  --font-body:    'Source Sans 3 Variable', 'Source Sans 3', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-mono:    'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 
   /* Font Weights */

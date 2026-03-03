@@ -10,7 +10,9 @@
       "WebFetch(domain:images.pexels.com)",
       "Bash(grep:*)",
       "Bash(wc:*)",
-      "WebFetch(domain:testsite-xi-smoky.vercel.app)"
+      "WebFetch(domain:testsite-xi-smoky.vercel.app)",
+      "Bash(find C:\\\\Claude Code\\\\Testsite:*)",
+      "Bash(find C:\\\\Claude Code\\\\Testsite\\\\src\\\\styles:*)"
     ]
   }
 }
