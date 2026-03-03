@@ -14,7 +14,7 @@ const {
   title,
   description = 'Pepa Vejlupek – hodinový manžel v Praze. Prostě to opravím. Montáž nábytku, opravy, malování, instalatérské práce a mnoho dalšího. Rychlá odezva, férové ceny.',
   canonical,
-  ogImage = '/og-image.jpg',
+  ogImage = '/og-image.png',
 } = Astro.props;
 
 const siteUrl = 'https://pepevejlupek.cz';
@@ -30,14 +30,23 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalUrl} />
-  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
+  <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="cs_CZ" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
 
   <!-- Fonts: Bitter (display) + Source Sans 3 (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

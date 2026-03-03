@@ -17,12 +17,46 @@ const { Content } = await post.render();
 function formatDate(date: Date) {
   return date.toLocaleDateString('cs-CZ', { year: 'numeric', month: 'long', day: 'numeric' });
 }
+
+const siteUrl = 'https://pepevejlupek.cz';
+const postUrl = `${siteUrl}/blog/${post.slug}`;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "datePublished": post.data.pubDate.toISOString(),
+  "url": postUrl,
+  "author": {
+    "@type": "Person",
+    "name": "Josef Vejlupek",
+    "url": siteUrl,
+  },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "Pepa Vejlupek – hodinový manžel Praha",
+    "url": siteUrl,
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Domů", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteUrl}/blog` },
+    { "@type": "ListItem", "position": 3, "name": post.data.title, "item": postUrl },
+  ],
+};
 ---
 
 <BaseLayout
   title={`${post.data.title} | Blog – Pepa Vejlupek`}
   description={post.data.description}
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
   <main>
     {post.data.cover && (
       <div class="article-cover">
@@ -42,7 +76,13 @@ function formatDate(date: Date) {
     )}
 
     <div class="article-inner">
-      <a href="/blog" class="back-link">← Zpět na blog</a>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Domů</a>
+        <span aria-hidden="true">›</span>
+        <a href="/blog">Blog</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">{post.data.title}</span>
+      </nav>
 
       <header class="article-header">
         <div class="article-meta">
@@ -103,16 +143,28 @@ function formatDate(date: Date) {
     padding: 2.5rem 1.5rem 5rem;
   }
 
-  .back-link {
-    display: inline-block;
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
     margin-bottom: 2rem;
-    font-size: 0.88rem;
-    font-weight: 700;
+    font-size: 0.83rem;
+    color: var(--text-light);
+  }
+  .breadcrumb a {
     color: var(--primary);
     text-decoration: none;
-    letter-spacing: 0.01em;
+    font-weight: 600;
   }
-  .back-link:hover { text-decoration: underline; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span[aria-current] {
+    color: var(--text-light);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 220px;
+  }
 
   .article-header { margin-bottom: 2.5rem; }
   .article-meta {

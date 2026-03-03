@@ -1,0 +1,122 @@
+---
+const faqs = [
+  {
+    q: 'Co je hodinový manžel a jak funguje?',
+    a: 'Hodinový manžel je řemeslník, který vám pomůže s drobnými opravami a pracemi v domácnosti, za které byste jinak museli volat více specializovaných firem. Platíte pouze odpracované hodiny – žádné skryté poplatky. Stačí zavolat nebo napsat, domluvíme termín a cenu předem.',
+  },
+  {
+    q: 'Jak rychle přijedete?',
+    a: 'Na zprávy a hovory reaguji do 2 hodin. Běžné práce domluvíme na nejbližší volný termín – obvykle do 2–3 pracovních dnů. V urgentních případech (únik vody, nefunkční zámek) vyjíždím do 2 hodin od objednávky.',
+  },
+  {
+    q: 'Kolik stojí práce hodinového manžela?',
+    a: 'Cena je 700 Kč/hod za jednoho pracovníka. Přesnou cenu vždy domluvíme předem, abyste nebyli překvapeni. Doprava se účtuje dle ujeté vzdálenosti (12 Kč/km osobní vozidlo).',
+  },
+  {
+    q: 'Jaké práce provádíte?',
+    a: 'Montáž nábytku, malování, drobné opravy, instalatérské práce, vrtání a věšení, výměna zámků a osvětlení, elektroinstalační práce (zásuvky, vypínače) a drobné zahradní práce. Pokud si nejste jistí, zda vaše práce do mého záběru spadá – prostě zavolejte.',
+  },
+  {
+    q: 'Pracujete i o víkendu?',
+    a: 'Ano, v sobotu od 8:00 do 16:00. Neděle je vyhrazena pro rodinu. Urgentní výjezdy jsou možné kdykoliv za příplatek.',
+  },
+  {
+    q: 'Poskytujete záruky na provedenou práci?',
+    a: 'Ano. Na všechny provedené práce poskytuji záruku – pokud se do 30 dnů projeví vada způsobená mou prací, opravím ji zdarma. Pracuji poctivě a za svou práci ručím.',
+  },
+  {
+    q: 'Do jakých oblastí Prahy jezdíte?',
+    a: 'Pracuji po celé Praze – Praha 1 až Praha 22, včetně blízkého okolí (Středočeský kraj do cca 20 km od centra). Doprava se účtuje dle skutečné vzdálenosti.',
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": a },
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>Časté otázky</h2>
+      <p>Odpovědi na vše, co vás zajímá před objednávkou</p>
+    </div>
+    <div class="faq-list">
+      {faqs.map(({ q, a }, i) => (
+        <details class="faq-item" open={i === 0}>
+          <summary class="faq-question">{q}</summary>
+          <p class="faq-answer">{a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  #faq { background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+  .faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    border: 1.5px solid var(--border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    background: var(--card-bg);
+    overflow: hidden;
+    transition: border-color var(--transition-base);
+  }
+  .faq-item[open] {
+    border-left-color: var(--primary);
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.4rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after {
+    content: '+';
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--primary);
+    flex-shrink: 0;
+    transition: transform var(--transition-base);
+    line-height: 1;
+  }
+  .faq-item[open] .faq-question::after {
+    transform: rotate(45deg);
+  }
+  .faq-question:hover { color: var(--primary); }
+
+  .faq-answer {
+    padding: 0 1.4rem 1.2rem;
+    font-size: 0.97rem;
+    color: var(--text-light);
+    line-height: var(--leading-relaxed);
+    border-top: 1px solid var(--border);
+    margin-top: 0;
+  }
+</style>

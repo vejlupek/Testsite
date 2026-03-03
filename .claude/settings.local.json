@@ -9,7 +9,8 @@
       "WebFetch(domain:www.pexels.com)",
       "WebFetch(domain:images.pexels.com)",
       "Bash(grep:*)",
-      "Bash(wc:*)"
+      "Bash(wc:*)",
+      "WebFetch(domain:testsite-xi-smoky.vercel.app)"
     ]
   }
 }
