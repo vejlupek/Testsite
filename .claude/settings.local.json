@@ -12,7 +12,8 @@
       "Bash(wc:*)",
       "WebFetch(domain:testsite-xi-smoky.vercel.app)",
       "Bash(find C:\\\\Claude Code\\\\Testsite:*)",
-      "Bash(find C:\\\\Claude Code\\\\Testsite\\\\src\\\\styles:*)"
+      "Bash(find C:\\\\Claude Code\\\\Testsite\\\\src\\\\styles:*)",
+      "WebFetch(domain:pagespeed.web.dev)"
     ]
   }
 }

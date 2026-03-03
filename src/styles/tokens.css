@@ -99,13 +99,13 @@
    * ────────────────────────────────────────────────────────── */
 
   /* Brand */
-  --color-brand:           var(--color-orange-500);
-  --color-brand-hover:     var(--color-orange-600);
-  --color-brand-active:    var(--color-orange-700);
+  --color-brand:           var(--color-orange-700);  /* #b05a0d — 4.86:1 on white (WCAG AA) */
+  --color-brand-hover:     var(--color-orange-800);
+  --color-brand-active:    var(--color-orange-900);
   --color-brand-subtle:    var(--color-orange-50);
   --color-brand-muted:     var(--color-orange-100);
-  --color-brand-glow:      rgba(230, 126, 34, 0.30);
-  --color-brand-glow-lg:   rgba(230, 126, 34, 0.45);
+  --color-brand-glow:      rgba(176, 90, 13, 0.30);
+  --color-brand-glow-lg:   rgba(176, 90, 13, 0.45);
 
   /* Backgrounds */
   --color-bg-page:    var(--color-neutral-50);   /* page canvas */
