@@ -1,0 +1,368 @@
+/*
+ * ============================================================
+ *  PEPA VEJLUPEK — DESIGN TOKENS
+ *  Design System v1.0  |  Vanilla CSS Custom Properties
+ *  Tech stack: HTML / CSS / JS (no framework, no build step)
+ * ============================================================
+ *
+ *  HOW TO USE
+ *  ----------
+ *  1.  Link this file BEFORE your main stylesheet:
+ *        <link rel="stylesheet" href="docs/design/tokens.css" />
+ *  2.  Reference tokens with var(--token-name) in your CSS.
+ *  3.  Override at the :root level for theming; scope to a
+ *      selector for component-level overrides.
+ *
+ *  TOKEN CATEGORIES
+ *  ----------------
+ *  color-primitive  → raw palette, never use directly in UI
+ *  color-semantic   → roles (background, text, border …)
+ *  typography       → font families, sizes, weights, line heights
+ *  spacing          → 4 px base scale (space-1 … space-32)
+ *  radius           → border-radius scale
+ *  shadow           → box-shadow presets
+ *  transition       → duration + easing presets
+ *  z-index          → layering scale
+ *  layout           → max-widths, breakpoints
+ * ============================================================
+ */
+
+:root {
+
+  /* ──────────────────────────────────────────────────────────
+   *  COLOR — PRIMITIVE PALETTE
+   *  Raw values only. Use semantic aliases in components.
+   * ────────────────────────────────────────────────────────── */
+
+  /* Orange family — brand primary */
+  --color-orange-50:  #fff8f0;
+  --color-orange-100: #fff0db;
+  --color-orange-200: #ffdeb5;
+  --color-orange-300: #ffc47a;
+  --color-orange-400: #ffa040;
+  --color-orange-500: #e67e22;   /* ← brand anchor */
+  --color-orange-600: #cf6d17;
+  --color-orange-700: #b05a0d;
+  --color-orange-800: #8d4509;
+  --color-orange-900: #6b3207;
+
+  /* Neutral / Warm Grey family */
+  --color-neutral-0:   #ffffff;
+  --color-neutral-50:  #fafaf8;   /* page background */
+  --color-neutral-100: #f4f3ef;
+  --color-neutral-200: #e8e8e4;   /* borders */
+  --color-neutral-300: #d4d3ce;
+  --color-neutral-400: #b0afa9;
+  --color-neutral-500: #8a8880;
+  --color-neutral-600: #666666;   /* secondary text */
+  --color-neutral-700: #4a4845;
+  --color-neutral-800: #2c2c2c;   /* body text */
+  --color-neutral-900: #1a1a1a;   /* footer background */
+  --color-neutral-950: #111110;
+
+  /* Ink — dark navy (for high-contrast sections) */
+  --color-ink-100: #d6d9e4;
+  --color-ink-300: #8a91a8;
+  --color-ink-500: #4a5068;
+  --color-ink-700: #2a2f45;
+  --color-ink-900: #16192a;       /* darkest section bg */
+
+  /* Status colours */
+  --color-success-400: #3dd68c;
+  --color-success-500: #27ae60;
+  --color-success-600: #1e8a4a;
+
+  --color-warning-400: #fbbf24;
+  --color-warning-500: #f39c12;
+  --color-warning-600: #d97706;
+
+  --color-error-400:   #f87171;
+  --color-error-500:   #e74c3c;
+  --color-error-600:   #c0392b;
+
+
+  /* ──────────────────────────────────────────────────────────
+   *  COLOR — SEMANTIC ALIASES
+   *  Use these in all component CSS.
+   * ────────────────────────────────────────────────────────── */
+
+  /* Brand */
+  --color-brand:           var(--color-orange-500);
+  --color-brand-hover:     var(--color-orange-600);
+  --color-brand-active:    var(--color-orange-700);
+  --color-brand-subtle:    var(--color-orange-50);
+  --color-brand-muted:     var(--color-orange-100);
+  --color-brand-glow:      rgba(230, 126, 34, 0.30);
+  --color-brand-glow-lg:   rgba(230, 126, 34, 0.45);
+
+  /* Backgrounds */
+  --color-bg-page:    var(--color-neutral-50);   /* page canvas */
+  --color-bg-surface: var(--color-neutral-0);    /* cards, panels */
+  --color-bg-subtle:  var(--color-neutral-100);  /* zebra stripes, wells */
+  --color-bg-inverse: var(--color-neutral-900);  /* footer, dark sections */
+  --color-bg-dark:    var(--color-ink-900);       /* deepest dark sections */
+
+  /* Text */
+  --color-text-primary:   var(--color-neutral-800);
+  --color-text-secondary: var(--color-neutral-600);
+  --color-text-tertiary:  var(--color-neutral-500);
+  --color-text-on-brand:  var(--color-neutral-0);
+  --color-text-on-dark:   var(--color-neutral-200);
+  --color-text-brand:     var(--color-brand);
+
+  /* Borders */
+  --color-border-default: var(--color-neutral-200);
+  --color-border-strong:  var(--color-neutral-300);
+  --color-border-brand:   var(--color-brand);
+  --color-border-focus:   var(--color-brand);
+
+  /* Interactive states */
+  --color-star: var(--color-warning-500);   /* star ratings */
+  --color-link: var(--color-brand);
+  --color-link-hover: var(--color-brand-hover);
+
+
+  /* ──────────────────────────────────────────────────────────
+   *  TYPOGRAPHY
+   * ────────────────────────────────────────────────────────── */
+
+  /*
+   *  FONT STACKS
+   *  -----------
+   *  Display (headings):  Bitter — slab serif; projects craft,
+   *    solidity, and expertise. Load from Google Fonts:
+   *    https://fonts.googleapis.com/css2?family=Bitter:wght@700;800;900
+   *
+   *  Body:  Source Sans 3 — humanist sans; warm, legible,
+   *    honest. Load from Google Fonts:
+   *    https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600
+   *
+   *  Fallback: system-ui chain keeps the site fast & functional
+   *    even before fonts load.
+   *
+   *  IMPLEMENTATION NOTE: Add the two @import lines to the
+   *  <head> of index.html (or at the top of your main CSS)
+   *  before tokens.css is applied.
+   */
+  --font-display: 'Bitter', Georgia, 'Times New Roman', serif;
+  --font-body:    'Source Sans 3', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  /* Font Weights */
+  --font-weight-regular:    400;
+  --font-weight-medium:     500;
+  --font-weight-semibold:   600;
+  --font-weight-bold:       700;
+  --font-weight-extrabold:  800;
+  --font-weight-black:      900;
+
+  /* Type Scale — Major Third (1.250 ratio), base 16px */
+  --text-2xs:  0.6875rem;   /* 11px */
+  --text-xs:   0.75rem;     /* 12px */
+  --text-sm:   0.875rem;    /* 14px */
+  --text-base: 1rem;        /* 16px */
+  --text-lg:   1.125rem;    /* 18px */
+  --text-xl:   1.25rem;     /* 20px */
+  --text-2xl:  1.5rem;      /* 24px */
+  --text-3xl:  1.875rem;    /* 30px */
+  --text-4xl:  2.25rem;     /* 36px */
+  --text-5xl:  3rem;        /* 48px */
+  --text-6xl:  3.75rem;     /* 60px */
+
+  /* Line Heights */
+  --leading-none:    1;
+  --leading-tight:   1.2;
+  --leading-snug:    1.35;
+  --leading-normal:  1.6;
+  --leading-relaxed: 1.75;
+
+  /* Letter Spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.04em;
+  --tracking-wider:   0.08em;
+  --tracking-widest:  0.12em;
+
+
+  /* ──────────────────────────────────────────────────────────
+   *  SPACING  (4 px base grid)
+   *  space-N = N × 4px
+   * ────────────────────────────────────────────────────────── */
+  --space-px:  1px;
+  --space-0:   0;
+  --space-1:   0.25rem;   /*  4px */
+  --space-2:   0.5rem;    /*  8px */
+  --space-3:   0.75rem;   /* 12px */
+  --space-4:   1rem;      /* 16px */
+  --space-5:   1.25rem;   /* 20px */
+  --space-6:   1.5rem;    /* 24px */
+  --space-7:   1.75rem;   /* 28px */
+  --space-8:   2rem;      /* 32px */
+  --space-9:   2.25rem;   /* 36px */
+  --space-10:  2.5rem;    /* 40px */
+  --space-12:  3rem;      /* 48px */
+  --space-14:  3.5rem;    /* 56px */
+  --space-16:  4rem;      /* 64px */
+  --space-18:  4.5rem;    /* 72px */
+  --space-20:  5rem;      /* 80px */
+  --space-24:  6rem;      /* 96px */
+  --space-28:  7rem;      /* 112px */
+  --space-32:  8rem;      /* 128px */
+
+  /* Semantic spacing aliases */
+  --section-padding-y:  var(--space-18);  /* 72px vertical section rhythm */
+  --section-padding-x:  var(--space-6);   /* 24px horizontal page gutter */
+  --card-padding:        var(--space-6);   /* 24px card inner padding */
+  --card-padding-sm:     var(--space-5);   /* 20px compact card */
+  --nav-height:          4rem;             /* 64px sticky nav */
+
+
+  /* ──────────────────────────────────────────────────────────
+   *  BORDER RADIUS
+   * ────────────────────────────────────────────────────────── */
+  --radius-none:  0;
+  --radius-xs:    4px;
+  --radius-sm:    6px;
+  --radius-md:    10px;   /* buttons */
+  --radius-lg:    14px;   /* service & review cards */
+  --radius-xl:    20px;   /* pricing cards, about visual */
+  --radius-2xl:   28px;   /* large feature panels */
+  --radius-pill:  999px;  /* badges, pills */
+
+
+  /* ──────────────────────────────────────────────────────────
+   *  SHADOWS
+   * ────────────────────────────────────────────────────────── */
+  --shadow-xs:      0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm:      0 1px 6px rgba(0,0,0,0.06);
+  --shadow-md:      0 4px 20px rgba(0,0,0,0.08);   /* default card shadow */
+  --shadow-lg:      0 8px 32px rgba(0,0,0,0.12);
+  --shadow-xl:      0 16px 48px rgba(0,0,0,0.16);
+  --shadow-inner:   inset 0 2px 6px rgba(0,0,0,0.06);
+  --shadow-brand:   0 6px 24px var(--color-brand-glow);      /* CTA buttons */
+  --shadow-brand-lg: 0 10px 40px var(--color-brand-glow-lg); /* feature cards hover */
+
+
+  /* ──────────────────────────────────────────────────────────
+   *  TRANSITIONS
+   * ────────────────────────────────────────────────────────── */
+  --ease-in:   cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:  cubic-bezier(0, 0, 0.2, 1);
+  --ease-io:   cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);   /* slight overshoot */
+
+  --duration-fast:   120ms;
+  --duration-base:   200ms;
+  --duration-slow:   350ms;
+  --duration-slower: 500ms;
+
+  /* Composite shorthand transitions */
+  --transition-fast:   var(--duration-fast) var(--ease-io);
+  --transition-base:   var(--duration-base) var(--ease-io);
+  --transition-slow:   var(--duration-slow) var(--ease-io);
+  --transition-spring: var(--duration-slow) var(--ease-spring);
+
+
+  /* ──────────────────────────────────────────────────────────
+   *  Z-INDEX SCALE
+   * ────────────────────────────────────────────────────────── */
+  --z-below:    -1;
+  --z-base:      0;
+  --z-raised:    10;
+  --z-dropdown:  100;
+  --z-sticky:    200;     /* sticky nav */
+  --z-overlay:   300;
+  --z-modal:     400;
+  --z-toast:     500;
+
+
+  /* ──────────────────────────────────────────────────────────
+   *  LAYOUT
+   * ────────────────────────────────────────────────────────── */
+  --max-w-sm:   560px;
+  --max-w-md:   768px;
+  --max-w-lg:   900px;
+  --max-w-xl:   1100px;  /* main content container */
+  --max-w-full: 100%;
+
+  /*
+   *  Breakpoints (reference only — use in @media queries)
+   *  --bp-sm:  480px
+   *  --bp-md:  768px
+   *  --bp-lg:  1024px
+   *  --bp-xl:  1280px
+   *
+   *  NOTE: CSS custom properties cannot be used inside @media
+   *  conditions; use the raw values above directly in queries.
+   */
+
+
+  /* ──────────────────────────────────────────────────────────
+   *  COMPONENT-LEVEL ALIASES
+   *  Convenient shorthands consumed by specific components.
+   *  Override at a selector level for variants.
+   * ────────────────────────────────────────────────────────── */
+
+  /* Navigation */
+  --nav-bg:             rgba(255, 255, 255, 0.95);
+  --nav-backdrop:       blur(8px);
+  --nav-border:         var(--color-border-default);
+  --nav-link-color:     var(--color-text-secondary);
+  --nav-link-hover:     var(--color-brand);
+  --nav-logo-color:     var(--color-text-primary);
+  --nav-logo-accent:    var(--color-brand);
+
+  /* Buttons */
+  --btn-radius:         var(--radius-md);
+  --btn-font-weight:    var(--font-weight-semibold);
+  --btn-padding-y:      0.75rem;    /* 12px */
+  --btn-padding-x:      1.75rem;    /* 28px */
+  --btn-padding-y-sm:   0.45rem;
+  --btn-padding-x-sm:   1.1rem;
+  --btn-font-size:      var(--text-base);
+
+  /* Cards */
+  --card-radius:        var(--radius-lg);
+  --card-bg:            var(--color-bg-surface);
+  --card-border:        var(--color-border-default);
+  --card-shadow:        var(--shadow-md);
+  --card-shadow-hover:  var(--shadow-brand);
+
+  /* Form controls */
+  --input-radius:       var(--radius-sm);
+  --input-border:       1.5px solid var(--color-border-default);
+  --input-border-focus: 1.5px solid var(--color-border-focus);
+  --input-bg:           var(--color-bg-page);
+  --input-bg-focus:     var(--color-bg-surface);
+  --input-padding-y:    0.7rem;
+  --input-padding-x:    1rem;
+  --input-font-size:    var(--text-base);
+
+  /* Hero */
+  --hero-bg-from:       #fff8f2;
+  --hero-bg-to:         #fff3e6;
+  --hero-gradient:      linear-gradient(135deg, var(--hero-bg-from) 0%, var(--hero-bg-to) 100%);
+
+  /* Trust bar */
+  --trust-bar-bg:       var(--color-bg-surface);
+
+  /* Section backgrounds (alternating) */
+  --section-bg-light:   var(--color-bg-page);
+  --section-bg-white:   var(--color-bg-surface);
+  --section-bg-dark:    var(--color-bg-inverse);
+
+  /* Star rating */
+  --color-rating:       var(--color-star);
+
+  /* Pricing */
+  --pricing-featured-border: var(--color-brand);
+  --pricing-badge-bg:        var(--color-brand);
+  --pricing-price-color:     var(--color-brand);
+
+  /* Footer */
+  --footer-bg:          var(--color-bg-inverse);
+  --footer-text:        #cccccc;
+  --footer-text-muted:  #999999;
+  --footer-logo:        var(--color-neutral-0);
+  --footer-logo-accent: var(--color-brand);
+}

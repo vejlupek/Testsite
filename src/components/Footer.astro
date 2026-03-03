@@ -1,0 +1,65 @@
+---
+---
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-inner">
+      <div class="footer-logo">Pepa Vejlupek – <span>prostě to opravím</span></div>
+      <p class="footer-tagline">Hodinový manžel pro celou Prahu</p>
+      <a href="tel:+420774399400" class="footer-phone">📞 +420 774 399 400</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="/#sluzby">Služby</a>
+        <a href="/#cenik">Ceník</a>
+        <a href="/#kontakt">Kontakt</a>
+        <a href="/blog">Blog</a>
+        <a href="/obchodni-podminky">Obchodní podmínky</a>
+      </div>
+      <p class="copyright">© 2024 Josef Vejlupek. Všechna práva vyhrazena.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-top {
+    background: var(--color-accent);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+  }
+  .footer-bottom {
+    background: #111110;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+  }
+  .footer-inner { max-width: 700px; margin: 0 auto; }
+
+  .footer-logo { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
+  .footer-logo span { color: var(--primary); }
+  .footer-tagline { font-size: 0.88rem; color: rgba(255,255,255,0.65); margin-bottom: 1.2rem; }
+  .footer-phone {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.6rem 1.6rem;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background var(--transition-base);
+  }
+  .footer-phone:hover { background: var(--primary-dark); }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .footer-links a { color: #888; text-decoration: none; font-size: 0.85rem; }
+  .footer-links a:hover { color: var(--primary); }
+  .copyright { font-size: 0.78rem; color: #444; }
+</style>

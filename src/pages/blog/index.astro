@@ -1,0 +1,195 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('cs-CZ', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<BaseLayout
+  title="Blog – tipy a rady | Pepa Vejlupek"
+  description="Praktické tipy z oblasti údržby domácnosti, kutilství a drobných oprav od Pepy Vejlupka."
+>
+  <main>
+    <div class="blog-hero">
+      <div class="blog-hero-inner">
+        <div class="blog-badge">📝 Blog</div>
+        <h1>Tipy a rady z praxe</h1>
+        <p>Praktické návody z oblasti oprav a údržby domácnosti — přímo od hodinového manžela</p>
+      </div>
+    </div>
+
+    <div class="posts-outer">
+      {posts.length === 0 ? (
+        <p class="empty">Zatím žádné články. Brzy přidám!</p>
+      ) : (
+        <div class="posts-grid">
+          {posts.map((post) => (
+            <article class="post-card">
+              {post.data.cover && (
+                <a href={`/blog/${post.slug}`} class="post-thumb" tabindex="-1" aria-hidden="true">
+                  <Image
+                    src={post.data.cover}
+                    alt={post.data.coverAlt ?? post.data.title}
+                    width={560}
+                    height={360}
+                    format="webp"
+                    quality={82}
+                    class="post-thumb-img"
+                  />
+                </a>
+              )}
+              <div class="post-body">
+                <div class="post-meta">
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {formatDate(post.data.pubDate)}
+                  </time>
+                  {post.data.tags.length > 0 && (
+                    <div class="tags">
+                      {post.data.tags.map((tag) => <span class="tag">{tag}</span>)}
+                    </div>
+                  )}
+                </div>
+                <h2><a href={`/blog/${post.slug}`}>{post.data.title}</a></h2>
+                <p class="post-desc">{post.data.description}</p>
+                <a href={`/blog/${post.slug}`} class="read-more">Číst dál →</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* Blog hero banner */
+  .blog-hero {
+    background: linear-gradient(135deg, #fff8f2 0%, #fff3e6 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 1.5rem 3rem;
+    text-align: center;
+  }
+  .blog-hero-inner { max-width: 640px; margin: 0 auto; }
+  .blog-badge {
+    display: inline-block;
+    background: var(--color-brand-subtle);
+    border: 1px solid var(--color-brand-muted);
+    color: var(--primary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0.9rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  .blog-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+    font-weight: var(--font-weight-black);
+    line-height: var(--leading-tight);
+    margin-bottom: 0.75rem;
+  }
+  .blog-hero p { font-size: 1.05rem; color: var(--text-light); }
+
+  /* Posts layout */
+  .posts-outer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  .posts-grid { display: flex; flex-direction: column; gap: 2rem; }
+
+  /* All cards: horizontal layout */
+  .post-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+  }
+  .post-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-brand);
+    transform: translateY(-2px);
+  }
+
+  .post-thumb {
+    display: block;
+    flex: 0 0 42%;
+    max-width: 42%;
+    overflow: hidden;
+    background: var(--color-neutral-100);
+  }
+  .post-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-slow);
+  }
+  .post-card:hover .post-thumb-img { transform: scale(1.04); }
+
+  .post-body {
+    padding: 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+  time { font-size: 0.83rem; color: var(--text-light); }
+
+  .tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .tag {
+    font-size: 0.73rem;
+    font-weight: 700;
+    background: var(--color-brand-subtle);
+    color: var(--primary);
+    padding: 0.15rem 0.6rem;
+    border-radius: var(--radius-pill);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .post-card h2 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; line-height: var(--leading-snug); }
+  .post-card h2 a { text-decoration: none; color: var(--text); }
+  .post-card h2 a:hover { color: var(--primary); }
+
+  .post-desc { font-size: 0.93rem; color: var(--text-light); margin-bottom: 1.25rem; line-height: var(--leading-relaxed); }
+
+  .read-more {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: auto;
+  }
+  .read-more:hover { text-decoration: underline; }
+
+  .empty { color: var(--text-light); }
+
+  @media (max-width: 640px) {
+    .post-card { flex-direction: column; }
+    .post-thumb { flex: none; max-width: 100%; height: 200px; }
+    .post-body { padding: 1.5rem; }
+  }
+</style>

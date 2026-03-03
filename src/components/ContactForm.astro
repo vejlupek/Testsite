@@ -1,0 +1,250 @@
+---
+---
+
+<div class="contact-form">
+  <h3>Nezávazná poptávka</h3>
+  <form id="contactForm" action="https://formspree.io/f/FORMSPREE_ID" method="POST" novalidate>
+    <input type="hidden" name="_subject" value="Nová poptávka – Pepa Vejlupek" />
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fullname">Jméno a příjmení *</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Jan Novák" required />
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail *</label>
+        <input type="email" id="email" name="email" placeholder="jan@example.cz" required />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="phone">Telefon *</label>
+        <input type="tel" id="phone" name="phone" placeholder="+420 774 399 400" required />
+      </div>
+      <div class="form-group">
+        <label for="location">Kde *</label>
+        <select id="location" name="location" required>
+          <option value="">-- Vyberte městskou část --</option>
+          <option value="Praha 1">Praha 1</option>
+          <option value="Praha 2">Praha 2</option>
+          <option value="Praha 3">Praha 3</option>
+          <option value="Praha 4">Praha 4</option>
+          <option value="Praha 5">Praha 5</option>
+          <option value="Praha 6">Praha 6</option>
+          <option value="Praha 7">Praha 7</option>
+          <option value="Praha 8">Praha 8</option>
+          <option value="Praha 9">Praha 9</option>
+          <option value="Praha 10">Praha 10</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="service">Služba *</label>
+        <select id="service" name="service" required>
+          <option value="">-- Vyberte službu --</option>
+          <option>Montáž nábytku</option>
+          <option>Malířské práce</option>
+          <option>Drobné opravy</option>
+          <option>Instalatérské práce</option>
+          <option>Vrtání a věšení</option>
+          <option>Výměna zámků</option>
+          <option>Výměna osvětlení</option>
+          <option>Zásuvky a vypínače</option>
+          <option>Zahrada a okolí domu</option>
+          <option>Jiné</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="date">Preferované datum</label>
+        <input type="date" id="date" name="date" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Poznámka</label>
+      <textarea id="message" name="message" placeholder="Popište stručně, co potřebujete udělat, případně další detaily..."></textarea>
+    </div>
+
+    <div class="form-group urgent-group">
+      <label class="checkbox-label">
+        <input type="checkbox" id="urgent" name="urgent" />
+        <span class="checkbox-box"></span>
+        <span class="checkbox-text">
+          <strong>Urgentní výjezd</strong>
+          <span class="urgent-note">Výjezd do 2 hodin od objednávky · účtován poplatek 2 500 Kč</span>
+        </span>
+      </label>
+    </div>
+
+    <p class="consent-text">
+      Odesláním poptávky souhlasím s <a href="/obchodni-podminky">Obchodními podmínkami</a> a jsem s nimi seznámen.
+    </p>
+
+    <button type="submit" class="btn btn-primary form-submit">📨 Odeslat poptávku</button>
+  </form>
+
+  <div class="form-success" id="formSuccess">
+    <span class="success-icon">✅</span>
+    <h4>Zpráva odeslána!</h4>
+    <p>Ozvu se vám co nejdříve, obvykle do 2 hodin. Díky za zájem!</p>
+  </div>
+</div>
+
+<script>
+  // Set date input min to today
+  const dateInput = document.getElementById('date') as HTMLInputElement | null;
+  if (dateInput) {
+    dateInput.min = new Date().toISOString().split('T')[0];
+  }
+
+  const form = document.getElementById('contactForm') as HTMLFormElement | null;
+  form?.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const btn = form.querySelector('.form-submit') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Odesílám…';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        const success = document.getElementById('formSuccess');
+        if (success) success.style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = '📨 Odeslat poptávku';
+        alert('Odeslání se nezdařilo. Zavolejte nám prosím na +420 774 399 400.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = '📨 Odeslat poptávku';
+      alert('Odeslání se nezdařilo. Zavolejte nám prosím na +420 774 399 400.');
+    }
+  });
+</script>
+
+<style>
+  .contact-form {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+  }
+  .contact-form h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  label { display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 0.35rem; }
+  input, textarea, select {
+    width: 100%;
+    padding: var(--input-padding-y) var(--input-padding-x);
+    border: var(--input-border);
+    border-radius: var(--input-radius);
+    font-size: var(--input-font-size);
+    font-family: var(--font-body);
+    background: var(--input-bg);
+    color: var(--text);
+    transition: border-color var(--transition-fast), background var(--transition-fast);
+    outline: none;
+  }
+  input:focus-visible, textarea:focus-visible, select:focus-visible {
+    border: var(--input-border-focus);
+    background: var(--input-bg-focus);
+    outline: 2px solid var(--color-brand);
+    outline-offset: 1px;
+  }
+  input:focus:not(:focus-visible), textarea:focus:not(:focus-visible), select:focus:not(:focus-visible) {
+    border: var(--input-border-focus);
+    background: var(--input-bg-focus);
+  }
+  textarea { resize: vertical; min-height: 100px; }
+  .form-submit { width: 100%; margin-top: 0.25rem; font-size: 1.05rem; }
+
+  /* Urgent checkbox */
+  .urgent-group { margin-bottom: 0.75rem; }
+  .checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    margin-bottom: 0;
+  }
+  .checkbox-label input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .checkbox-box {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 1px;
+    border: 1.5px solid var(--color-border-default);
+    border-radius: var(--radius-xs);
+    background: var(--input-bg);
+    transition: border-color var(--transition-fast), background var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .checkbox-label input[type="checkbox"]:checked + .checkbox-box {
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+  .checkbox-label input[type="checkbox"]:checked + .checkbox-box::after {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 9px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg) translateY(-1px);
+  }
+  .checkbox-label input[type="checkbox"]:focus-visible + .checkbox-box {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+  .checkbox-text { font-size: 0.9rem; font-weight: 400; }
+  .checkbox-text strong { display: block; font-weight: 700; font-size: 0.9rem; }
+  .urgent-note {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 0.1rem;
+  }
+
+  /* Consent */
+  .consent-text {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  .consent-text a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Success */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+  }
+  .form-success .success-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
+  .form-success h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .form-success p { color: var(--text-light); }
+
+  @media (max-width: 768px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>

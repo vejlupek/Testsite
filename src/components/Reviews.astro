@@ -1,0 +1,44 @@
+---
+import ReviewCard from './ReviewCard.astro';
+
+const reviews = [
+  {
+    text: 'Pepa přišel přesně v domluvený čas, složil nám celý dětský pokoj z IKEA a uklidil po sobě. Naprosto spokojena!',
+    author: 'Markéta K.',
+    location: 'Praha 4 – Modřany',
+  },
+  {
+    text: 'Vyměnil nám rozbitý kohout, opravil dveře co špatně zavíraly a pověsil police. Vše za jedno odpoledne. Skvělé!',
+    author: 'Tomáš R.',
+    location: 'Praha 6 – Dejvice',
+  },
+  {
+    text: 'Konečně někdo, kdo přijde, udělá co slíbí a cena odpovídá domluvě. Doporučuji všem! Teď ho používám pravidelně.',
+    author: 'Jana M.',
+    location: 'Praha 2 – Vinohrady',
+  },
+];
+---
+
+<section id="reference">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>Co říkají zákazníci</h2>
+      <p>Spokojení zákazníci jsou mou nejlepší vizitkou</p>
+    </div>
+    <div class="reviews-grid">
+      {reviews.map((r) => (
+        <ReviewCard text={r.text} author={r.author} location={r.location} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  #reference { background: var(--bg); }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+  }
+</style>

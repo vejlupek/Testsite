@@ -1,0 +1,54 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = 'Pepa Vejlupek – hodinový manžel v Praze. Prostě to opravím. Montáž nábytku, opravy, malování, instalatérské práce a mnoho dalšího. Rychlá odezva, férové ceny.',
+  canonical,
+  ogImage = '/og-image.jpg',
+} = Astro.props;
+
+const siteUrl = 'https://pepevejlupek.cz';
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
+---
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#e67e22" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:locale" content="cs_CZ" />
+
+  <!-- Fonts: Bitter (display) + Source Sans 3 (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@700;800;900&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <slot name="head" />
+</head>
+<body>
+  <Nav />
+  <slot />
+  <Footer />
+</body>
+</html>

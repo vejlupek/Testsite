@@ -1,0 +1,197 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('cs-CZ', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<BaseLayout
+  title={`${post.data.title} | Blog – Pepa Vejlupek`}
+  description={post.data.description}
+>
+  <main>
+    {post.data.cover && (
+      <div class="article-cover">
+        <Image
+          src={post.data.cover}
+          alt={post.data.coverAlt ?? post.data.title}
+          width={1200}
+          height={480}
+          format="webp"
+          quality={85}
+          loading="eager"
+          fetchpriority="high"
+          class="article-cover-img"
+        />
+        <div class="article-cover-overlay" />
+      </div>
+    )}
+
+    <div class="article-inner">
+      <a href="/blog" class="back-link">← Zpět na blog</a>
+
+      <header class="article-header">
+        <div class="article-meta">
+          <time datetime={post.data.pubDate.toISOString()}>
+            {formatDate(post.data.pubDate)}
+          </time>
+          {post.data.tags.length > 0 && (
+            <div class="tags">
+              {post.data.tags.map((tag) => <span class="tag">{tag}</span>)}
+            </div>
+          )}
+        </div>
+        <h1>{post.data.title}</h1>
+        <p class="article-desc">{post.data.description}</p>
+      </header>
+
+      <div class="article-body">
+        <Content />
+      </div>
+
+      <footer class="article-footer">
+        <div class="cta-box">
+          <div class="cta-text">
+            <strong>Potřebujete pomoc?</strong>
+            <span>Pepa je tu pro vás – rychlá odezva, férová cena.</span>
+          </div>
+          <a href="/#kontakt" class="btn btn-primary">📨 Kontaktovat Pepu</a>
+        </div>
+      </footer>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* Cover image */
+  .article-cover {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    overflow: hidden;
+  }
+  .article-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .article-cover-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.35) 100%);
+  }
+
+  main { min-height: 60vh; }
+  .article-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 5rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  .article-header { margin-bottom: 2.5rem; }
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  time { font-size: 0.83rem; color: var(--text-light); }
+
+  .tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .tag {
+    font-size: 0.73rem;
+    font-weight: 700;
+    background: var(--color-brand-subtle);
+    color: var(--primary);
+    padding: 0.15rem 0.6rem;
+    border-radius: var(--radius-pill);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .article-header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+    font-weight: var(--font-weight-black);
+    line-height: var(--leading-tight);
+    margin-bottom: 0.75rem;
+  }
+  .article-desc { font-size: 1.1rem; color: var(--text-light); line-height: var(--leading-relaxed); }
+
+  /* Prose */
+  .article-body { line-height: var(--leading-relaxed); }
+  .article-body :global(h2) {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: var(--font-weight-bold);
+    margin: 2.25rem 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--color-brand-muted);
+  }
+  .article-body :global(h3) {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 1.5rem 0 0.5rem;
+    color: var(--text);
+  }
+  .article-body :global(p) { margin-bottom: 1rem; color: var(--text); }
+  .article-body :global(ul),
+  .article-body :global(ol) { margin: 0.5rem 0 1rem 1.4rem; display: flex; flex-direction: column; gap: 0.35rem; }
+  .article-body :global(li) { font-size: 0.97rem; }
+  .article-body :global(strong) { font-weight: 700; color: var(--text); }
+  .article-body :global(em) { font-style: italic; }
+  .article-body :global(a) { color: var(--primary); text-underline-offset: 2px; }
+  .article-body :global(hr) { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+  .article-body :global(blockquote) {
+    border-left: 3px solid var(--primary);
+    background: var(--color-brand-subtle);
+    padding: 0.75rem 1.2rem;
+    margin: 1.5rem 0;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-style: italic;
+    color: var(--text-light);
+  }
+
+  /* CTA footer */
+  .article-footer { margin-top: 3.5rem; }
+  .cta-box {
+    background: var(--color-brand-subtle);
+    border: 1.5px solid var(--color-brand-muted);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .cta-text strong { display: block; font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .cta-text span { font-size: 0.9rem; color: var(--text-light); }
+</style>

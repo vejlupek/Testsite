@@ -1,0 +1,100 @@
+---
+const isHome = Astro.url.pathname === '/';
+---
+
+<nav>
+  <div class="nav-inner">
+    <a href={isHome ? '#' : '/'} class="nav-logo">Pepa Vejlupek – <span>prostě to opravím</span></a>
+    <ul class="nav-links">
+      <li><a href={isHome ? '#sluzby' : '/#sluzby'}>Služby</a></li>
+      <li><a href={isHome ? '#o-mne' : '/#o-mne'}>O mně</a></li>
+      <li><a href={isHome ? '#reference' : '/#reference'}>Reference</a></li>
+      <li><a href={isHome ? '#cenik' : '/#cenik'}>Ceník</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href={isHome ? '#kontakt' : '/#kontakt'} class="nav-cta">Kontakt</a></li>
+    </ul>
+    <a href="tel:+420774399400" class="nav-phone-btn">📞 Zavolat</a>
+  </div>
+</nav>
+
+{isHome && (
+  <script>
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach((s) => {
+        if (window.scrollY >= (s as HTMLElement).offsetTop - 100) current = s.id;
+      });
+      navLinks.forEach((a) => {
+        (a as HTMLElement).style.color =
+          a.getAttribute('href') === '#' + current ? '#ffffff' : '';
+      });
+    });
+  </script>
+)}
+
+<style>
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--nav-bg);
+    backdrop-filter: var(--nav-backdrop);
+    border-bottom: 1px solid var(--nav-border);
+    padding: 0 1.5rem;
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--nav-logo-color);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--nav-logo-accent); }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--nav-link-color);
+    font-size: 0.95rem;
+    transition: color var(--transition-fast);
+  }
+  .nav-links a:hover { color: var(--nav-link-hover); }
+  .nav-cta {
+    background: var(--primary);
+    color: #fff !important;
+    padding: var(--btn-padding-y-sm) var(--btn-padding-x-sm);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
+    transition: background var(--transition-base) !important;
+  }
+  .nav-cta:hover { background: var(--primary-dark) !important; color: #fff !important; }
+
+  /* Mobile call button — hidden on desktop */
+  .nav-phone-btn {
+    display: none;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--primary);
+    color: #fff;
+    padding: 0.45rem 1.1rem;
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: background var(--transition-base);
+  }
+  .nav-phone-btn:hover { background: var(--primary-dark); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-phone-btn { display: flex; }
+  }
+</style>

@@ -1,0 +1,122 @@
+---
+---
+
+<section id="cenik">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>Ceník</h2>
+      <p>Žádné skryté poplatky – vždy domluvíme cenu předem</p>
+    </div>
+    <div class="pricing-cards">
+
+      <!-- Řemesla -->
+      <div class="pricing-card featured">
+        <div class="pricing-category-title">Řemesla</div>
+        <div class="pricing-row">
+          <span class="pricing-row-label">1 pracovník</span>
+          <span class="pricing-row-value">700 Kč / hod</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-row-label">2 pracovníci</span>
+          <span class="pricing-row-value">1 400 Kč / hod</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-row-label">3 pracovníci</span>
+          <span class="pricing-row-value">2 100 Kč / hod</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-row-label">Urgentní výjezd <sup>*</sup></span>
+          <span class="pricing-row-value">2 500 Kč</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-row-label">Použití speciální techniky</span>
+          <span class="pricing-row-value muted">individuální</span>
+        </div>
+      </div>
+
+      <!-- Doprava -->
+      <div class="pricing-card">
+        <div class="pricing-category-title">Doprava</div>
+        <div class="pricing-row">
+          <span class="pricing-row-label">Osobní vozidlo</span>
+          <span class="pricing-row-value">12 Kč / km</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-row-label">Užitkové vozidlo</span>
+          <span class="pricing-row-value">17 Kč / km</span>
+        </div>
+      </div>
+
+    </div>
+    <p class="pricing-note"><sup>*</sup> <strong>Urgentní výjezd</strong> – jedná se o služby, které klient požaduje poskytnout přednostně, bez předchozí objednávky a pokud možno okamžitě. Výjezd je poskytnut do 2 hodin od příjmu urgentní objednávky.</p>
+  </div>
+</section>
+
+<style>
+  #cenik { background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .pricing-cards {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 1.5rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .pricing-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+  }
+  .pricing-card.featured { border-color: var(--color-accent); border-top: 3px solid var(--color-accent); }
+  .pricing-category-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-accent);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-accent-muted);
+  }
+  .pricing-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pricing-row:last-child { border-bottom: none; }
+  .pricing-row-label { font-size: 0.95rem; color: var(--text); }
+  .pricing-row-value {
+    font-weight: var(--font-weight-bold);
+    font-size: 1rem;
+    color: var(--primary);
+    white-space: nowrap;
+  }
+  .pricing-row-value.muted {
+    color: var(--text-light);
+    font-weight: var(--font-weight-medium);
+    font-style: italic;
+  }
+  .pricing-row-label sup {
+    font-size: 0.7rem;
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+  }
+  .pricing-note {
+    max-width: 860px;
+    margin: 1.5rem auto 0;
+    font-size: var(--text-sm);
+    color: var(--text-light);
+    line-height: var(--leading-relaxed);
+    padding: 1rem 1.2rem;
+    background: var(--color-brand-subtle);
+    border-left: 3px solid var(--primary);
+    border-radius: var(--radius-sm);
+  }
+  @media (max-width: 640px) {
+    .pricing-cards { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,60 @@
+---
+interface Props {
+  text: string;
+  author: string;
+  location: string;
+}
+const { text, author, location } = Astro.props;
+---
+
+<div class="review-card">
+  <div class="review-quote">"</div>
+  <div class="review-stars">★★★★★</div>
+  <p class="review-text">{text}</p>
+  <div class="review-footer">
+    <div class="review-author">{author}</div>
+    <div class="review-location">{location}</div>
+  </div>
+</div>
+
+<style>
+  .review-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--color-accent);
+    border-radius: var(--card-radius);
+    padding: var(--card-padding);
+    position: relative;
+    overflow: hidden;
+  }
+  .review-quote {
+    position: absolute;
+    top: -0.5rem;
+    right: 1.2rem;
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--color-accent-subtle);
+    font-family: var(--font-display);
+    font-weight: 900;
+    pointer-events: none;
+    select: none;
+  }
+  .review-stars {
+    color: var(--color-rating);
+    font-size: 1rem;
+    margin-bottom: 0.9rem;
+    letter-spacing: 0.05em;
+  }
+  .review-text {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 1.2rem;
+    font-style: italic;
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+  }
+  .review-footer { border-top: 1px solid var(--border); padding-top: 0.85rem; }
+  .review-author { font-weight: 700; font-size: 0.9rem; color: var(--color-accent); }
+  .review-location { font-size: 0.82rem; color: var(--text-light); margin-top: 0.15rem; }
+</style>

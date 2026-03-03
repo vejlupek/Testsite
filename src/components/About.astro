@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets';
+import josefPhoto from '../assets/images/josef-vejlupek-photo.png';
+---
+
+<section id="o-mne">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual">
+        <Image
+          src={josefPhoto}
+          alt="Josef Vejlupek – hodinový manžel Praha"
+          width={480}
+          height={640}
+          format="webp"
+          quality={82}
+        />
+      </div>
+      <div class="about-text">
+        <h2>Kdo jsem a proč mě oslovit?</h2>
+        <p>Jmenuji se Josef Vejlupek, ale všichni mi říkají Pepa. Živím se tím, co mě baví – pomáháním lidem s opravami a údržbou domácností po celé Praze. A platí to jednoduše: co se pokazí, já to opravím.</p>
+        <p>Nezáleží na tom, zda jde o malou opravu za pár stovek nebo větší projekt – každý zákazník dostane stejně poctivý přístup a férovost.</p>
+        <ul class="about-list">
+          <li>Více než 10 let praxe v oboru</li>
+          <li>Vlastní nářadí a vybavení</li>
+          <li>Přesné dodržení domluveného termínu</li>
+          <li>Čistá práce – uklidím po sobě</li>
+          <li>Transparentní cena předem</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #o-mne { background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .about-visual {
+    border-radius: var(--radius-xl);
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .about-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .about-text h2 {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-2xl), 3vw, var(--text-4xl));
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+  .about-text p { color: var(--text-light); margin-bottom: 1rem; font-size: 1rem; }
+  .about-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.5rem; }
+  .about-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .about-list li::before { content: "✓"; color: var(--primary); font-weight: 800; }
+
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .about-visual { max-width: 320px; margin: 0 auto; }
+  }
+</style>

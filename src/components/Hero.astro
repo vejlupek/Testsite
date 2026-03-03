@@ -1,0 +1,193 @@
+---
+import { Image } from 'astro:assets';
+import heroPhoto from '../assets/images/hero-vejlupek.png';
+---
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">🔧 Hodinový manžel Praha</div>
+      <h1>Ahoj! Jsem Pepa Vejlupek<br>a <span>prostě to opravím</span></h1>
+      <p>Cokoliv doma pokazí, já to dám do pořádku. Bez zbytečných řečí, za férovou cenu a přesně v domluvený čas.</p>
+      <div class="hero-buttons">
+        <a href="tel:+420774399400" class="btn btn-call">📞 +420 774 399 400</a>
+        <a href="#kontakt" class="btn btn-outline">✉️ Napsat zprávu</a>
+      </div>
+      <p class="hero-phone-note">Zvedám telefon osobně · Po–Pá 7–20, So 8–16</p>
+      <div class="hero-trust">
+        <div class="hero-trust-item"><span>⭐ 4.9/5</span> hodnocení</div>
+        <div class="hero-trust-sep">·</div>
+        <div class="hero-trust-item"><span>500+</span> zakázek</div>
+        <div class="hero-trust-sep">·</div>
+        <div class="hero-trust-item"><span>⚡ do 2 h</span> odezva</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-frame">
+        <Image
+          src={heroPhoto}
+          alt="Pepa Vejlupek – hodinový manžel při práci"
+          width={560}
+          height={420}
+          format="webp"
+          quality={85}
+          loading="eager"
+          fetchpriority="high"
+          class="hero-img"
+        />
+        <div class="hero-img-badge">
+          <span class="badge-icon">✅</span>
+          <div>
+            <strong>Poctivá práce</strong>
+            <span>Záruční opravy zdarma</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: linear-gradient(145deg, #ffffff 0%, #f4f7ff 100%);
+    padding: 4rem 1.5rem 3.5rem;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  /* Left: content */
+  .hero-badge {
+    display: inline-block;
+    background: var(--color-accent-subtle);
+    border: 1px solid var(--color-accent-muted);
+    color: var(--color-accent);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0.9rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+  }
+  .hero-content h1 {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+    font-weight: var(--font-weight-black);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+  .hero-content h1 span { color: var(--primary); }
+  .hero-content > p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    max-width: 480px;
+    margin-bottom: 2rem;
+    line-height: var(--leading-relaxed);
+  }
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+
+  /* Big call button */
+  .btn-call {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary);
+    color: #fff;
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-brand);
+    min-height: 52px;
+  }
+  .btn-call:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-brand-lg);
+  }
+
+  .hero-phone-note {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .hero-trust-item {
+    font-size: 0.88rem;
+    color: var(--text-light);
+  }
+  .hero-trust-item span { font-weight: 700; color: var(--color-accent); }
+  .hero-trust-sep { color: var(--border); font-size: 1.2rem; }
+
+  /* Right: image */
+  .hero-visual { position: relative; }
+  .hero-img-frame {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: visible;
+  }
+  .hero-img-frame::before {
+    content: '';
+    position: absolute;
+    inset: -12px -12px 12px 12px;
+    border-radius: var(--radius-xl);
+    background: var(--color-accent-muted);
+    z-index: 0;
+  }
+  .hero-img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-xl);
+    display: block;
+    box-shadow: var(--shadow-xl);
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+  }
+  .hero-img-badge {
+    position: absolute;
+    bottom: -1.25rem;
+    left: -1.25rem;
+    z-index: 2;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    box-shadow: var(--shadow-md);
+    white-space: nowrap;
+  }
+  .badge-icon { font-size: 1.4rem; }
+  .hero-img-badge strong { display: block; font-size: 0.85rem; font-weight: 700; color: var(--color-accent); }
+  .hero-img-badge span { font-size: 0.78rem; color: var(--text-light); }
+
+  @media (max-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-visual { order: -1; max-width: 480px; margin: 0 auto; }
+    .hero-content h1 { font-size: clamp(var(--text-2xl), 6vw, var(--text-4xl)); }
+    .hero-img-frame::before { inset: -8px -8px 8px 8px; }
+    .btn-call { font-size: 1rem; }
+  }
+</style>

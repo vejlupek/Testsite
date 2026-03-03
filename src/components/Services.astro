@@ -1,0 +1,38 @@
+---
+import ServiceCard from './ServiceCard.astro';
+
+const services = [
+  { icon: '🛋️', title: 'Montáž nábytku',        description: 'Složení IKEA, Jysk a dalšího nábytku rychle a správně.' },
+  { icon: '🎨', title: 'Malířské práce',          description: 'Malování stěn, lakování, opravy omítek – čistě a precizně.' },
+  { icon: '🔨', title: 'Drobné opravy',           description: 'Opravy dveří, oken, podlah, skříní a vše co doma skřípe.' },
+  { icon: '🚿', title: 'Instalatérské práce',     description: 'Výměna kohoutků, splachovadel, sifonů a drobné úniky vody.' },
+  { icon: '🪛', title: 'Vrtání a věšení',         description: 'Věšení obrazů, poliček, zrcadel, TV držáků – vše na milimetr.' },
+  { icon: '🔐', title: 'Výměna zámků',            description: 'Výměna a seřízení zámků, bezpečnostní kování, cylindrické vložky.' },
+  { icon: '💡', title: 'Výměna osvětlení',        description: 'Výměna žárovek, svítidel, lustrů a instalace LED osvětlení.' },
+  { icon: '🔌', title: 'Zásuvky a vypínače',      description: 'Výměna elektroinstalačních prvků – zásuvky, vypínače, kryty.' },
+  { icon: '🌿', title: 'Zahrada a okolí domu',    description: 'Drobné práce na zahradě, úpravy, montáže venkovního vybavení.' },
+];
+---
+
+<section id="sluzby">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>Co pro vás udělám</h2>
+      <p>Široký záběr prací – jeden člověk, spousta problémů vyřešených</p>
+    </div>
+    <div class="services-grid">
+      {services.map((s) => (
+        <ServiceCard icon={s.icon} title={s.title} description={s.description} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  #sluzby { background: var(--bg); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.2rem;
+  }
+</style>

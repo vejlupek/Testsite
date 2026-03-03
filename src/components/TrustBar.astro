@@ -1,0 +1,42 @@
+---
+---
+
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span class="icon">⭐</span> Hodnocení 4.9/5</div>
+    <div class="trust-item"><span class="icon">🏠</span> 500+ zakázek</div>
+    <div class="trust-item"><span class="icon">⚡</span> Odezva do 2 hodin</div>
+    <div class="trust-item"><span class="icon">📍</span> Celá Praha</div>
+    <div class="trust-item"><span class="icon">💳</span> Platba hotově i převodem</div>
+  </div>
+</div>
+
+<style>
+  .trust-bar {
+    background: var(--color-navy-900);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.9rem 1.5rem;
+  }
+  .trust-bar-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.80);
+    font-weight: 500;
+  }
+  .trust-item .icon { font-size: 1.1rem; }
+
+  @media (max-width: 768px) {
+    .trust-bar-inner { gap: 1.1rem; }
+    .trust-item { font-size: 0.82rem; }
+  }
+</style>

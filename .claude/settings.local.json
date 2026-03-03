@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(cmd.exe:*)",
+      "Bash(node:*)",
+      "Bash(export:*)",
+      "WebSearch",
+      "WebFetch(domain:www.pexels.com)",
+      "WebFetch(domain:images.pexels.com)",
+      "Bash(grep:*)",
+      "Bash(wc:*)"
+    ]
+  }
+}

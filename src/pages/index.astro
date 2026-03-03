@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Services from '../components/Services.astro';
+import About from '../components/About.astro';
+import Reviews from '../components/Reviews.astro';
+import Pricing from '../components/Pricing.astro';
+import Contact from '../components/Contact.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Pepa Vejlupek – hodinový manžel Praha",
+  "description": "Hodinový manžel pro celou Prahu. Montáž nábytku, opravy, malování, instalatérské práce.",
+  "url": "https://pepevejlupek.cz",
+  "telephone": "+420774399400",
+  "email": "pepa@vejlupek.cz",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Praha",
+    "addressCountry": "CZ"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Praha"
+  },
+  "priceRange": "700–2100 Kč/hod",
+  "openingHours": ["Mo-Fr 07:00-20:00", "Sa 08:00-16:00"],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "500"
+  }
+};
+---
+
+<BaseLayout
+  title="Pepa Vejlupek – prostě to opravím | Hodinový manžel Praha"
+  description="Pepa Vejlupek – hodinový manžel v Praze. Prostě to opravím. Montáž nábytku, opravy, malování, instalatérské práce a mnoho dalšího. Rychlá odezva, férové ceny."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
+
+  <Hero />
+  <TrustBar />
+  <Services />
+  <About />
+  <Reviews />
+  <Pricing />
+  <Contact />
+</BaseLayout>
