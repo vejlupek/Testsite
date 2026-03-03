@@ -9,7 +9,9 @@ const { text, author, location } = Astro.props;
 
 <div class="review-card">
   <div class="review-quote">"</div>
-  <div class="review-stars">★★★★★</div>
+  <div class="review-stars" role="img" aria-label="Hodnocení 5 z 5 hvězdiček">
+    <span aria-hidden="true">★★★★★</span>
+  </div>
   <p class="review-text">{text}</p>
   <div class="review-footer">
     <div class="review-author">{author}</div>
