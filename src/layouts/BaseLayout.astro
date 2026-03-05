@@ -24,20 +24,39 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PZCCZ3ZD');</script>
-  <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
+  <!-- Preconnect for GTM / GA (reduces connection overhead) -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <!-- Google Tag Manager — deferred to after load so it doesn't block LCP -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function _loadGTM() {
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PZCCZ3ZD');
+    }
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(_loadGTM, { timeout: 3000 });
+    } else {
+      window.addEventListener('load', _loadGTM);
+    }
+  </script>
+  <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#e67e22" />
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalUrl} />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <!-- Preload critical fonts (latin-ext for Czech diacritics, latin for base) -->
+  <link rel="preload" href="/fonts/bitter-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/bitter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/source-sans-3-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/source-sans-3-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
