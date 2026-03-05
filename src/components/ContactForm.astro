@@ -7,7 +7,6 @@
     <input type="hidden" name="access_key" value="d8bfff3c-5518-4048-b7e5-c67cf48186e6" />
     <input type="hidden" name="_subject" value="Nová poptávka – Pepe Vejlupek" />
     <input type="hidden" name="name" id="name" style="display:none;" />
-    <input type="hidden" name="h-captcha-response" id="h-captcha-response" />
 
     <div class="form-row">
       <div class="form-group">
@@ -82,7 +81,7 @@
       </label>
     </div>
 
-    <div class="h-captcha" data-sitekey="88266552-892c-4d6c-8c4c-5b645aa0207c"></div>
+    <div class="g-recaptcha" data-sitekey="6LekgoAsAAAAAODvPoFE7WcCoAufWOEgP8sFeWax"></div>
 
     <p class="consent-text">
       Odesláním poptávky souhlasím s <a href="/obchodni-podminky">Obchodními podmínkami</a> a jsem s nimi seznámen.
@@ -98,7 +97,7 @@
   </div>
 </div>
 
-<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script>
   // Set date input min to today
@@ -118,16 +117,11 @@
       return;
     }
 
-    // Check hCaptcha
-    const captchaResponse = (window as any).hcaptcha?.getResponse();
-    if (!captchaResponse) {
-      alert('Prosím vypněte hCaptcha.');
+    // Get reCAPTCHA token
+    const token = await (window as any).grecaptcha?.execute('6LekgoAsAAAAAODvPoFE7WcCoAufWOEgP8sFeWax', { action: 'submit' });
+    if (!token) {
+      alert('Chyba reCAPTCHA. Zkuste znovu.');
       return;
-    }
-
-    const captchaInput = document.getElementById('h-captcha-response') as HTMLInputElement;
-    if (captchaInput) {
-      captchaInput.value = captchaResponse;
     }
 
     const btn = form.querySelector('.form-submit') as HTMLButtonElement;
@@ -135,9 +129,12 @@
     btn.textContent = 'Odesílám…';
 
     try {
+      const formData = new FormData(form);
+      formData.append('g-recaptcha-response', token);
+
       const res = await fetch(form.action, {
         method: 'POST',
-        body: new FormData(form),
+        body: formData,
         headers: { Accept: 'application/json' },
       });
       if (res.ok) {
@@ -148,13 +145,11 @@
         btn.disabled = false;
         btn.textContent = '📨 Odeslat poptávku';
         alert('Odeslání se nezdařilo. Zavolejte nám prosím na +420 774 399 400.');
-        (window as any).hcaptcha?.reset();
       }
     } catch {
       btn.disabled = false;
       btn.textContent = '📨 Odeslat poptávku';
       alert('Odeslání se nezdařilo. Zavolejte nám prosím na +420 774 399 400.');
-      (window as any).hcaptcha?.reset();
     }
   });
 </script>
@@ -263,8 +258,8 @@
     text-underline-offset: 2px;
   }
 
-  /* hCaptcha */
-  .h-captcha {
+  /* reCAPTCHA */
+  .g-recaptcha {
     margin-bottom: 1rem;
     display: flex;
     justify-content: center;
