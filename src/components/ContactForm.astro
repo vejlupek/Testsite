@@ -3,8 +3,11 @@
 
 <div class="contact-form">
   <h3>Nezávazná poptávka</h3>
-  <form id="contactForm" action="https://formspree.io/f/FORMSPREE_ID" method="POST" novalidate>
+  <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+    <input type="hidden" name="access_key" value="d8bfff3c-5518-4048-b7e5-c67cf48186e6" />
     <input type="hidden" name="_subject" value="Nová poptávka – Pepe Vejlupek" />
+    <input type="hidden" name="name" id="name" style="display:none;" />
+    <input type="hidden" name="h-captcha-response" id="h-captcha-response" />
 
     <div class="form-row">
       <div class="form-group">
@@ -79,6 +82,8 @@
       </label>
     </div>
 
+    <div class="h-captcha" data-sitekey="88266552-892c-4d6c-8c4c-5b645aa0207c"></div>
+
     <p class="consent-text">
       Odesláním poptávky souhlasím s <a href="/obchodni-podminky">Obchodními podmínkami</a> a jsem s nimi seznámen.
     </p>
@@ -93,6 +98,8 @@
   </div>
 </div>
 
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+
 <script>
   // Set date input min to today
   const dateInput = document.getElementById('date') as HTMLInputElement | null;
@@ -103,6 +110,26 @@
   const form = document.getElementById('contactForm') as HTMLFormElement | null;
   form?.addEventListener('submit', async function (e) {
     e.preventDefault();
+
+    // Check honeypot
+    const honeypot = document.getElementById('name') as HTMLInputElement;
+    if (honeypot && honeypot.value) {
+      console.log('Honeypot triggered');
+      return;
+    }
+
+    // Check hCaptcha
+    const captchaResponse = (window as any).hcaptcha?.getResponse();
+    if (!captchaResponse) {
+      alert('Prosím vypněte hCaptcha.');
+      return;
+    }
+
+    const captchaInput = document.getElementById('h-captcha-response') as HTMLInputElement;
+    if (captchaInput) {
+      captchaInput.value = captchaResponse;
+    }
+
     const btn = form.querySelector('.form-submit') as HTMLButtonElement;
     btn.disabled = true;
     btn.textContent = 'Odesílám…';
@@ -121,11 +148,13 @@
         btn.disabled = false;
         btn.textContent = '📨 Odeslat poptávku';
         alert('Odeslání se nezdařilo. Zavolejte nám prosím na +420 774 399 400.');
+        (window as any).hcaptcha?.reset();
       }
     } catch {
       btn.disabled = false;
       btn.textContent = '📨 Odeslat poptávku';
       alert('Odeslání se nezdařilo. Zavolejte nám prosím na +420 774 399 400.');
+      (window as any).hcaptcha?.reset();
     }
   });
 </script>
@@ -232,6 +261,13 @@
     color: var(--primary);
     text-decoration: underline;
     text-underline-offset: 2px;
+  }
+
+  /* hCaptcha */
+  .h-captcha {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
   }
 
   /* Success */
