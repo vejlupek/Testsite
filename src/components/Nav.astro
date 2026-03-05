@@ -22,16 +22,26 @@ const isHome = Astro.url.pathname === '/';
 
 {isHome && (
   <script>
-    const sections = document.querySelectorAll('section[id]');
+    const sections = Array.from(document.querySelectorAll('section[id]')) as HTMLElement[];
     const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    // Pre-cache offsets; refresh on resize to avoid mid-scroll reads
+    let offsets: { id: string; top: number }[] = [];
+    function cacheOffsets() {
+      offsets = sections.map((s) => ({ id: s.id, top: s.offsetTop }));
+    }
+    cacheOffsets();
+    window.addEventListener('resize', cacheOffsets, { passive: true });
+
     let ticking = false;
     window.addEventListener('scroll', () => {
       if (!ticking) {
         requestAnimationFrame(() => {
+          // Read only scrollY (no layout queries inside RAF)
+          const y = window.scrollY;
           let current = '';
-          sections.forEach((s) => {
-            if (window.scrollY >= (s as HTMLElement).offsetTop - 100) current = s.id;
-          });
+          for (const o of offsets) {
+            if (y >= o.top - 100) current = o.id;
+          }
           navLinks.forEach((a) => {
             (a as HTMLElement).style.color =
               a.getAttribute('href') === '#' + current ? '#ffffff' : '';
@@ -40,7 +50,7 @@ const isHome = Astro.url.pathname === '/';
         });
         ticking = true;
       }
-    });
+    }, { passive: true });
   </script>
 )}
 

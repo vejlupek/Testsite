@@ -5,4 +5,7 @@ export default defineConfig({
   site: 'https://pepevejlupek.cz',
   integrations: [sitemap()],
   output: 'static',
+  build: {
+    inlineStylesheets: 'always',
+  },
 });
