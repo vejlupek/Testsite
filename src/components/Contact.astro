@@ -1,19 +1,22 @@
 ---
 import ContactForm from './ContactForm.astro';
+import { getLang, useTranslations } from '../i18n';
+const lang = getLang(Astro.url.pathname);
+const t = useTranslations(lang);
 ---
 
 <section id="kontakt">
   <div class="section-inner">
     <div class="section-header">
-      <h2>Ozvěte se mi!</h2>
-      <p>Odpovím vám do 2 hodin – většinou mnohem dříve</p>
+      <h2>{t('contact.heading')}</h2>
+      <p>{t('contact.subheading')}</p>
     </div>
 
-    <!-- Prominentní volací banner -->
+    <!-- Call banner -->
     <div class="call-banner">
       <div class="call-banner-text">
-        <strong>Neváhejte zavolat</strong>
-        <span>Zvedám telefon osobně · odpovídám rychle</span>
+        <strong>{t('contact.callTitle')}</strong>
+        <span>{t('contact.callSubtitle')}</span>
       </div>
       <a href="tel:+420774399400" class="call-banner-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
@@ -23,34 +26,34 @@ import ContactForm from './ContactForm.astro';
 
     <div class="contact-grid">
       <div class="contact-info">
-        <h3>Kontaktní údaje</h3>
+        <h3>{t('contact.infoHeading')}</h3>
         <div class="contact-items">
           <div class="contact-item">
             <span class="contact-item-icon">📞</span>
             <div class="contact-item-text">
-              <strong>Telefon</strong>
+              <strong>{t('contact.phone')}</strong>
               <a href="tel:+420774399400">+420 774 399 400</a>
             </div>
           </div>
           <div class="contact-item">
             <span class="contact-item-icon">✉️</span>
             <div class="contact-item-text">
-              <strong>E-mail</strong>
+              <strong>{t('contact.email')}</strong>
               <a href="mailto:info@pepevejlupek.cz">info@pepevejlupek.cz</a>
             </div>
           </div>
           <div class="contact-item">
             <span class="contact-item-icon">🕐</span>
             <div class="contact-item-text">
-              <strong>Pracovní doba</strong>
-              <p>Po–Pá: 8:00 – 18:00<br />Ostatní časy: pohotovost</p>
+              <strong>{t('contact.hours')}</strong>
+              <p>{t('contact.hoursValue')}<br />{t('contact.hoursOnCall')}</p>
             </div>
           </div>
           <div class="contact-item">
             <span class="contact-item-icon">📍</span>
             <div class="contact-item-text">
-              <strong>Oblast působení</strong>
-              <p>Praha a blízké okolí</p>
+              <strong>{t('contact.area')}</strong>
+              <p>{t('contact.areaValue')}</p>
             </div>
           </div>
         </div>

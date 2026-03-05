@@ -1,6 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import josefPhoto from '../assets/images/josef-vejlupek-photo.png';
+import { getLang, useTranslations } from '../i18n';
+const lang = getLang(Astro.url.pathname);
+const t = useTranslations(lang);
 ---
 
 <section id="o-mne">
@@ -9,7 +12,7 @@ import josefPhoto from '../assets/images/josef-vejlupek-photo.png';
       <div class="about-visual">
         <Image
           src={josefPhoto}
-          alt="Josef Vejlupek – hodinový manžel Praha"
+          alt={t('about.photoAlt')}
           width={480}
           height={640}
           format="webp"
@@ -18,15 +21,15 @@ import josefPhoto from '../assets/images/josef-vejlupek-photo.png';
         />
       </div>
       <div class="about-text">
-        <h2>Kdo jsem a proč mě oslovit?</h2>
-        <p>Jmenuji se Josef Vejlupek, ale všichni mi říkají Pepe. Živím se tím, co mě baví – pomáháním lidem s opravami a údržbou domácností po celé Praze. A platí to jednoduše: co se pokazí, já to opravím.</p>
-        <p>Nezáleží na tom, zda jde o malou opravu za pár stovek nebo větší projekt – každý zákazník dostane stejně poctivý přístup a férovost.</p>
+        <h2>{t('about.heading')}</h2>
+        <p>{t('about.p1')}</p>
+        <p>{t('about.p2')}</p>
         <ul class="about-list">
-          <li>Více než 10 let praxe v oboru</li>
-          <li>Vlastní nářadí a vybavení</li>
-          <li>Přesné dodržení domluveného termínu</li>
-          <li>Čistá práce – uklidím po sobě</li>
-          <li>Transparentní cena předem</li>
+          <li>{t('about.li1')}</li>
+          <li>{t('about.li2')}</li>
+          <li>{t('about.li3')}</li>
+          <li>{t('about.li4')}</li>
+          <li>{t('about.li5')}</li>
         </ul>
       </div>
     </div>

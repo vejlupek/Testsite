@@ -1,54 +1,57 @@
 ---
+import { getLang, useTranslations } from '../i18n';
+const lang = getLang(Astro.url.pathname);
+const t = useTranslations(lang);
 ---
 
 <section id="cenik">
   <div class="section-inner">
     <div class="section-header">
-      <h2>Ceník</h2>
-      <p>Žádné skryté poplatky – vždy domluvíme cenu předem</p>
+      <h2>{t('pricing.heading')}</h2>
+      <p>{t('pricing.subheading')}</p>
     </div>
     <div class="pricing-cards">
 
-      <!-- Řemesla -->
+      <!-- Crafts / Řemesla -->
       <div class="pricing-card featured">
-        <div class="pricing-category-title">Řemesla</div>
+        <div class="pricing-category-title">{t('pricing.crafts')}</div>
         <div class="pricing-row">
-          <span class="pricing-row-label">1 pracovník</span>
+          <span class="pricing-row-label">{t('pricing.worker1')}</span>
           <span class="pricing-row-value">700 Kč / hod</span>
         </div>
         <div class="pricing-row">
-          <span class="pricing-row-label">2 pracovníci</span>
+          <span class="pricing-row-label">{t('pricing.worker2')}</span>
           <span class="pricing-row-value">1 400 Kč / hod</span>
         </div>
         <div class="pricing-row">
-          <span class="pricing-row-label">3 pracovníci</span>
+          <span class="pricing-row-label">{t('pricing.worker3')}</span>
           <span class="pricing-row-value">2 100 Kč / hod</span>
         </div>
         <div class="pricing-row">
-          <span class="pricing-row-label">Pohotovostní výjezd <sup>*</sup></span>
+          <span class="pricing-row-label">{t('pricing.onCall')} <sup>*</sup></span>
           <span class="pricing-row-value">2 500 Kč</span>
         </div>
         <div class="pricing-row">
-          <span class="pricing-row-label">Použití speciální techniky</span>
-          <span class="pricing-row-value muted">individuální</span>
+          <span class="pricing-row-label">{t('pricing.specialEquip')}</span>
+          <span class="pricing-row-value muted">{t('pricing.individual')}</span>
         </div>
       </div>
 
-      <!-- Doprava -->
+      <!-- Travel / Doprava -->
       <div class="pricing-card">
-        <div class="pricing-category-title">Doprava</div>
+        <div class="pricing-category-title">{t('pricing.transport')}</div>
         <div class="pricing-row">
-          <span class="pricing-row-label">Osobní vozidlo</span>
+          <span class="pricing-row-label">{t('pricing.car')}</span>
           <span class="pricing-row-value">12 Kč / km</span>
         </div>
         <div class="pricing-row">
-          <span class="pricing-row-label">Užitkové vozidlo</span>
+          <span class="pricing-row-label">{t('pricing.van')}</span>
           <span class="pricing-row-value">17 Kč / km</span>
         </div>
       </div>
 
     </div>
-    <p class="pricing-note"><sup>*</sup> <strong>Pohotovostní výjezd</strong> – výjezdy mimo pracovní dobu (Po–Pá 8–18), o víkendu a ve svátky. Výjezd je poskytnut do 2 hodin od příjmu pohotovostní objednávky.</p>
+    <p class="pricing-note"><sup>*</sup> <strong>{t('pricing.onCall')}</strong> – {t('pricing.note')}</p>
   </div>
 </section>
 

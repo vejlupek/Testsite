@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Services from '../../components/Services.astro';
+import About from '../../components/About.astro';
+import Reviews from '../../components/Reviews.astro';
+import Pricing from '../../components/Pricing.astro';
+import Faq from '../../components/Faq.astro';
+import Contact from '../../components/Contact.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Pepe Vejlupek – Handyman Prague",
+  "description": "Handyman service for all of Prague. Furniture assembly, repairs, painting, plumbing and much more.",
+  "url": "https://pepevejlupek.cz/en/",
+  "telephone": "+420774399400",
+  "email": "info@pepevejlupek.cz",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Prague",
+    "addressCountry": "CZ"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Prague"
+  },
+  "priceRange": "700–2100 CZK/hr",
+  "openingHours": ["Mo-Fr 08:00-18:00"],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "500"
+  }
+};
+---
+
+<BaseLayout
+  title="Pepe Vejlupek – Simply Fixed | Handyman Prague"
+  description="Pepe Vejlupek – handyman in Prague. Whatever breaks, I fix it. Furniture assembly, repairs, painting, plumbing and more. Quick response, fair prices."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
+
+  <main>
+    <Hero />
+    <TrustBar />
+    <Services />
+    <About />
+    <Reviews />
+    <Pricing />
+    <Faq />
+    <Contact />
+  </main>
+</BaseLayout>

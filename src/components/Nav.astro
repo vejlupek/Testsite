@@ -1,22 +1,38 @@
 ---
-const isHome = Astro.url.pathname === '/';
+import { getLang, useTranslations, getAlternateLangUrl } from '../i18n';
+const lang = getLang(Astro.url.pathname);
+const t = useTranslations(lang);
+
+const homeUrl = lang === 'en' ? '/en/' : '/';
+const blogUrl = lang === 'en' ? '/en/blog' : '/blog';
+const isHome = Astro.url.pathname === homeUrl || Astro.url.pathname === homeUrl.replace(/\/$/, '');
+const alternateLangUrl = getAlternateLangUrl(Astro.url.pathname);
+const alternateLangLabel = lang === 'en' ? 'CS' : 'EN';
+
+function sectionLink(anchor: string): string {
+  return isHome ? `#${anchor}` : `${homeUrl}#${anchor}`;
+}
 ---
 
 <nav>
   <div class="nav-inner">
-    <a href={isHome ? '#' : '/'} class="nav-logo">Pepe Vejlupek – <span>prostě to opravím</span></a>
+    <a href={isHome ? '#' : homeUrl} class="nav-logo">Pepe Vejlupek – <span>{t('nav.logoAccent')}</span></a>
     <ul class="nav-links">
-      <li><a href={isHome ? '#sluzby' : '/#sluzby'}>Služby</a></li>
-      <li><a href={isHome ? '#o-mne' : '/#o-mne'}>O mně</a></li>
-      <li><a href={isHome ? '#reference' : '/#reference'}>Reference</a></li>
-      <li><a href={isHome ? '#cenik' : '/#cenik'}>Ceník</a></li>
-      <li><a href="/blog">Blog</a></li>
-      <li><a href={isHome ? '#kontakt' : '/#kontakt'} class="nav-cta">Kontakt</a></li>
+      <li><a href={sectionLink('sluzby')}>{t('nav.services')}</a></li>
+      <li><a href={sectionLink('o-mne')}>{t('nav.about')}</a></li>
+      <li><a href={sectionLink('reference')}>{t('nav.references')}</a></li>
+      <li><a href={sectionLink('cenik')}>{t('nav.pricing')}</a></li>
+      <li><a href={blogUrl}>{t('nav.blog')}</a></li>
+      <li><a href={sectionLink('kontakt')} class="nav-cta">{t('nav.contact')}</a></li>
+      <li><a href={alternateLangUrl} class="nav-lang">{alternateLangLabel}</a></li>
     </ul>
-    <a href="tel:+420774399400" class="nav-phone-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-      Zavolat
-    </a>
+    <div class="nav-mobile-right">
+      <a href={alternateLangUrl} class="nav-lang-mobile">{alternateLangLabel}</a>
+      <a href="tel:+420774399400" class="nav-phone-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        {t('nav.call')}
+      </a>
+    </div>
   </div>
 </nav>
 
@@ -78,7 +94,7 @@ const isHome = Astro.url.pathname === '/';
     text-decoration: none;
   }
   .nav-logo span { color: var(--nav-logo-accent); }
-  .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
   .nav-links a {
     text-decoration: none;
     color: var(--nav-link-color);
@@ -96,9 +112,36 @@ const isHome = Astro.url.pathname === '/';
   }
   .nav-cta:hover { background: var(--primary-dark) !important; color: #fff !important; }
 
-  /* Mobile call button — hidden on desktop */
+  /* Language switcher */
+  .nav-lang {
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    color: rgba(255,255,255,0.55) !important;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.04em;
+    transition: color var(--transition-fast), border-color var(--transition-fast) !important;
+  }
+  .nav-lang:hover { color: #fff !important; border-color: rgba(255,255,255,0.5) !important; }
+
+  /* Mobile right group */
+  .nav-mobile-right { display: none; align-items: center; gap: 0.5rem; }
+
+  .nav-lang-mobile {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.55);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+
+  /* Mobile call button */
   .nav-phone-btn {
-    display: none;
+    display: flex;
     align-items: center;
     gap: 0.4rem;
     background: var(--primary);
@@ -114,6 +157,6 @@ const isHome = Astro.url.pathname === '/';
 
   @media (max-width: 768px) {
     .nav-links { display: none; }
-    .nav-phone-btn { display: flex; }
+    .nav-mobile-right { display: flex; }
   }
 </style>

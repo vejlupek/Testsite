@@ -3,13 +3,14 @@ interface Props {
   text: string;
   author: string;
   location: string;
+  ariaLabel?: string;
 }
-const { text, author, location } = Astro.props;
+const { text, author, location, ariaLabel = 'Hodnocení 5 z 5 hvězdiček' } = Astro.props;
 ---
 
 <div class="review-card">
   <div class="review-quote">"</div>
-  <div class="review-stars" role="img" aria-label="Hodnocení 5 z 5 hvězdiček">
+  <div class="review-stars" role="img" aria-label={ariaLabel}>
     <span aria-hidden="true">★★★★★</span>
   </div>
   <p class="review-text">{text}</p>

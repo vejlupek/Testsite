@@ -1,28 +1,31 @@
 ---
 import ServiceCard from './ServiceCard.astro';
+import { getLang, useTranslations } from '../i18n';
+const lang = getLang(Astro.url.pathname);
+const t = useTranslations(lang);
 
 const services = [
-  { icon: '🛋️', title: 'Montáž nábytku',        description: 'Složení IKEA, Jysk a dalšího nábytku rychle a správně.' },
-  { icon: '🎨', title: 'Malířské práce',          description: 'Malování stěn, lakování, opravy omítek – čistě a precizně.' },
-  { icon: '🔨', title: 'Drobné opravy',           description: 'Opravy dveří, oken, podlah, skříní a vše co doma skřípe.' },
-  { icon: '🚿', title: 'Instalatérské práce',     description: 'Výměna kohoutků, splachovadel, sifonů a drobné úniky vody.' },
-  { icon: '🪛', title: 'Vrtání a věšení',         description: 'Věšení obrazů, poliček, zrcadel, TV držáků – vše na milimetr.' },
-  { icon: '🔐', title: 'Výměna zámků',            description: 'Výměna a seřízení zámků, bezpečnostní kování, cylindrické vložky.' },
-  { icon: '💡', title: 'Výměna osvětlení',        description: 'Výměna žárovek, svítidel, lustrů a instalace LED osvětlení.' },
-  { icon: '🔌', title: 'Zásuvky a vypínače',      description: 'Výměna elektroinstalačních prvků – zásuvky, vypínače, kryty.' },
-  { icon: '🌿', title: 'Zahrada a okolí domu',    description: 'Drobné práce na zahradě, úpravy, montáže venkovního vybavení.' },
-];
+  { icon: '🛋️', titleKey: 'service.furniture.title', descKey: 'service.furniture.desc' },
+  { icon: '🎨', titleKey: 'service.painting.title',  descKey: 'service.painting.desc' },
+  { icon: '🔨', titleKey: 'service.repairs.title',   descKey: 'service.repairs.desc' },
+  { icon: '🚿', titleKey: 'service.plumbing.title',  descKey: 'service.plumbing.desc' },
+  { icon: '🪛', titleKey: 'service.drilling.title',  descKey: 'service.drilling.desc' },
+  { icon: '🔐', titleKey: 'service.locks.title',     descKey: 'service.locks.desc' },
+  { icon: '💡', titleKey: 'service.lighting.title',  descKey: 'service.lighting.desc' },
+  { icon: '🔌', titleKey: 'service.electrical.title',descKey: 'service.electrical.desc' },
+  { icon: '🌿', titleKey: 'service.garden.title',    descKey: 'service.garden.desc' },
+] as const;
 ---
 
 <section id="sluzby">
   <div class="section-inner">
     <div class="section-header">
-      <h2>Co pro vás udělám</h2>
-      <p>Široký záběr prací – jeden člověk, spousta problémů vyřešených</p>
+      <h2>{t('services.heading')}</h2>
+      <p>{t('services.subheading')}</p>
     </div>
     <div class="services-grid">
       {services.map((s) => (
-        <ServiceCard icon={s.icon} title={s.title} description={s.description} />
+        <ServiceCard icon={s.icon} title={t(s.titleKey)} description={t(s.descKey)} />
       ))}
     </div>
   </div>

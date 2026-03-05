@@ -1,28 +1,31 @@
 ---
 import { Image } from 'astro:assets';
 import heroPhoto from '../assets/images/hero-vejlupek.png';
+import { getLang, useTranslations } from '../i18n';
+const lang = getLang(Astro.url.pathname);
+const t = useTranslations(lang);
 ---
 
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-badge">🔧 Hodinový manžel Praha</div>
-      <h1>Ahoj! Jsem Pepe Vejlupek<br>a <span>prostě to opravím</span></h1>
-      <p>Cokoliv doma pokazí, já to dám do pořádku. Bez zbytečných řečí, za férovou cenu a přesně v domluvený čas.</p>
+      <div class="hero-badge">{t('hero.badge')}</div>
+      <h1>{t('hero.h1line1')}<br>a <span>{t('hero.h1accent')}</span></h1>
+      <p>{t('hero.perex')}</p>
       <div class="hero-buttons">
         <a href="tel:+420774399400" class="btn btn-call">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
           +420 774 399 400
         </a>
-        <a href="#kontakt" class="btn btn-outline">✉️ Napsat zprávu</a>
+        <a href="#kontakt" class="btn btn-outline">{t('hero.btnWrite')}</a>
       </div>
-      <p class="hero-phone-note">Zvedám telefon osobně · Po–Pá 8–18 · mimo provozní dobu pohotovost</p>
+      <p class="hero-phone-note">{t('hero.phoneNote')}</p>
       <div class="hero-trust">
-        <div class="hero-trust-item"><span>⭐ 4.9/5</span> hodnocení</div>
+        <div class="hero-trust-item"><span>⭐ 4.9/5</span> {t('hero.rating')}</div>
         <div class="hero-trust-sep">·</div>
-        <div class="hero-trust-item"><span>500+</span> zakázek</div>
+        <div class="hero-trust-item"><span>500+</span> {t('hero.jobs')}</div>
         <div class="hero-trust-sep">·</div>
-        <div class="hero-trust-item"><span>⚡ do 2 h</span> odezva</div>
+        <div class="hero-trust-item"><span>⚡ do 2 h</span> {t('hero.response')}</div>
         <div class="hero-trust-sep">·</div>
         <div class="hero-trust-item"><span>🇬🇧</span> English spoken</div>
       </div>
@@ -31,7 +34,7 @@ import heroPhoto from '../assets/images/hero-vejlupek.png';
       <div class="hero-img-frame">
         <Image
           src={heroPhoto}
-          alt="Pepe Vejlupek – hodinový manžel při práci"
+          alt={t('hero.photoAlt')}
           width={560}
           height={420}
           format="webp"

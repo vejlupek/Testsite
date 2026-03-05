@@ -1,13 +1,16 @@
 ---
+import { getLang, useTranslations } from '../i18n';
+const lang = getLang(Astro.url.pathname);
+const t = useTranslations(lang);
 ---
 
 <div class="trust-bar">
   <div class="trust-bar-inner">
-    <div class="trust-item"><span class="icon">⭐</span> Hodnocení 4.9/5</div>
-    <div class="trust-item"><span class="icon">🏠</span> 500+ zakázek</div>
-    <div class="trust-item"><span class="icon">⚡</span> Odezva do 2 hodin</div>
-    <div class="trust-item"><span class="icon">📍</span> Celá Praha</div>
-    <div class="trust-item"><span class="icon">💳</span> Platba hotově i převodem</div>
+    <div class="trust-item"><span class="icon">⭐</span> {t('trust.rating')}</div>
+    <div class="trust-item"><span class="icon">🏠</span> {t('trust.jobs')}</div>
+    <div class="trust-item"><span class="icon">⚡</span> {t('trust.response')}</div>
+    <div class="trust-item"><span class="icon">📍</span> {t('trust.coverage')}</div>
+    <div class="trust-item"><span class="icon">💳</span> {t('trust.payment')}</div>
   </div>
 </div>
 

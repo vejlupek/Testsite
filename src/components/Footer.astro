@@ -1,12 +1,17 @@
 ---
+import { getLang, useTranslations } from '../i18n';
+const lang = getLang(Astro.url.pathname);
+const t = useTranslations(lang);
 const year = new Date().getFullYear();
+const homeUrl = lang === 'en' ? '/en/' : '/';
+const blogUrl = lang === 'en' ? '/en/blog' : '/blog';
 ---
 
 <footer>
   <div class="footer-top">
     <div class="footer-inner">
-      <div class="footer-logo">Pepe Vejlupek – <span>prostě to opravím</span></div>
-      <p class="footer-tagline">Hodinový manžel pro celou Prahu</p>
+      <div class="footer-logo">Pepe Vejlupek – <span>{t('nav.logoAccent')}</span></div>
+      <p class="footer-tagline">{t('footer.tagline')}</p>
       <a href="tel:+420774399400" class="footer-phone">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
         +420 774 399 400
@@ -16,13 +21,13 @@ const year = new Date().getFullYear();
   <div class="footer-bottom">
     <div class="footer-inner">
       <div class="footer-links">
-        <a href="/#sluzby">Služby</a>
-        <a href="/#cenik">Ceník</a>
-        <a href="/#kontakt">Kontakt</a>
-        <a href="/blog">Blog</a>
-        <a href="/obchodni-podminky">Obchodní podmínky</a>
+        <a href={`${homeUrl}#sluzby`}>{t('footer.services')}</a>
+        <a href={`${homeUrl}#cenik`}>{t('footer.pricing')}</a>
+        <a href={`${homeUrl}#kontakt`}>{t('footer.contact')}</a>
+        <a href={blogUrl}>{t('footer.blog')}</a>
+        <a href={t('footer.termsHref')}>{t('footer.terms')}</a>
       </div>
-      <p class="copyright">© {year} Josef Vejlupek. Všechna práva vyhrazena.</p>
+      <p class="copyright">© {year} Josef Vejlupek. {t('footer.copyright')}</p>
     </div>
   </div>
 </footer>
@@ -44,7 +49,9 @@ const year = new Date().getFullYear();
   .footer-logo span { color: #ffc47a; } /* orange-300 — 8.4:1 on navy */
   .footer-tagline { font-size: 0.88rem; color: rgba(255,255,255,0.65); margin-bottom: 1.2rem; }
   .footer-phone {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     background: var(--primary);
     color: #fff;
     text-decoration: none;

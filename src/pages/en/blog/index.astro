@@ -1,38 +1,38 @@
 ---
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft && data.lang !== 'en'))
+const posts = (await getCollection('blog', ({ data }) => !data.draft && data.lang === 'en'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 function formatDate(date: Date) {
-  return date.toLocaleDateString('cs-CZ', { year: 'numeric', month: 'long', day: 'numeric' });
+  return date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 ---
 
 <BaseLayout
-  title="Blog – tipy a rady | Pepe Vejlupek"
-  description="Praktické tipy z oblasti údržby domácnosti, kutilství a drobných oprav od Pepeho Vejlupka."
+  title="Blog – Tips & Advice | Pepe Vejlupek"
+  description="Practical tips on home maintenance, DIY and minor repairs from your Prague handyman Pepe Vejlupek."
 >
   <main>
     <div class="blog-hero">
       <div class="blog-hero-inner">
         <div class="blog-badge">📝 Blog</div>
-        <h1>Tipy a rady z praxe</h1>
-        <p>Praktické návody z oblasti oprav a údržby domácnosti — přímo od hodinového manžela</p>
+        <h1>Tips & advice from practice</h1>
+        <p>Practical guides on home repairs and maintenance — straight from your handyman</p>
       </div>
     </div>
 
     <div class="posts-outer">
       {posts.length === 0 ? (
-        <p class="empty">Zatím žádné články. Brzy přidám!</p>
+        <p class="empty">No posts yet. Coming soon!</p>
       ) : (
         <div class="posts-grid">
           {posts.map((post) => (
             <article class="post-card">
               {post.data.cover && (
-                <a href={`/blog/${post.slug}`} class="post-thumb" tabindex="-1" aria-hidden="true">
+                <a href={`/en/blog/${post.slug}`} class="post-thumb" tabindex="-1" aria-hidden="true">
                   <Image
                     src={post.data.cover}
                     alt={post.data.coverAlt ?? post.data.title}
@@ -55,9 +55,9 @@ function formatDate(date: Date) {
                     </div>
                   )}
                 </div>
-                <h2><a href={`/blog/${post.slug}`}>{post.data.title}</a></h2>
+                <h2><a href={`/en/blog/${post.slug}`}>{post.data.title}</a></h2>
                 <p class="post-desc">{post.data.description}</p>
-                <a href={`/blog/${post.slug}`} class="read-more">Číst dál →</a>
+                <a href={`/en/blog/${post.slug}`} class="read-more">Read more →</a>
               </div>
             </article>
           ))}
