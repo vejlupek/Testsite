@@ -95,13 +95,27 @@
   </div>
 </div>
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
 <script>
   // Set date input min to today
   const dateInput = document.getElementById('date') as HTMLInputElement | null;
   if (dateInput) {
     dateInput.min = new Date().toISOString().split('T')[0];
+  }
+
+  // Load reCAPTCHA script dynamically
+  function loadRecaptcha() {
+    return new Promise((resolve) => {
+      if ((window as any).grecaptcha) {
+        resolve(true);
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = 'https://www.google.com/recaptcha/api.js';
+      script.async = true;
+      script.defer = true;
+      script.onload = () => resolve(true);
+      document.head.appendChild(script);
+    });
   }
 
   const form = document.getElementById('contactForm') as HTMLFormElement | null;
@@ -115,7 +129,8 @@
       return;
     }
 
-    // Get reCAPTCHA token
+    // Load and execute reCAPTCHA
+    await loadRecaptcha();
     const token = await (window as any).grecaptcha?.execute('6LekgoAsAAAAAODvPoFE7WcCoAufWOEgP8sFeWax', { action: 'submit' });
     if (!token) {
       alert('Chyba reCAPTCHA. Zkuste znovu.');
