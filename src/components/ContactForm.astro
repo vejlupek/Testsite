@@ -102,36 +102,10 @@
     dateInput.min = new Date().toISOString().split('T')[0];
   }
 
-  // Load reCAPTCHA script dynamically
-  function loadRecaptcha() {
-    return new Promise((resolve) => {
-      if ((window as any).grecaptcha) {
-        console.log('reCAPTCHA already loaded');
-        resolve(true);
-        return;
-      }
-      console.log('Loading reCAPTCHA...');
-      const script = document.createElement('script');
-      script.src = 'https://www.google.com/recaptcha/api.js';
-      script.async = true;
-      script.defer = true;
-      script.onload = () => {
-        console.log('reCAPTCHA loaded successfully');
-        resolve(true);
-      };
-      script.onerror = () => {
-        console.error('Failed to load reCAPTCHA');
-        resolve(false);
-      };
-      document.head.appendChild(script);
-    });
-  }
-
   const form = document.getElementById('contactForm') as HTMLFormElement | null;
 
   if (form) {
     form.addEventListener('submit', async function (e) {
-      console.log('Form submit event triggered');
       e.preventDefault();
 
       // Check honeypot
@@ -141,55 +115,32 @@
         return;
       }
 
-      console.log('Loading reCAPTCHA before submit...');
-      // Load and execute reCAPTCHA
-      await loadRecaptcha();
-
-      console.log('Executing reCAPTCHA...');
-      const token = await (window as any).grecaptcha?.execute('6LekgoAsAAAAAODvPoFE7WcCoAufWOEgP8sFeWax', { action: 'submit' });
-      console.log('reCAPTCHA token:', token ? 'received' : 'failed');
-
-      if (!token) {
-        alert('Chyba reCAPTCHA. Zkuste znovu.');
-        return;
-      }
-
       const btn = form.querySelector('.form-submit') as HTMLButtonElement;
       btn.disabled = true;
       btn.textContent = 'Odesílám…';
 
       try {
-        const formData = new FormData(form);
-        formData.append('g-recaptcha-response', token);
-
-        console.log('Sending form to Web3Forms...');
         const res = await fetch(form.action, {
           method: 'POST',
-          body: formData,
+          body: new FormData(form),
           headers: { Accept: 'application/json' },
         });
-        console.log('Response status:', res.status);
 
         if (res.ok) {
-          console.log('Form submitted successfully');
           form.style.display = 'none';
           const success = document.getElementById('formSuccess');
           if (success) success.style.display = 'block';
         } else {
-          console.error('Form submission failed:', res.status);
           btn.disabled = false;
           btn.textContent = '📨 Odeslat poptávku';
           alert('Odeslání se nezdařilo. Zavolejte nám prosím na +420 774 399 400.');
         }
       } catch (err) {
-        console.error('Form submission error:', err);
         btn.disabled = false;
         btn.textContent = '📨 Odeslat poptávku';
         alert('Odeslání se nezdařilo. Zavolejte nám prosím na +420 774 399 400.');
       }
     });
-  } else {
-    console.error('Contact form not found');
   }
 </script>
 
