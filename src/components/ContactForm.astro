@@ -3,12 +3,8 @@
 
 <div class="contact-form">
   <h3>Nezávazná poptávka</h3>
-  <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
-    <input type="hidden" name="access_key" value="d8bfff3c-5518-4048-b7e5-c67cf48186e6" />
-    <input type="hidden" name="_to" value="info@pepevejlupek.cz" />
-    <input type="hidden" name="_subject" value="Nová poptávka – Pepe Vejlupek" />
-    <input type="hidden" name="_language" value="cs" />
-    <input type="hidden" name="name" id="name" style="display:none;" />
+  <form id="contactForm" novalidate>
+    <input type="text" name="name" id="name" style="display:none;" tabindex="-1" autocomplete="off" />
 
     <div class="form-row">
       <div class="form-group">
@@ -110,22 +106,21 @@
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      // Check honeypot
+      // Honeypot
       const honeypot = document.getElementById('name') as HTMLInputElement;
-      if (honeypot && honeypot.value) {
-        console.log('Honeypot triggered - spam detected');
-        return;
-      }
+      if (honeypot && honeypot.value) return;
 
       const btn = form.querySelector('.form-submit') as HTMLButtonElement;
       btn.disabled = true;
       btn.textContent = 'Odesílám…';
 
+      const data = Object.fromEntries(new FormData(form).entries());
+
       try {
-        const res = await fetch(form.action, {
+        const res = await fetch('/api/contact', {
           method: 'POST',
-          body: new FormData(form),
-          headers: { Accept: 'application/json' },
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
         });
 
         if (res.ok) {
@@ -137,7 +132,7 @@
           btn.textContent = '📨 Odeslat poptávku';
           alert('Odeslání se nezdařilo. Zavolejte nám prosím na +420 774 399 400.');
         }
-      } catch (err) {
+      } catch {
         btn.disabled = false;
         btn.textContent = '📨 Odeslat poptávku';
         alert('Odeslání se nezdařilo. Zavolejte nám prosím na +420 774 399 400.');

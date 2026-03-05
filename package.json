@@ -12,5 +12,8 @@
     "@fontsource-variable/bitter": "^5.2.10",
     "@fontsource-variable/source-sans-3": "^5.2.9",
     "astro": "^5.0.0"
+  },
+  "devDependencies": {
+    "@vercel/node": "^5.6.10"
   }
 }
