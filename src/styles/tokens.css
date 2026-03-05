@@ -328,7 +328,7 @@
   --nav-link-color:     rgba(255, 255, 255, 0.72);
   --nav-link-hover:     #ffffff;
   --nav-logo-color:     #ffffff;
-  --nav-logo-accent:    var(--color-brand);
+  --nav-logo-accent:    var(--color-orange-400);  /* #ffa040 — 7.85:1 on navy-800 (WCAG AA) */
 
   /* Buttons */
   --btn-radius:         var(--radius-md);
