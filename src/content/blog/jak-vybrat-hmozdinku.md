@@ -4,8 +4,8 @@ description: "Nesprávná hmoždinka může znamenat padající police nebo uvol
 pubDate: 2024-11-15
 tags: ["kutilství", "tipy", "montáž"]
 draft: false
-cover: ../../assets/images/blog-drill.jpg
-coverAlt: "Vrtání do zdi – výběr správné hmoždinky"
+cover: ../../assets/images/blog-anchors.jpg
+coverAlt: "Hmoždinky a šrouby – výběr správného kotvení do zdi"
 ---
 
 Každý z nás to zná – chcete pověsit polici, obraz nebo zrcadlo, sáhnete po první hmoždince co máte po ruce a výsledek nemusí být nic moc. Správná volba hmoždinky je přitom základ solidní práce.

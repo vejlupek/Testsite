@@ -4,8 +4,8 @@ description: "Montáž nábytku IKEA může být noční můra nebo hračka – 
 pubDate: 2025-02-28
 tags: ["montáž", "IKEA", "tipy", "nábytek"]
 draft: false
-cover: ../../assets/images/blog-drill.jpg
-coverAlt: "Montáž nábytku IKEA – profesionální postup"
+cover: ../../assets/images/blog-furniture.jpg
+coverAlt: "Montáž nábytku šroubovákem – sestavení skříně IKEA"
 ---
 
 Složil jsem stovky kusů nábytku IKEA, JYSK a dalších značek. A vidím stále stejné chyby. V tomto článku vám prozradím, jak na montáž nábytku správně, rychle a bez zbytečných frustrace.

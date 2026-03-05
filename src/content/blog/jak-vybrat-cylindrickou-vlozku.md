@@ -4,8 +4,8 @@ description: "Cylindrická vložka je první linie obrany vašeho domova. Jak po
 pubDate: 2025-03-15
 tags: ["bezpečnost", "zámky", "tipy"]
 draft: false
-cover: ../../assets/images/blog-drill.jpg
-coverAlt: "Výměna cylindrické vložky ve vstupních dveřích"
+cover: ../../assets/images/blog-door-lock.jpg
+coverAlt: "Klíč v zámku vstupních dveří – cylindrická vložka"
 ---
 
 Mnoho lidí investuje do bezpečnostních dveří a pak v nich ponechá levnou cylindrickou vložku za 200 Kč, která jde vypáčit za 30 sekund. Cylindrická vložka je totiž to nejdůležitější – a zároveň nejčastěji podceňované.

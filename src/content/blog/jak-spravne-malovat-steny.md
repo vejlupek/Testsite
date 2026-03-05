@@ -4,8 +4,8 @@ description: "Malování stěn vypadá jednoduše, ale chyby v přípravě a tec
 pubDate: 2025-01-20
 tags: ["malování", "tipy", "příprava"]
 draft: false
-cover: ../../assets/images/blog-painting.jpg
-coverAlt: "Malování stěny válečkem – příprava a technika"
+cover: ../../assets/images/blog-painting-new.jpg
+coverAlt: "Malování stěny válečkem – správná technika a postup"
 ---
 
 Malování je jedna z nejčastějších prací, se kterou se na mě zákazníci obrací. A přitom si mnoho lidí říká: „To přece zvládnu sám." Zvládnout to jde – ale výsledek závisí hlavně na přípravě, ne na samotném malování.

@@ -4,8 +4,8 @@ description: "Kapající kohoutek nebo stará baterie? Výměna vodovodní bater
 pubDate: 2025-02-10
 tags: ["instalatérství", "tipy", "opravy"]
 draft: false
-cover: ../../assets/images/blog-drill.jpg
-coverAlt: "Výměna vodovodní baterie v koupelně"
+cover: ../../assets/images/blog-faucet.jpg
+coverAlt: "Vodovodní baterie v koupelně – výměna kohoutku"
 ---
 
 Kapající kohoutek nebo dožilá baterie u umyvadla – klasika každé domácnosti. Výměna vodovodní baterie patří mezi práce, které zvládne šikovný kutilec sám. Ale jsou situace, kdy se vyplatí přivolat odborníka.

@@ -4,8 +4,8 @@ description: "80 % úspěchu malování leží v přípravě. Ukážu vám, jak 
 pubDate: 2024-12-03
 tags: ["malování", "příprava", "tipy"]
 draft: false
-cover: ../../assets/images/blog-painting.jpg
-coverAlt: "Malování stěn válečkem – příprava a postup"
+cover: ../../assets/images/blog-wall-prep.jpg
+coverAlt: "Příprava stěny před malováním – tmelení a broušení"
 ---
 
 Spousta lidí si myslí, že malování je jen o válečku a barvě. Opak je pravdou – příprava stěny rozhoduje o tom, jak bude výsledek vypadat za rok, za pět let. Tady je postup, který sám dodržuji u každé zakázky.
