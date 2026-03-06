@@ -1,0 +1,335 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Services from '../components/Services.astro';
+import Faq from '../components/Faq.astro';
+import Contact from '../components/Contact.astro';
+
+const siteUrl = 'https://pepevejlupek.cz';
+const pageUrl = `${siteUrl}/hodinovy-manzel-praha-5`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Pepe Vejlupek – hodinový manžel Praha 5",
+  "description": "Hodinový manžel pro Prahu 5 – Smíchov, Košíře, Andel, Barrandov, Stodůlky. Montáž nábytku, opravy, malování, instalatérské práce.",
+  "url": pageUrl,
+  "telephone": "+420774399400",
+  "email": "info@pepevejlupek.cz",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Praha",
+    "addressCountry": "CZ"
+  },
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Praha 5" },
+    { "@type": "Neighborhood", "name": "Smíchov" },
+    { "@type": "Neighborhood", "name": "Košíře" },
+    { "@type": "Neighborhood", "name": "Andel" },
+    { "@type": "Neighborhood", "name": "Barrandov" },
+    { "@type": "Neighborhood", "name": "Stodůlky" },
+    { "@type": "Neighborhood", "name": "Hlubočepy" }
+  ],
+  "priceRange": "700–2100 Kč/hod",
+  "openingHours": ["Mo-Fr 08:00-18:00"],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "500"
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Domů", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Hodinový manžel Praha 5", "item": pageUrl }
+  ]
+};
+
+const neighborhoods = [
+  { name: "Smíchov", desc: "Hustá zástavba, starší bytovky i nové komplexy. Časté: montáž nábytku, výměna zámků, malování." },
+  { name: "Košíře", desc: "Klidná rodinná čtvrť s mix zástavby. Časté: opravy, vrtání, osvětlení, drobné rekonstrukce." },
+  { name: "Andel a okolí", desc: "Moderní byty i historické domy. Časté: montáž nábytku, věšení TV, elektro prvky." },
+  { name: "Barrandov", desc: "Rodinné domy a vilová zástavba. Časté: zahradní práce, opravy plotů, malování, větší montáže." },
+  { name: "Stodůlky a Hlubočepy", desc: "Sídlištní i rodinná zástavba. Časté: opravy splachovadel, baterií, montáž nábytku." },
+];
+---
+
+<BaseLayout
+  title="Hodinový manžel Praha 5 – Smíchov, Košíře, Barrandov | Pepe Vejlupek"
+  description="Hodinový manžel pro Prahu 5 – Smíchov, Košíře, Andel, Barrandov. Montáž nábytku, opravy, malování, instalatérské práce. Rychlá odezva, férová cena."
+  canonical={pageUrl}
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <main>
+
+    <!-- Hero -->
+    <section class="lp-hero">
+      <div class="lp-hero-inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Domů</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">Hodinový manžel Praha 5</span>
+        </nav>
+        <div class="lp-badge">🔧 Hodinový manžel Praha 5</div>
+        <h1>Hodinový manžel Praha 5</h1>
+        <p class="lp-perex">
+          Smíchov, Košíře, Andel, Barrandov, Stodůlky – jsem tu pro vás.
+          Opravím, namontuju, namaluji. Přijedu rychle, odvedu poctivou práci za férovou cenu.
+        </p>
+        <div class="lp-buttons">
+          <a href="tel:+420774399400" class="btn btn-primary lp-btn-call">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            +420 774 399 400
+          </a>
+          <a href="#kontakt" class="btn btn-outline">✉️ Napsat zprávu</a>
+        </div>
+        <p class="lp-note">Zvedám telefon osobně · Po–Pá 8–18 · mimo provozní dobu pohotovost</p>
+        <div class="lp-trust">
+          <span>⭐ 4.9/5 hodnocení</span>
+          <span class="sep">·</span>
+          <span>500+ zakázek</span>
+          <span class="sep">·</span>
+          <span>⚡ odezva do 2 h</span>
+          <span class="sep">·</span>
+          <span>Celá Praha 5</span>
+        </div>
+      </div>
+    </section>
+
+    <TrustBar />
+
+    <!-- Local neighborhoods -->
+    <section class="lp-local">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Kde na Praze 5 pracuji</h2>
+          <p>Pokrývám celou Prahu 5 – od Smíchova po Barrandov a Stodůlky.</p>
+        </div>
+        <div class="neighborhoods-grid">
+          {neighborhoods.map(n => (
+            <div class="neighborhood-card">
+              <h3>{n.name}</h3>
+              <p>{n.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Praha 5 -->
+    <section class="lp-why">
+      <div class="section-inner">
+        <div class="lp-why-grid">
+          <div>
+            <h2>Proč hodinový manžel na Praze 5?</h2>
+            <p>Praha 5 je různorodá – moderní byty na Smíchově, rodinné domy na Barrandově, typické sídliště ve Stodůlkách. Každá část má jiné potřeby a jiné typy prací. Znám místní zástavbu a vím, co kde funguje.</p>
+            <p>Nevolám na firmu, nepřijde neznámý pracovník. Přijdu já osobně, domluvíme se přímo a pracuju poctivě. Platíte přesně za to, co jsme domluvili – bez překvapení.</p>
+            <ul class="why-list">
+              <li>Přijedu v domluvený čas</li>
+              <li>Cenu dohodnu předem, nic neskrývám</li>
+              <li>Pracuju čistě, po sobě uklidím</li>
+              <li>Na práci poskytuji 30denní záruku</li>
+              <li>Urgentní výjezd do 2 hodin</li>
+            </ul>
+          </div>
+          <div class="lp-pricing-box">
+            <h3>Ceny</h3>
+            <div class="price-row">
+              <span>Hodinová sazba</span>
+              <strong>700 Kč/hod</strong>
+            </div>
+            <div class="price-row">
+              <span>Doprava (Praha 5)</span>
+              <strong>min. náklady</strong>
+            </div>
+            <div class="price-row">
+              <span>Pohotovostní výjezd</span>
+              <strong>2 500 Kč + hodiny</strong>
+            </div>
+            <p class="price-note">Cena vždy domluvena předem. Žádné skryté poplatky.</p>
+            <a href="tel:+420774399400" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:1rem;">
+              Zavolat a domluvit termín
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Services />
+    <Faq />
+    <Contact />
+
+  </main>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .lp-hero {
+    background: linear-gradient(145deg, #ffffff 0%, #f4f7ff 100%);
+    padding: 3rem 1.5rem 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .lp-hero-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.83rem;
+    color: var(--text-light);
+  }
+  .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+  .breadcrumb a:hover { text-decoration: underline; }
+
+  .lp-badge {
+    display: inline-block;
+    background: var(--color-accent-subtle);
+    border: 1px solid var(--color-accent-muted);
+    color: var(--color-accent);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0.9rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .lp-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+    font-weight: var(--font-weight-black);
+    line-height: var(--leading-tight);
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .lp-perex {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    line-height: var(--leading-relaxed);
+    max-width: 600px;
+  }
+
+  .lp-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+  .lp-btn-call {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    padding: 0.85rem 2rem;
+    min-height: 52px;
+  }
+
+  .lp-note { font-size: 0.82rem; color: var(--text-light); margin-bottom: 1.2rem; }
+
+  .lp-trust {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    font-size: 0.88rem;
+    color: var(--text-light);
+    font-weight: 600;
+  }
+  .lp-trust .sep { color: var(--border); }
+
+  /* Neighborhoods */
+  .lp-local { background: var(--bg); }
+  .neighborhoods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .neighborhood-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    padding: 1.2rem 1.4rem;
+    transition: border-color var(--transition-base);
+  }
+  .neighborhood-card:hover { border-left-color: var(--primary); }
+  .neighborhood-card h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 0.4rem;
+  }
+  .neighborhood-card p { font-size: 0.88rem; color: var(--text-light); line-height: var(--leading-relaxed); margin: 0; }
+
+  /* Why section */
+  .lp-why { background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .lp-why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .lp-why h2 {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+  .lp-why p { color: var(--text-light); margin-bottom: 0.75rem; font-size: 1rem; line-height: var(--leading-relaxed); }
+  .why-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+  .why-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .why-list li::before { content: "✓"; color: var(--primary); font-weight: 800; }
+
+  .lp-pricing-box {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 1.75rem 2rem;
+    position: sticky;
+    top: 2rem;
+  }
+  .lp-pricing-box h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 1.2rem;
+  }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+  }
+  .price-row:last-of-type { border-bottom: none; }
+  .price-row strong { color: var(--primary); font-weight: 700; }
+  .price-note { font-size: 0.82rem; color: var(--text-light); margin-top: 0.75rem; }
+
+  @media (max-width: 768px) {
+    .lp-why-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .lp-pricing-box { position: static; }
+  }
+</style>
