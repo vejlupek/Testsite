@@ -14,6 +14,7 @@ export const ui = {
     // Hero
     'hero.badge': '🔧 Hodinový manžel Praha',
     'hero.h1line1': 'Ahoj! Jsem Pepe Vejlupek',
+    'hero.h1conj': 'a',
     'hero.h1accent': 'prostě to opravím',
     'hero.perex': 'Cokoliv doma pokazí, já to dám do pořádku. Bez zbytečných řečí, za férovou cenu a přesně v domluvený čas.',
     'hero.btnWrite': '✉️ Napsat zprávu',
@@ -179,7 +180,7 @@ export const ui = {
   },
   en: {
     // Nav
-    'nav.logoAccent': 'simply fixed',
+    'nav.logoAccent': "I'll just fix it.",
     'nav.services': 'Services',
     'nav.about': 'About',
     'nav.references': 'Reviews',
@@ -189,8 +190,9 @@ export const ui = {
     'nav.call': 'Call',
     // Hero
     'hero.badge': '🔧 Handyman Prague',
-    'hero.h1line1': "Hi! I'm Pepe Vejlupek",
-    'hero.h1accent': 'simply fixed',
+    'hero.h1line1': "Hi! I'm Pepe Vejlupek,",
+    'hero.h1conj': 'and',
+    'hero.h1accent': "I'll just fix it.",
     'hero.perex': "Whatever breaks at home, I'll take care of it. No fuss, fair price, and always on time.",
     'hero.btnWrite': '✉️ Send a message',
     'hero.phoneNote': 'I answer personally · Mon–Fri 8–18 · on-call outside hours',
