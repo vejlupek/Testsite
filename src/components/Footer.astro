@@ -5,6 +5,28 @@ const t = useTranslations(lang);
 const year = new Date().getFullYear();
 const homeUrl = lang === 'en' ? '/en/' : '/';
 const blogUrl = lang === 'en' ? '/en/blog' : '/blog';
+
+const localLinks = lang === 'cs' ? {
+  title: 'Hodinový manžel v Praze',
+  links: [
+    { href: '/blog/hodinovy-manzel-vinohrady', label: 'Vinohrady a Nusle (Praha 2)' },
+    { href: '/blog/hodinovy-manzel-zizkov', label: 'Žižkov (Praha 3)' },
+    { href: '/hodinovy-manzel-praha-5', label: 'Praha 5 – Smíchov, Košíře, Barrandov' },
+    { href: '/blog/hodinovy-manzel-dejvice', label: 'Dejvice a Bubeneč (Praha 6)' },
+    { href: '/blog/hodinovy-manzel-vrsovice', label: 'Vršovice a Strašnice (Praha 10)' },
+    { href: '/blog/hodinovy-manzel-modrany', label: 'Modřany a Komořany (Praha 12)' },
+  ],
+} : {
+  title: 'Handyman in Prague',
+  links: [
+    { href: '/en/blog/handyman-vinohrady-prague-2', label: 'Vinohrady & Nusle (Prague 2)' },
+    { href: '/en/blog/handyman-zizkov-prague-3', label: 'Žižkov (Prague 3)' },
+    { href: '/en/handyman-prague-5', label: 'Prague 5 – Smíchov, Košíře, Barrandov' },
+    { href: '/en/blog/handyman-dejvice-prague-6', label: 'Dejvice & Bubeneč (Prague 6)' },
+    { href: '/en/blog/handyman-vrsovice-prague-10', label: 'Vršovice & Strašnice (Prague 10)' },
+    { href: '/en/blog/handyman-modrany-prague-12', label: 'Modřany & Komořany (Prague 12)' },
+  ],
+};
 ---
 
 <footer>
@@ -18,21 +40,16 @@ const blogUrl = lang === 'en' ? '/en/blog' : '/blog';
       </a>
     </div>
   </div>
-  {lang === 'cs' && (
   <div class="footer-local">
     <div class="footer-inner footer-inner--wide">
-      <p class="footer-local-title">Hodinový manžel v Praze</p>
+      <p class="footer-local-title">{localLinks.title}</p>
       <ul class="footer-local-links">
-        <li><a href="/blog/hodinovy-manzel-vinohrady">Vinohrady a Nusle (Praha 2)</a></li>
-        <li><a href="/blog/hodinovy-manzel-zizkov">Žižkov (Praha 3)</a></li>
-        <li><a href="/hodinovy-manzel-praha-5">Praha 5 – Smíchov, Košíře, Barrandov</a></li>
-        <li><a href="/blog/hodinovy-manzel-dejvice">Dejvice a Bubeneč (Praha 6)</a></li>
-        <li><a href="/blog/hodinovy-manzel-vrsovice">Vršovice a Strašnice (Praha 10)</a></li>
-        <li><a href="/blog/hodinovy-manzel-modrany">Modřany a Komořany (Praha 12)</a></li>
+        {localLinks.links.map(link => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
       </ul>
     </div>
   </div>
-  )}
   <div class="footer-bottom">
     <div class="footer-inner">
       <div class="footer-links">
