@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../../i18n';
+const t = useTranslations('en');
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft && data.lang === 'en');
@@ -106,10 +108,10 @@ const breadcrumbSchema = {
       <footer class="article-footer">
         <div class="cta-box">
           <div class="cta-text">
-            <strong>Need help?</strong>
-            <span>Pepe is here for you – fast response, fair price.</span>
+            <strong>{t('blog.ctaTitle')}</strong>
+            <span>{t('blog.ctaText')}</span>
           </div>
-          <a href="/en/#kontakt" class="btn btn-primary">📨 Contact Pepe</a>
+          <a href={t('blog.ctaHref')} class="btn btn-primary">{t('blog.ctaBtn')}</a>
         </div>
       </footer>
     </div>

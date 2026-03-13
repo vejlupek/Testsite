@@ -4,6 +4,7 @@ description: "Nesprávná hmoždinka může znamenat padající police nebo uvol
 pubDate: 2024-11-15
 tags: ["kutilství", "tipy", "montáž"]
 draft: false
+lang: cs
 cover: ../../assets/images/blog-anchors.jpg
 coverAlt: "Hmoždinky a šrouby – výběr správného kotvení do zdi"
 ---

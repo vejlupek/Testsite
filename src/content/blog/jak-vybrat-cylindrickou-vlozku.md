@@ -4,6 +4,7 @@ description: "Cylindrická vložka je první linie obrany vašeho domova. Jak po
 pubDate: 2025-03-15
 tags: ["bezpečnost", "zámky", "tipy"]
 draft: false
+lang: cs
 cover: ../../assets/images/blog-door-lock.jpg
 coverAlt: "Klíč v zámku vstupních dveří – cylindrická vložka"
 ---

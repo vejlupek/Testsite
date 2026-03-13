@@ -4,6 +4,7 @@ description: "Kapající kohoutek nebo stará baterie? Výměna vodovodní bater
 pubDate: 2025-02-10
 tags: ["instalatérství", "tipy", "opravy"]
 draft: false
+lang: cs
 cover: ../../assets/images/blog-faucet.jpg
 coverAlt: "Vodovodní baterie v koupelně – výměna kohoutku"
 ---

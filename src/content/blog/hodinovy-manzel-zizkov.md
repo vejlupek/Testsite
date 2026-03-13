@@ -4,6 +4,7 @@ description: "Hodinový manžel na Žižkově a v okolí Prahy 3. Opravy, montá
 pubDate: 2026-01-22
 tags: ["Praha 3", "Žižkov", "hodinový manžel"]
 draft: false
+lang: cs
 ---
 
 Žižkov je čtvrť plná charakteru – starší cihlovky vedle rekonstruovaných loftů, studentské koleje i rodinné byty. Je to jedna z nejhustěji pronajímaných čtvrtí v Praze. Chodím sem pravidelně a vím, co žižkovské byty potřebují.

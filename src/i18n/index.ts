@@ -21,7 +21,9 @@ export const ui = {
     'hero.phoneNote': 'Zvedám telefon osobně · Po–Pá 8–18 · mimo provozní dobu pohotovost',
     'hero.rating': 'hodnocení',
     'hero.jobs': 'zakázek',
+    'hero.responsePrefix': 'do 2 h',
     'hero.response': 'odezva',
+    'hero.englishNote': '🇬🇧 English spoken',
     'hero.photoAlt': 'Pepe Vejlupek – hodinový manžel při práci',
     // TrustBar
     'trust.rating': 'Hodnocení 4.9/5',
@@ -196,7 +198,9 @@ export const ui = {
     'hero.phoneNote': 'I answer personally · Mon–Fri 8–18 · on-call outside hours',
     'hero.rating': 'rating',
     'hero.jobs': 'jobs done',
+    'hero.responsePrefix': '2 h',
     'hero.response': 'response',
+    'hero.englishNote': '🇬🇧 English spoken',
     'hero.photoAlt': 'Pepe Vejlupek – handyman at work',
     // TrustBar
     'trust.rating': 'Rating 4.9/5',

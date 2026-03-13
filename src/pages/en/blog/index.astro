@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../../i18n';
+const t = useTranslations('en');
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft && data.lang === 'en'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -18,15 +20,15 @@ function formatDate(date: Date) {
   <main>
     <div class="blog-hero">
       <div class="blog-hero-inner">
-        <div class="blog-badge">📝 Blog</div>
-        <h1>Tips & advice from practice</h1>
-        <p>Practical guides on home repairs and maintenance — straight from your handyman</p>
+        <div class="blog-badge">{t('blog.badge')}</div>
+        <h1>{t('blog.heading')}</h1>
+        <p>{t('blog.subheading')}</p>
       </div>
     </div>
 
     <div class="posts-outer">
       {posts.length === 0 ? (
-        <p class="empty">No posts yet. Coming soon!</p>
+        <p class="empty">{t('blog.empty')}</p>
       ) : (
         <div class="posts-grid">
           {posts.map((post) => (
@@ -57,7 +59,7 @@ function formatDate(date: Date) {
                 </div>
                 <h2><a href={`/en/blog/${post.slug}`}>{post.data.title}</a></h2>
                 <p class="post-desc">{post.data.description}</p>
-                <a href={`/en/blog/${post.slug}`} class="read-more">Read more →</a>
+                <a href={`/en/blog/${post.slug}`} class="read-more">{t('blog.readMore')}</a>
               </div>
             </article>
           ))}

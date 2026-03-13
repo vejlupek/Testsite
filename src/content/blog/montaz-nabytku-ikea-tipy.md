@@ -4,6 +4,7 @@ description: "Montáž nábytku IKEA může být noční můra nebo hračka – 
 pubDate: 2025-02-28
 tags: ["montáž", "IKEA", "tipy", "nábytek"]
 draft: false
+lang: cs
 cover: ../../assets/images/blog-furniture.jpg
 coverAlt: "Montáž nábytku šroubovákem – sestavení skříně IKEA"
 ---

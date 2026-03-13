@@ -4,6 +4,7 @@ description: "80 % úspěchu malování leží v přípravě. Ukážu vám, jak 
 pubDate: 2024-12-03
 tags: ["malování", "příprava", "tipy"]
 draft: false
+lang: cs
 cover: ../../assets/images/blog-wall-prep.jpg
 coverAlt: "Příprava stěny před malováním – tmelení a broušení"
 ---

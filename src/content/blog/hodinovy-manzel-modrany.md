@@ -4,6 +4,7 @@ description: "Hodinový manžel pro Prahu 12 – Modřany, Komořany, Kamýk a o
 pubDate: 2026-02-12
 tags: ["Praha 12", "Modřany", "Komořany", "hodinový manžel"]
 draft: false
+lang: cs
 ---
 
 Praha 12 – Modřany, Komořany, Kamýk. Jižní Praha, hodně rodinných domů, panelové sídliště v Modřanech, ale i novější zástavba. Jezdím sem pravidelně – zákazníků z Prahy 12 mám hodně a vždy odjedu s dobrým pocitem z odvedené práce.
