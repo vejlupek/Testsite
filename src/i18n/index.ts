@@ -16,7 +16,7 @@ export const ui = {
     'hero.h1line1': 'Ahoj! Jsem Pepe Vejlupek',
     'hero.h1conj': 'a',
     'hero.h1accent': 'prostě to opravím',
-    'hero.perex': 'Cokoliv doma pokazí, já to dám do pořádku. Bez zbytečných řečí, za férovou cenu a přesně v domluvený čas.',
+    'hero.perex': 'Cokoliv se doma pokazí, já to dám do pořádku. Bez zbytečných řečí, za férovou cenu a přesně v domluvený čas.',
     'hero.btnWrite': '✉️ Napsat zprávu',
     'hero.phoneNote': 'Zvedám telefon osobně · Po–Pá 8–18 · mimo provozní dobu pohotovost',
     'hero.rating': 'hodnocení',
