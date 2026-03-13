@@ -43,7 +43,7 @@ I arrive at the agreed time. I work cleanly. I take the rubbish away. That sound
 
 Standard jobs: I book 2–3 working days in advance. Emergency call-out (water leak, broken lock): within 2 hours.
 
-- Rate: **700 CZK/hr** + travel by distance
+- Rate: from **1,450 CZK** (1st hour + travel included), each additional hour **490 CZK**
 - Contact: [+420 774 399 400](tel:+420774399400) or [contact form](/en/#kontakt)
 
 ---

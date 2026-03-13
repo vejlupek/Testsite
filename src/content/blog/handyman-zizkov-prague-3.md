@@ -43,7 +43,7 @@ People here are direct – they say exactly what they need, no fuss. That's my a
 
 I can reach Žižkov from various directions in 15–25 minutes. Travel cost is minimal.
 
-- Rate: **700 CZK/hr**, always agreed upfront
+- Rate: from **1,450 CZK** (1st hour + travel included), each additional hour **490 CZK**
 - Response: within 2 hours of a message or call
 - Appointment: usually within 2–3 working days
 

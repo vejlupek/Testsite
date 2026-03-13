@@ -42,7 +42,7 @@ Na Žižkově si cením toho, že lidé jsou přímí – říkají přesně, co
 
 Na Žižkov se dostanu z různých směrů do 15–25 minut. Doprava se účtuje dle vzdálenosti – u Žižkova vychází na minimum.
 
-- Cena: **700 Kč/hod**, vždy domluvena předem
+- Cena: min. **1 450 Kč** (1. hodina práce + doprava v ceně), každá další hod. **490 Kč**
 - Odezva: do 2 hodin od zprávy nebo hovoru
 - Termín: obvykle do 2–3 pracovních dnů
 

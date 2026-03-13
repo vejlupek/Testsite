@@ -12,114 +12,96 @@ const t = useTranslations(lang);
     </div>
     <div class="pricing-cards">
 
-      <!-- Crafts / Řemesla -->
       <div class="pricing-card featured">
-        <div class="pricing-category-title">{t('pricing.crafts')}</div>
-        <div class="pricing-row">
-          <span class="pricing-row-label">{t('pricing.worker1')}</span>
-          <span class="pricing-row-value">700 Kč / hod</span>
-        </div>
-        <div class="pricing-row">
-          <span class="pricing-row-label">{t('pricing.worker2')}</span>
-          <span class="pricing-row-value">1 400 Kč / hod</span>
-        </div>
-        <div class="pricing-row">
-          <span class="pricing-row-label">{t('pricing.worker3')}</span>
-          <span class="pricing-row-value">2 100 Kč / hod</span>
-        </div>
-        <div class="pricing-row">
-          <span class="pricing-row-label">{t('pricing.onCall')} <sup>*</sup></span>
-          <span class="pricing-row-value">2 500 Kč</span>
-        </div>
-        <div class="pricing-row">
-          <span class="pricing-row-label">{t('pricing.specialEquip')}</span>
-          <span class="pricing-row-value muted">{t('pricing.individual')}</span>
-        </div>
+        <div class="card-label">{t('pricing.min.label')}</div>
+        <div class="card-price">{t('pricing.min.price')}</div>
+        <div class="card-note">{t('pricing.min.note')}</div>
       </div>
 
-      <!-- Travel / Doprava -->
-      <div class="pricing-card">
-        <div class="pricing-category-title">{t('pricing.transport')}</div>
-        <div class="pricing-row">
-          <span class="pricing-row-label">{t('pricing.car')}</span>
-          <span class="pricing-row-value">12 Kč / km</span>
-        </div>
-        <div class="pricing-row">
-          <span class="pricing-row-label">{t('pricing.van')}</span>
-          <span class="pricing-row-value">17 Kč / km</span>
-        </div>
+      <div class="pricing-card featured">
+        <div class="card-label">{t('pricing.hour.label')}</div>
+        <div class="card-price">{t('pricing.hour.price')}</div>
+        <div class="card-note">{t('pricing.hour.note')}</div>
+      </div>
+
+      <div class="pricing-card muted">
+        <div class="card-label">{t('pricing.material.label')}</div>
+        <div class="card-price large">{t('pricing.material.value')}</div>
       </div>
 
     </div>
-    <p class="pricing-note"><sup>*</sup> <strong>{t('pricing.onCall')}</strong> – {t('pricing.note')}</p>
+    <p class="pricing-footer">{t('pricing.footer')}</p>
   </div>
 </section>
 
 <style>
   #cenik { background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
   .pricing-cards {
     display: grid;
-    grid-template-columns: 1.6fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    max-width: 860px;
+    max-width: 900px;
     margin: 0 auto;
   }
+
   .pricing-card {
-    background: var(--card-bg);
-    border: 1.5px solid var(--border);
     border-radius: var(--radius-xl);
-    padding: 2rem;
-  }
-  .pricing-card.featured { border-color: var(--color-accent); border-top: 3px solid var(--color-accent); }
-  .pricing-category-title {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: var(--font-weight-bold);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-widest);
-    color: var(--color-accent);
-    margin-bottom: 1.2rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--color-accent-muted);
-  }
-  .pricing-row {
+    padding: 2rem 1.75rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.65rem 0;
-    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
   }
-  .pricing-row:last-child { border-bottom: none; }
-  .pricing-row-label { font-size: 0.95rem; color: var(--text); }
-  .pricing-row-value {
-    font-weight: var(--font-weight-bold);
-    font-size: 1rem;
-    color: var(--primary);
-    white-space: nowrap;
+
+  .pricing-card.featured {
+    border: 2px solid var(--primary);
+    background: #fff;
   }
-  .pricing-row-value.muted {
+
+  .pricing-card.muted {
+    background: #f0f0f0;
+    border: 2px solid transparent;
+  }
+
+  .card-label {
+    font-size: 0.95rem;
     color: var(--text-light);
-    font-weight: var(--font-weight-medium);
-    font-style: italic;
+    line-height: 1.4;
+    min-height: 2.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .pricing-row-label sup {
-    font-size: 0.7rem;
-    color: var(--primary);
+
+  .card-price {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.75rem);
     font-weight: var(--font-weight-bold);
+    color: var(--text);
+    line-height: 1.1;
   }
-  .pricing-note {
-    max-width: 860px;
+
+  .card-price.large {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  }
+
+  .card-note {
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+
+  .pricing-footer {
+    max-width: 900px;
     margin: 1.5rem auto 0;
     font-size: var(--text-sm);
     color: var(--text-light);
-    line-height: var(--leading-relaxed);
-    padding: 1rem 1.2rem;
-    background: var(--color-brand-subtle);
-    border-left: 3px solid var(--primary);
-    border-radius: var(--radius-sm);
+    text-align: center;
+    font-style: italic;
   }
+
   @media (max-width: 640px) {
     .pricing-cards { grid-template-columns: 1fr; }
+    .card-label { min-height: unset; }
   }
 </style>

@@ -37,13 +37,13 @@ With a company you get an unknown team. With me, you know exactly who's coming �
 
 ## Travel to Prague 12
 
-Modřany is further from the centre, but I get there without a problem. Travel is charged by actual distance (12 CZK/km). For Prague 12 that usually works out to 80–130 CZK.
+Modřany is further from the centre, but I get there without a problem. Travel is included in the minimum order price.
 
 ## Booking an appointment
 
 I book 2–3 working days in advance. For urgent cases I'm on site within 2 hours.
 
-- Rate: **700 CZK/hr** + travel
+- Rate: from **1,450 CZK** (1st hour + travel included), each additional hour **490 CZK**
 - Contact: [+420 774 399 400](tel:+420774399400) or [contact form](/en/#kontakt)
 
 ---

@@ -35,7 +35,7 @@ I visit Nusle just as regularly as Vinohrady. Older housing stock, panel blocks 
 
 I'm based in Prague and can reach Vinohrady or Nusle in 10–20 minutes. Travel is charged by actual distance – in this case the cost is minimal.
 
-- Rate: **700 CZK/hr**, always agreed upfront
+- Rate: from **1,450 CZK** (1st hour + travel included), each additional hour **490 CZK**
 - Response: within 2 hours of a message or call
 - Appointment: usually within 2–3 working days; urgent within 2 hours
 

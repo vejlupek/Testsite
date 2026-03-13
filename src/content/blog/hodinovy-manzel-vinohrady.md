@@ -34,7 +34,7 @@ V Nuslích jezdím stejně pravidelně jako na Vinohradech. Starší zástavba, 
 
 Bydlím v Praze a na Vinohrady nebo do Nuslí se dostanu za 10–20 minut. Doprava se účtuje dle skutečné vzdálenosti – v tomto případě vychází na minimum.
 
-- Cena: **700 Kč/hod**, vždy domluvena předem
+- Cena: min. **1 450 Kč** (1. hodina práce + doprava v ceně), každá další hod. **490 Kč**
 - Odezva: do 2 hodin od zprávy nebo hovoru
 - Termín: obvykle do 2–3 pracovních dnů, urgent do 2 hodin
 

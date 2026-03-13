@@ -36,13 +36,13 @@ S firmou dostanete neznámý tým. Se mnou víte, kdo přijde – vždy osobně.
 
 ## Doprava na Prahu 12
 
-Modřany jsou vzdálenější od centra, ale dostanu se tam bez problémů. Doprava se účtuje dle skutečné vzdálenosti (12 Kč/km). Na Prahu 12 vychází doprava obvykle na 80–130 Kč.
+Modřany jsou vzdálenější od centra, ale dostanu se tam bez problémů. Doprava je zahrnuta v minimální ceně zakázky.
 
 ## Rezervace termínu
 
 Objednávám na 2–3 pracovní dny dopředu. Pro urgentní případy vyjíždím do 2 hodin.
 
-- Cena: **700 Kč/hod** + doprava
+- Cena: min. **1 450 Kč** (1. hodina práce + doprava v ceně), každá další hod. **490 Kč**
 - Kontakt: [+420 774 399 400](tel:+420774399400) nebo [kontaktní formulář](/#kontakt)
 
 ---

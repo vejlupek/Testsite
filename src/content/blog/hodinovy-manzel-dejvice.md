@@ -42,7 +42,7 @@ Přijedu v domluvený čas. Pracuju čistě. Odvezu odpad. Tohle zní jako samoz
 
 Běžné práce objednávám na 2–3 pracovní dny dopředu. Urgentní výjezd (únik vody, nefunkční zámek) zvládám do 2 hodin.
 
-- Cena: **700 Kč/hod** + doprava dle vzdálenosti
+- Cena: min. **1 450 Kč** (1. hodina práce + doprava v ceně), každá další hod. **490 Kč**
 - Kontakt: [+420 774 399 400](tel:+420774399400) nebo [kontaktní formulář](/#kontakt)
 
 ---

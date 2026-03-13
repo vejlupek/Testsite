@@ -46,7 +46,7 @@ In Záběhlice I most often deal with house maintenance and newer flat upkeep:
 
 Available Mon–Fri 8–18; for emergencies (water leak, broken lock) also outside those hours. I can reach Prague 10 in 15–30 minutes.
 
-- Rate: **700 CZK/hr** + travel by distance
+- Rate: from **1,450 CZK** (1st hour + travel included), each additional hour **490 CZK**
 - Response: within 2 hours of a message or call
 - Contact: [+420 774 399 400](tel:+420774399400) or [contact form](/en/#kontakt)
 
