@@ -34,21 +34,30 @@ const ogLocale = lang === 'en' ? 'en_US' : 'cs_CZ';
   <!-- Preconnect for GTM / GA (reduces connection overhead) -->
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
-  <!-- Google Tag Manager — deferred to after load so it doesn't block LCP -->
+  <!-- Google Tag Manager — loaded after LCP via user interaction or 5s timeout -->
   <script>
     window.dataLayer = window.dataLayer || [];
-    function _loadGTM() {
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-PZCCZ3ZD');
-    }
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(_loadGTM, { timeout: 3000 });
-    } else {
-      window.addEventListener('load', _loadGTM);
-    }
+    (function() {
+      var gtmLoaded = false;
+      function loadGTM() {
+        if (gtmLoaded) return;
+        gtmLoaded = true;
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PZCCZ3ZD');
+      }
+      // Load after first user interaction (scroll, click, touch, keydown)
+      var events = ['scroll','click','touchstart','keydown','mousemove'];
+      function onInteraction() {
+        events.forEach(function(e){ document.removeEventListener(e, onInteraction); });
+        loadGTM();
+      }
+      events.forEach(function(e){ document.addEventListener(e, onInteraction, { once: true, passive: true }); });
+      // Fallback: load after 5 seconds regardless
+      setTimeout(loadGTM, 5000);
+    })();
   </script>
   <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
