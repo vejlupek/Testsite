@@ -118,7 +118,7 @@ const localLinks = lang === 'cs' ? {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.75);
     margin-bottom: 0.6rem;
   }
   .footer-local-links {
@@ -130,10 +130,13 @@ const localLinks = lang === 'cs' ? {
     margin: 0;
   }
   .footer-local-links a {
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.82);
     text-decoration: none;
     font-size: 0.82rem;
     transition: color var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
   .footer-local-links a:hover { color: var(--primary); }
 </style>
