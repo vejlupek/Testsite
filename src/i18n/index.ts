@@ -3,7 +3,7 @@ export type Lang = 'cs' | 'en';
 export const ui = {
   cs: {
     // Nav
-    'nav.logoAccent': 'prostě to opravím',
+    'nav.logoAccent': 'Hodinový manžel Praha',
     'nav.services': 'Služby',
     'nav.about': 'O mně',
     'nav.references': 'Reference',
@@ -180,7 +180,7 @@ export const ui = {
   },
   en: {
     // Nav
-    'nav.logoAccent': "I'll just fix it.",
+    'nav.logoAccent': 'Prague Handyman',
     'nav.services': 'Services',
     'nav.about': 'About',
     'nav.references': 'Reviews',
