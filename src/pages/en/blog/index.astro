@@ -34,7 +34,7 @@ function formatDate(date: Date) {
           {posts.map((post) => (
             <article class="post-card">
               {post.data.cover && (
-                <a href={`/en/blog/${post.slug}`} class="post-thumb" tabindex="-1" aria-hidden="true">
+                <a href={`/en/blog/${post.slug}/`} class="post-thumb" tabindex="-1" aria-hidden="true">
                   <Image
                     src={post.data.cover}
                     alt={post.data.coverAlt ?? post.data.title}
@@ -57,9 +57,9 @@ function formatDate(date: Date) {
                     </div>
                   )}
                 </div>
-                <h2><a href={`/en/blog/${post.slug}`}>{post.data.title}</a></h2>
+                <h2><a href={`/en/blog/${post.slug}/`}>{post.data.title}</a></h2>
                 <p class="post-desc">{post.data.description}</p>
-                <a href={`/en/blog/${post.slug}`} class="read-more">{t('blog.readMore')}</a>
+                <a href={`/en/blog/${post.slug}/`} class="read-more">{t('blog.readMore')}</a>
               </div>
             </article>
           ))}

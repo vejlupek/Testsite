@@ -159,7 +159,7 @@ export const ui = {
     'footer.contact': 'Kontakt',
     'footer.blog': 'Blog',
     'footer.terms': 'Obchodní podmínky',
-    'footer.termsHref': '/obchodni-podminky',
+    'footer.termsHref': '/obchodni-podminky/',
     'footer.copyright': 'Všechna práva vyhrazena.',
     // Blog pages
     'blog.badge': '📝 Blog',
@@ -336,7 +336,7 @@ export const ui = {
     'footer.contact': 'Contact',
     'footer.blog': 'Blog',
     'footer.terms': 'Terms & Conditions',
-    'footer.termsHref': '/en/terms-and-conditions',
+    'footer.termsHref': '/en/terms-and-conditions/',
     'footer.copyright': 'All rights reserved.',
     // Blog pages
     'blog.badge': '📝 Blog',
@@ -379,12 +379,14 @@ export function getAlternateLangUrl(pathname: string): string {
     if (path === '/blog' || path === '/blog/') return '/blog/';
     if (path.startsWith('/blog/')) return '/blog/';
     if (path.startsWith('/terms')) return '/obchodni-podminky';
+    if (path === '/handyman-prague-5') return '/hodinovy-manzel-praha-5';
     return '/';
   } else {
     if (pathname === '/' || pathname === '') return '/en/';
     if (pathname === '/blog' || pathname === '/blog/') return '/en/blog/';
     if (pathname.startsWith('/blog/')) return '/en/blog/';
     if (pathname === '/obchodni-podminky') return '/en/terms-and-conditions';
+    if (pathname === '/hodinovy-manzel-praha-5') return '/en/handyman-prague-5';
     return '/en/';
   }
 }

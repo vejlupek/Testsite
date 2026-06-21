@@ -4,27 +4,27 @@ const lang = getLang(Astro.url.pathname);
 const t = useTranslations(lang);
 const year = new Date().getFullYear();
 const homeUrl = lang === 'en' ? '/en/' : '/';
-const blogUrl = lang === 'en' ? '/en/blog' : '/blog';
+const blogUrl = lang === 'en' ? '/en/blog/' : '/blog/';
 
 const localLinks = lang === 'cs' ? {
   title: 'Hodinový manžel v Praze',
   links: [
-    { href: '/blog/hodinovy-manzel-vinohrady', label: 'Vinohrady a Nusle (Praha 2)' },
-    { href: '/blog/hodinovy-manzel-zizkov', label: 'Žižkov (Praha 3)' },
-    { href: '/hodinovy-manzel-praha-5', label: 'Praha 5 – Smíchov, Košíře, Barrandov' },
-    { href: '/blog/hodinovy-manzel-dejvice', label: 'Dejvice a Bubeneč (Praha 6)' },
-    { href: '/blog/hodinovy-manzel-vrsovice', label: 'Vršovice a Strašnice (Praha 10)' },
-    { href: '/blog/hodinovy-manzel-modrany', label: 'Modřany a Komořany (Praha 12)' },
+    { href: '/blog/hodinovy-manzel-vinohrady/', label: 'Vinohrady a Nusle (Praha 2)' },
+    { href: '/blog/hodinovy-manzel-zizkov/', label: 'Žižkov (Praha 3)' },
+    { href: '/hodinovy-manzel-praha-5/', label: 'Praha 5 – Smíchov, Košíře, Barrandov' },
+    { href: '/blog/hodinovy-manzel-dejvice/', label: 'Dejvice a Bubeneč (Praha 6)' },
+    { href: '/blog/hodinovy-manzel-vrsovice/', label: 'Vršovice a Strašnice (Praha 10)' },
+    { href: '/blog/hodinovy-manzel-modrany/', label: 'Modřany a Komořany (Praha 12)' },
   ],
 } : {
   title: 'Handyman in Prague',
   links: [
-    { href: '/en/blog/handyman-vinohrady-prague-2', label: 'Vinohrady & Nusle (Prague 2)' },
-    { href: '/en/blog/handyman-zizkov-prague-3', label: 'Žižkov (Prague 3)' },
-    { href: '/en/handyman-prague-5', label: 'Prague 5 – Smíchov, Košíře, Barrandov' },
-    { href: '/en/blog/handyman-dejvice-prague-6', label: 'Dejvice & Bubeneč (Prague 6)' },
-    { href: '/en/blog/handyman-vrsovice-prague-10', label: 'Vršovice & Strašnice (Prague 10)' },
-    { href: '/en/blog/handyman-modrany-prague-12', label: 'Modřany & Komořany (Prague 12)' },
+    { href: '/en/blog/handyman-vinohrady-prague-2/', label: 'Vinohrady & Nusle (Prague 2)' },
+    { href: '/en/blog/handyman-zizkov-prague-3/', label: 'Žižkov (Prague 3)' },
+    { href: '/en/handyman-prague-5/', label: 'Prague 5 – Smíchov, Košíře, Barrandov' },
+    { href: '/en/blog/handyman-dejvice-prague-6/', label: 'Dejvice & Bubeneč (Prague 6)' },
+    { href: '/en/blog/handyman-vrsovice-prague-10/', label: 'Vršovice & Strašnice (Prague 10)' },
+    { href: '/en/blog/handyman-modrany-prague-12/', label: 'Modřany & Komořany (Prague 12)' },
   ],
 };
 ---
