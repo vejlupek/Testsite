@@ -373,20 +373,24 @@ export function useTranslations(lang: Lang) {
 
 /** Returns the URL of the same page in the other language */
 export function getAlternateLangUrl(pathname: string): string {
-  if (pathname.startsWith('/en')) {
-    const path = pathname.slice(3); // remove '/en'
+  // Normalize away a trailing slash so routes match regardless of how the
+  // page was requested (Astro's built pages are served with a trailing slash).
+  const norm = pathname !== '/' && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+
+  if (norm.startsWith('/en')) {
+    const path = norm.slice(3); // remove '/en'
     if (path === '/' || path === '') return '/';
-    if (path === '/blog' || path === '/blog/') return '/blog/';
+    if (path === '/blog') return '/blog/';
     if (path.startsWith('/blog/')) return '/blog/';
-    if (path.startsWith('/terms')) return '/obchodni-podminky';
-    if (path === '/handyman-prague-5') return '/hodinovy-manzel-praha-5';
+    if (path.startsWith('/terms')) return '/obchodni-podminky/';
+    if (path === '/handyman-prague-5') return '/hodinovy-manzel-praha-5/';
     return '/';
   } else {
-    if (pathname === '/' || pathname === '') return '/en/';
-    if (pathname === '/blog' || pathname === '/blog/') return '/en/blog/';
-    if (pathname.startsWith('/blog/')) return '/en/blog/';
-    if (pathname === '/obchodni-podminky') return '/en/terms-and-conditions';
-    if (pathname === '/hodinovy-manzel-praha-5') return '/en/handyman-prague-5';
+    if (norm === '/' || norm === '') return '/en/';
+    if (norm === '/blog') return '/en/blog/';
+    if (norm.startsWith('/blog/')) return '/en/blog/';
+    if (norm === '/obchodni-podminky') return '/en/terms-and-conditions/';
+    if (norm === '/hodinovy-manzel-praha-5') return '/en/handyman-prague-5/';
     return '/en/';
   }
 }

@@ -5,6 +5,7 @@ pubDate: 2025-03-15
 tags: ["bezpečnost", "zámky", "tipy"]
 draft: false
 lang: cs
+translationSlug: "how-to-choose-a-cylinder-lock"
 cover: ../../assets/images/blog-door-lock.jpg
 coverAlt: "Klíč v zámku vstupních dveří – cylindrická vložka"
 ---

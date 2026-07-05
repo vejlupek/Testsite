@@ -5,6 +5,7 @@ pubDate: 2026-01-22
 tags: ["Prague 3", "Žižkov", "handyman"]
 draft: false
 lang: en
+translationSlug: "hodinovy-manzel-zizkov"
 ---
 
 Žižkov is a district full of character – older brick tenements alongside refurbished lofts, student digs and family flats. It's one of Prague's most active rental markets. I work here regularly and I know what Žižkov flats need.

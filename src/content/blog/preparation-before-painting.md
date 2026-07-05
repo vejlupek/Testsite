@@ -5,6 +5,7 @@ pubDate: 2024-12-03
 tags: ["painting", "preparation", "tips"]
 draft: false
 lang: en
+translationSlug: "priprava-pred-malovani"
 cover: ../../assets/images/blog-wall-prep.jpg
 coverAlt: "Wall preparation before painting – filling and sanding"
 ---

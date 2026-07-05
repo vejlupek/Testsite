@@ -5,6 +5,7 @@ pubDate: 2024-11-15
 tags: ["kutilství", "tipy", "montáž"]
 draft: false
 lang: cs
+translationSlug: "how-to-choose-the-right-wall-plug"
 cover: ../../assets/images/blog-anchors.jpg
 coverAlt: "Hmoždinky a šrouby – výběr správného kotvení do zdi"
 ---

@@ -5,6 +5,7 @@ pubDate: 2024-11-15
 tags: ["DIY", "tips", "installation"]
 draft: false
 lang: en
+translationSlug: "jak-vybrat-hmozdinku"
 cover: ../../assets/images/blog-anchors.jpg
 coverAlt: "Wall plugs and screws – choosing the right fixings for a wall"
 ---

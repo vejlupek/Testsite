@@ -5,6 +5,7 @@ pubDate: 2026-01-15
 tags: ["Praha 2", "Vinohrady", "Nusle", "hodinový manžel"]
 draft: false
 lang: cs
+translationSlug: "handyman-vinohrady-prague-2"
 ---
 
 Praha 2 – Vinohrady a Nusle jsou jedny z nejhustěji osídlených čtvrtí v Praze. Bytovky z přelomu 19. a 20. století, elegantní prvorepublikové domy, ale i moderní rekonstruované byty. Každý týden tu opravuji, montuji a maluji – a vím přesně, s jakými problémy se zde setkávám nejčastěji.

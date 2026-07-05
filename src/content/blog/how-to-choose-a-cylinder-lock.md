@@ -5,6 +5,7 @@ pubDate: 2025-03-15
 tags: ["security", "locks", "tips"]
 draft: false
 lang: en
+translationSlug: "jak-vybrat-cylindrickou-vlozku"
 cover: ../../assets/images/blog-door-lock.jpg
 coverAlt: "Key in a front door lock – cylinder lock"
 ---

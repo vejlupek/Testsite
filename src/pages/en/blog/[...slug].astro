@@ -22,6 +22,9 @@ function formatDate(date: Date) {
 
 const siteUrl = 'https://www.pepevejlupek.cz';
 const postUrl = `${siteUrl}/en/blog/${post.slug}`;
+const alternateUrl = post.data.translationSlug
+  ? `/blog/${post.data.translationSlug}/`
+  : undefined;
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -56,6 +59,7 @@ const breadcrumbSchema = {
 <BaseLayout
   title={`${post.data.title} | Blog – Pepe Vejlupek`}
   description={post.data.description}
+  alternateUrl={alternateUrl}
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(articleSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />

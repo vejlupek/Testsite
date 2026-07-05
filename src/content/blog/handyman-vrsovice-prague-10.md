@@ -5,6 +5,7 @@ pubDate: 2026-02-05
 tags: ["Prague 10", "Vršovice", "Strašnice", "Záběhlice", "handyman"]
 draft: false
 lang: en
+translationSlug: "hodinovy-manzel-vrsovice"
 ---
 
 Prague 10 is a large district with varied housing. Vršovice with its classic brick tenements, Strašnice with a mix of panel blocks and older houses, Záběhlice with family homes and newer developments. I work in Prague 10 regularly and have plenty of happy customers there.

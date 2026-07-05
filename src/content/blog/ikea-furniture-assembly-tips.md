@@ -5,6 +5,7 @@ pubDate: 2025-02-28
 tags: ["assembly", "IKEA", "tips", "furniture"]
 draft: false
 lang: en
+translationSlug: "montaz-nabytku-ikea-tipy"
 cover: ../../assets/images/blog-furniture.jpg
 coverAlt: "Assembling furniture with a screwdriver – putting together an IKEA wardrobe"
 ---

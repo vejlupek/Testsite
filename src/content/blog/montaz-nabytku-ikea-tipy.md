@@ -5,6 +5,7 @@ pubDate: 2025-02-28
 tags: ["montáž", "IKEA", "tipy", "nábytek"]
 draft: false
 lang: cs
+translationSlug: "ikea-furniture-assembly-tips"
 cover: ../../assets/images/blog-furniture.jpg
 coverAlt: "Montáž nábytku šroubovákem – sestavení skříně IKEA"
 ---

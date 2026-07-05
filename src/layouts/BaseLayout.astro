@@ -9,6 +9,7 @@ interface Props {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  alternateUrl?: string;
 }
 
 const {
@@ -16,13 +17,14 @@ const {
   description = 'Pepe Vejlupek – hodinový manžel v Praze. Prostě to opravím. Montáž nábytku, opravy, malování, instalatérské práce a mnoho dalšího. Rychlá odezva, férové ceny.',
   canonical,
   ogImage = '/og-image.jpg',
+  alternateUrl,
 } = Astro.props;
 
 const siteUrl = 'https://www.pepevejlupek.cz';
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
 
 const lang = getLang(Astro.url.pathname);
-const alternateLangUrl = getAlternateLangUrl(Astro.url.pathname);
+const alternateLangUrl = alternateUrl ?? getAlternateLangUrl(Astro.url.pathname);
 const alternateLang = lang === 'en' ? 'cs' : 'en';
 const ogLocale = lang === 'en' ? 'en_US' : 'cs_CZ';
 ---

@@ -5,6 +5,7 @@ pubDate: 2026-01-29
 tags: ["Praha 6", "Dejvice", "Bubeneč", "hodinový manžel"]
 draft: false
 lang: cs
+translationSlug: "handyman-dejvice-prague-6"
 ---
 
 Praha 6 je různorodá čtvrť – vilová zástavba v Bubenči, diplomatická čtvrť v Dejvicích, rodinné domy na Řepích a Lysolajích, ale i velké bytové komplexy. Každá část má svá specifika a jiné typy prací. Na Praze 6 jezdím pravidelně – a zákazníci oceňují, že přijdu v domluvený čas a pracuju čistě.

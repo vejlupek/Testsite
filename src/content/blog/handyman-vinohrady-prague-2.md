@@ -5,6 +5,7 @@ pubDate: 2026-01-15
 tags: ["Prague 2", "Vinohrady", "Nusle", "handyman"]
 draft: false
 lang: en
+translationSlug: "hodinovy-manzel-vinohrady"
 ---
 
 Prague 2 – Vinohrady and Nusle are among the most densely populated districts in Prague. Turn-of-the-century apartment buildings, elegant inter-war houses, and modern refurbished flats. I work here every week, and I know exactly what problems come up most often.

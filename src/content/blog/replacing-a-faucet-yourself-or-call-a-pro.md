@@ -5,6 +5,7 @@ pubDate: 2025-02-10
 tags: ["plumbing", "tips", "repairs"]
 draft: false
 lang: en
+translationSlug: "vymena-vodovodní-baterie"
 cover: ../../assets/images/blog-faucet.jpg
 coverAlt: "Bathroom faucet – replacing a tap"
 ---

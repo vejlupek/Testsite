@@ -5,6 +5,7 @@ pubDate: 2026-02-12
 tags: ["Prague 12", "Modřany", "Komořany", "handyman"]
 draft: false
 lang: en
+translationSlug: "hodinovy-manzel-modrany"
 ---
 
 Prague 12 – Modřany, Komořany, Kamýk. Southern Prague, plenty of family homes, the panel housing estate in Modřany, and newer developments. I come here regularly – I have a lot of customers in Prague 12 and always leave with the satisfaction of a job well done.

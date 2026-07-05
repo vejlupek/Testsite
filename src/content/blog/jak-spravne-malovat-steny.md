@@ -5,6 +5,7 @@ pubDate: 2025-01-20
 tags: ["malování", "tipy", "příprava"]
 draft: false
 lang: cs
+translationSlug: "how-to-properly-paint-walls"
 cover: ../../assets/images/blog-painting-new.jpg
 coverAlt: "Malování stěny válečkem – správná technika a postup"
 ---

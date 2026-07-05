@@ -5,6 +5,7 @@ pubDate: 2025-01-20
 tags: ["painting", "tips", "preparation"]
 draft: false
 lang: en
+translationSlug: "jak-spravne-malovat-steny"
 cover: ../../assets/images/blog-painting-new.jpg
 coverAlt: "Painting a wall with a roller – correct technique and process"
 ---

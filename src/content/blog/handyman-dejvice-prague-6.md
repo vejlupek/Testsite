@@ -5,6 +5,7 @@ pubDate: 2026-01-29
 tags: ["Prague 6", "Dejvice", "Bubeneč", "handyman"]
 draft: false
 lang: en
+translationSlug: "hodinovy-manzel-dejvice"
 ---
 
 Prague 6 is a varied district – the villa quarter in Bubeneč, the diplomatic area around Dejvice, family houses in Řepy and Lysolaje, and large apartment complexes throughout. Each part has its own character and different kinds of work. I come to Prague 6 regularly – customers here appreciate that I show up on time and work cleanly.

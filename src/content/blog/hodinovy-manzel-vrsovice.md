@@ -5,6 +5,7 @@ pubDate: 2026-02-05
 tags: ["Praha 10", "Vršovice", "Strašnice", "Záběhlice", "hodinový manžel"]
 draft: false
 lang: cs
+translationSlug: "handyman-vrsovice-prague-10"
 ---
 
 Praha 10 je rozlehlá čtvrť s různými typy zástavby. Vršovice s typickými cihlovými bytovkami, Strašnice s mixem paneláků a starších domů, Záběhlice s rodinnými domy a novější zástavbou. Na Praze 10 jezdím pravidelně a mám tam hodně spokojených zákazníků.
