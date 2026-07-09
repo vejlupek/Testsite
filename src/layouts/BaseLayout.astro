@@ -27,6 +27,10 @@ const lang = getLang(Astro.url.pathname);
 const alternateLangUrl = alternateUrl ?? getAlternateLangUrl(Astro.url.pathname);
 const alternateLang = lang === 'en' ? 'cs' : 'en';
 const ogLocale = lang === 'en' ? 'en_US' : 'cs_CZ';
+// Czech is the default language: x-default must point at the CS URL of the
+// *current* page pair (not always the homepage), so each pair's hreflang
+// set stays self-contained and fully reciprocal.
+const xDefaultUrl = lang === 'cs' ? canonicalUrl : `${siteUrl}${alternateLangUrl}`;
 ---
 
 <!DOCTYPE html>
@@ -69,7 +73,7 @@ const ogLocale = lang === 'en' ? 'en_US' : 'cs_CZ';
   <link rel="canonical" href={canonicalUrl} />
   <link rel="alternate" hreflang={lang} href={canonicalUrl} />
   <link rel="alternate" hreflang={alternateLang} href={`${siteUrl}${alternateLangUrl}`} />
-  <link rel="alternate" hreflang="x-default" href={siteUrl} />
+  <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
   <!-- Preload critical fonts (latin-ext for Czech diacritics, latin for base) -->
