@@ -1,12 +1,13 @@
 ---
 import { getLang, useTranslations } from '../i18n';
+import { googleReviews, formatRating, reviewsLabel } from '../data/google-reviews';
 const lang = getLang(Astro.url.pathname);
 const t = useTranslations(lang);
 ---
 
 <div class="trust-bar">
   <div class="trust-bar-inner">
-    <div class="trust-item"><span class="icon">⭐</span> {t('trust.rating')}</div>
+    <a class="trust-item trust-link" href={googleReviews.url} target="_blank" rel="noopener"><span class="icon">⭐</span> {formatRating(lang)} · {reviewsLabel(lang)}</a>
     <div class="trust-item"><span class="icon">🏠</span> {t('trust.jobs')}</div>
     <div class="trust-item"><span class="icon">⚡</span> {t('trust.response')}</div>
     <div class="trust-item"><span class="icon">📍</span> {t('trust.coverage')}</div>
@@ -15,6 +16,8 @@ const t = useTranslations(lang);
 </div>
 
 <style>
+  .trust-link { text-decoration: none; }
+  .trust-link:hover { text-decoration: underline; }
   .trust-bar {
     background: var(--color-navy-900);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);

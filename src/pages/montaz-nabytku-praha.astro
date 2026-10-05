@@ -1,0 +1,259 @@
+---
+import { googleReviews, formatRating, reviewsLabel } from '../data/google-reviews';
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Contact from '../components/Contact.astro';
+import heroImg from '../assets/images/nabytek/montaz-postylka.jpg';
+import changingImg from '../assets/images/nabytek/montaz-prebalovaci-pult.jpg';
+import bathroomImg from '../assets/images/nabytek/koupelna-ikea-skrinka.jpg';
+import teaserImg from '../assets/images/nabytek/kuchyne-orech-ostruvek.jpg';
+import ReviewCard from '../components/ReviewCard.astro';
+import { pickReviews } from '../data/reviews';
+import '../styles/landing.css';
+
+const siteUrl = 'https://www.pepevejlupek.cz';
+const pageUrl = `${siteUrl}/montaz-nabytku-praha/`;
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Montáž nábytku",
+  "name": "Montáž nábytku Praha",
+  "description": "Montáž nábytku IKEA, JYSK, XXXLutz a dalších značek v Praze a okolí. Skříně PAX, postele, komody, kuchyně, kotvení ke zdi.",
+  "url": pageUrl,
+  "areaServed": { "@type": "City", "name": "Praha" },
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Pepe Vejlupek – hodinový manžel Praha",
+    "url": `${siteUrl}/`,
+    "telephone": "+420774399400",
+    "email": "info@pepevejlupek.cz",
+    "address": { "@type": "PostalAddress", "addressLocality": "Praha", "addressCountry": "CZ" },
+    "priceRange": "od 1450 Kč"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1450",
+    "priceCurrency": "CZK",
+    "description": "Minimální zakázka včetně 1. hodiny práce a dopravy, každá další hodina 490 Kč."
+  }
+};
+
+const pageReviews = pickReviews(['nicole', 'paula']);
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Domů", "item": `${siteUrl}/` },
+    { "@type": "ListItem", "position": 2, "name": "Montáž nábytku Praha", "item": pageUrl }
+  ]
+};
+
+const items = [
+  { title: "Skříně a šatní systémy", desc: "IKEA PAX, KLEPPSTAD, BRIMNES, šatní skříně z JYSKu i posuvné dveře. Vyrovnám, seřídím panty a ukotvím ke zdi." },
+  { title: "Postele a dětské pokoje", desc: "Manželské postele, palandy, dětský nábytek. Celý dětský pokoj zvládnu obvykle za jedno odpoledne." },
+  { title: "Komody, police a knihovny", desc: "MALM, HEMNES, BILLY, KALLAX. Komody vždy přikotvím ke zdi – kvůli dětem jde o bezpečnost, ne o detail." },
+  { title: "Kuchyně z IKEA a dalších", desc: "Kuchyňské linky METOD a další: skříňky, pracovní deska, osazení dřezu a baterie." },
+  { title: "Koupelnový nábytek", desc: "Skříňky pod umyvadlo, zrcadlové skříňky, vysoké skříně. Napojení umyvadla a baterie rovnou udělám." },
+  { title: "Kancelář a home office", desc: "Psací stoly, výškově nastavitelné stoly, kancelářské skříně a regály." },
+];
+
+const times = [
+  { item: "Komoda (např. MALM, 3–6 zásuvek)", time: "cca 1 h" },
+  { item: "Postel (dvoulůžko)", time: "cca 1 h" },
+  { item: "Skříň PAX – jeden korpus s dveřmi", time: "cca 1 h" },
+  { item: "Šatní sestava PAX 2–3 m", time: "3–5 h" },
+  { item: "Dětský pokoj (postel, skříň, komoda, police)", time: "půl dne" },
+  { item: "Kuchyňská linka (dle velikosti)", time: "1–2 dny" },
+];
+
+const faqs = [
+  { q: "Kolik stojí montáž nábytku?", a: "Minimální zakázka je 1 450 Kč a zahrnuje první hodinu práce i dopravu po Praze. Každá další hodina stojí 490 Kč. Když mi předem pošlete seznam kusů (stačí odkazy z e-shopu), řeknu vám odhad času i ceny." },
+  { q: "Musím mít doma nářadí?", a: "Ne. Vozím s sebou kompletní vybavení – aku šroubováky, vrtačku, vodováhu, hmoždinky i kotvicí materiál." },
+  { q: "Přikotvíte nábytek ke zdi?", a: "Ano, vždy. Vysoké skříně a komody bez ukotvení jsou riziko, hlavně pokud máte děti. Podle typu zdi (cihla, panel, sádrokarton) zvolím správné kotvení." },
+  { q: "Složíte i nábytek, který nevyrábí IKEA?", a: "Samozřejmě – JYSK, XXXLutz, Möbelix, Sconto, nábytek z internetu i starší kusy, které je potřeba rozebrat a znovu složit po stěhování." },
+  { q: "Co s krabicemi a obaly?", a: "Po montáži obaly složím a připravím k odvozu, uklidím pracovní místo. Nábytek předávám hotový k používání." },
+  { q: "Proč neobjednat montáž přímo od IKEA?", a: "Můžete – ale u mě se domluvíte přímo s člověkem, který přijede, termín bývá dřív a ve stejné návštěvě zvládnu i další práce: pověsit police, lustr, záclonovou tyč nebo napojit baterii u koupelnové skříňky." },
+  { q: "Jak rychle můžete přijet?", a: "Běžnou montáž obvykle zvládnu do několika dnů. Pokud spěcháte (např. stěhování nebo předání bytu), zavolejte – domluvíme nejbližší možný termín, případně i mimo běžnou pracovní dobu." },
+  { q: "Chybí díl nebo je poškozený – co pak?", a: "Před montáží zkontroluji obsah balení. Pokud něco chybí nebo je poškozené, řeknu vám to hned, abyste mohli díl reklamovat. Drobné chybějící kování (šrouby, kolíky) často vyřeším z vlastních zásob." },
+  { q: "Rozeberete a znovu složíte nábytek při stěhování?", a: "Ano. Nábytek rozeberu, označím díly, aby nic nechybělo, a v novém bytě ho znovu složím a ukotvím. Odvoz zajišťuje stěhovací firma, já se postarám o demontáž a montáž." },
+  { q: "Upravíte nábytek na míru – zkrácení, výřez, atypické místo?", a: "Drobné úpravy ano: výřez v zadní stěně kvůli zásuvce nebo potrubí, zkrácení police či lišty, výřez pro dřez v pracovní desce. Pokud potřebujete nábytek přesně do prostoru, podívejte se na <a href=\"/nabytek-na-miru-praha/\">nábytek na míru</a>." },
+  { q: "Jak se platí a dáváte záruku?", a: "Platit můžete hotově nebo převodem po dokončení práce. Na montáž poskytuji 30denní záruku – když se cokoli uvolní nebo nesedí, přijedu to opravit." },
+];
+---
+
+<BaseLayout
+  title="Montáž nábytku Praha – IKEA, JYSK, kuchyně | Pepe Vejlupek"
+  description="Hodinový manžel na montáž nábytku v Praze. Složím skříně PAX, postele, komody i kuchyně a ukotvím je ke zdi. 1 450 Kč vč. 1. hodiny a dopravy, pak 490 Kč/h."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <main>
+
+    <section class="lp-hero">
+      <div class="lp-hero-inner lp-hero-grid">
+        <div>
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Domů</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">Montáž nábytku Praha</span>
+          </nav>
+          <div class="lp-badge">🛋️ Hodinový manžel – montáž nábytku</div>
+          <h1>Montáž nábytku Praha</h1>
+          <p class="lp-perex">
+            Koupili jste nábytek z IKEA, JYSKu nebo e-shopu a nechcete strávit víkend nad návodem?
+            Přijedu s nářadím, složím, vyrovnám a ukotvím ke zdi. Vy si jen užíváte hotový pokoj.
+          </p>
+          <div class="lp-buttons">
+            <a href="tel:+420774399400" class="btn btn-primary lp-btn-call">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              +420 774 399 400
+            </a>
+            <a href="#kontakt" class="btn btn-outline">✉️ Poslat seznam nábytku</a>
+          </div>
+          <p class="lp-note">Zvedám telefon osobně · Po–Pá 8–18 · termín obvykle do několika dnů</p>
+          <div class="lp-trust">
+            <a href={googleReviews.url} target="_blank" rel="noopener" style="color:inherit;">⭐ {formatRating('cs')} · {reviewsLabel('cs')}</a>
+            <span class="sep">·</span>
+            <span>Stovky složených skříní</span>
+            <span class="sep">·</span>
+            <span>Celá Praha a okolí</span>
+          </div>
+        </div>
+        <div class="lp-hero-img">
+          <Image src={heroImg} alt="Pepe Vejlupek při montáži dětské postýlky" widths={[400, 700, 1000]} sizes="(max-width: 860px) 100vw, 500px" loading="eager" class="lp-hero-portrait" />
+        </div>
+      </div>
+    </section>
+
+    <TrustBar />
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Jaký nábytek smontuji</h2>
+          <p>IKEA, JYSK, XXXLutz, Möbelix, Sconto, Bonami i nábytek z dalších e-shopů.</p>
+        </div>
+        <div class="lp-cards">
+          {items.map(i => (
+            <div class="lp-card">
+              <h3>{i.title}</h3>
+              <p>{i.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white">
+      <div class="section-inner">
+        <div class="lp-why-grid">
+          <div>
+            <h2>Kolik montáž trvá a stojí</h2>
+            <p>Platíte za skutečně odpracovaný čas – žádné příplatky za kus. Orientační časy podle zkušenosti z praxe:</p>
+            <table class="lp-table">
+              <thead><tr><th>Nábytek</th><th>Čas</th></tr></thead>
+              <tbody>
+                {times.map(r => (<tr><td>{r.item}</td><td>{r.time}</td></tr>))}
+              </tbody>
+            </table>
+            <p class="lp-table-note">Časy jsou orientační – záleží na konkrétním modelu a podmínkách na místě. Přesný odhad vám řeknu předem.</p>
+            <ul class="why-list">
+              <li>Vlastní nářadí i kotvicí materiál</li>
+              <li>Ukotvení ke zdi podle typu stěny</li>
+              <li>Seřízení dvířek, zásuvek a pantů</li>
+              <li>Po sobě uklidím, obaly připravím k odvozu</li>
+            </ul>
+          </div>
+          <div class="lp-pricing-box">
+            <h3>Ceník montáže</h3>
+            <div class="price-row">
+              <span>Minimální zakázka (1. hodina + doprava)</span>
+              <strong>1 450 Kč</strong>
+            </div>
+            <div class="price-row">
+              <span>Každá další hodina</span>
+              <strong>490 Kč</strong>
+            </div>
+            <div class="price-row">
+              <span>Materiál a parkovné</span>
+              <strong>dle skutečnosti</strong>
+            </div>
+            <p class="price-note">Nejsem plátce DPH. Cenu vždy domluvíme předem.</p>
+            <a href="tel:+420774399400" class="btn btn-primary">Zavolat a domluvit termín</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Jak to probíhá</h2>
+        </div>
+        <ol class="lp-steps">
+          <li><h3>Pošlete seznam</h3><p>Zavolejte nebo napište, co potřebujete složit – stačí odkazy z e-shopu nebo fotka účtenky.</p></li>
+          <li><h3>Domluvíme termín a cenu</h3><p>Řeknu vám odhad času i ceny a domluvíme den, který vám vyhovuje.</p></li>
+          <li><h3>Přijedu a smontuji</h3><p>Složím, vyrovnám, seřídím a ukotvím ke zdi. Vy se nemusíte o nic starat.</p></li>
+          <li><h3>Předám hotové</h3><p>Uklidím po sobě a nábytek předám připravený k používání.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Co říkají zákazníci</h2>
+        </div>
+        <div class="lp-reviews">
+          {pageReviews.map(r => (
+            <ReviewCard text={r.text.cs} author={r.author} location={r.service.cs} ariaLabel="Hodnocení 5 z 5 hvězdiček" note={r.original !== 'cs' ? 'Přeloženo z angličtiny' : undefined} />
+          ))}
+        </div>
+        <p style="text-align:center;margin-top:1.5rem;"><a href={googleReviews.url} target="_blank" rel="noopener">Přečíst všechny recenze na Google →</a></p>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="lp-teaser">
+          <Image src={teaserImg} alt="Kuchyně na míru s ořechovými dvířky a ostrůvkem – realizace Pepe Vejlupek" widths={[500, 800]} sizes="(max-width: 860px) 100vw, 480px" />
+          <div class="lp-teaser-body">
+            <h2>Nestačí vám nábytek z katalogu?</h2>
+            <p>Kuchyně, vestavěné skříně a předsíně vyrábím i na míru – přesně do vašeho prostoru, do posledního centimetru. Podívejte se na ukázky realizací.</p>
+            <a href="/nabytek-na-miru-praha/" class="btn btn-primary">Nábytek na míru →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white">
+      <div class="section-inner">
+        <div class="lp-why-grid">
+          <div class="lp-faq">
+            <h2>Časté otázky k montáži nábytku</h2>
+            {faqs.map(f => (
+              <details>
+                <summary>{f.q}</summary>
+                <p set:html={f.a} />
+              </details>
+            ))}
+            <p style="margin-top:1.25rem;">Chcete to zkusit sami? Přečtěte si moje <a href="/blog/montaz-nabytku-ikea-tipy/">tipy pro montáž nábytku IKEA</a>.</p>
+          </div>
+          <div class="lp-photo-stack">
+            <Image src={changingImg} alt="Montáž přebalovacího pultu Stokke v dětském pokoji" widths={[400, 700]} sizes="(max-width: 860px) 100vw, 500px" style="width:100%;height:auto;border-radius:var(--radius-xl);" />
+            <p class="lp-credit">Montáž přebalovacího pultu a postýlky do dětského pokoje.</p>
+            <Image src={bathroomImg} alt="Montáž koupelnové skříňky IKEA pod umyvadlo s napojením baterie" widths={[400, 700]} sizes="(max-width: 860px) 100vw, 500px" style="width:100%;height:auto;border-radius:var(--radius-xl);" />
+            <p class="lp-credit">Závěsná koupelnová skříňka z IKEA včetně osazení umyvadla a baterie – z mé realizace. Foto: Jaroslav Kvíz</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+
+  </main>
+</BaseLayout>

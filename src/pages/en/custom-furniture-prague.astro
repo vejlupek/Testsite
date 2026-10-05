@@ -1,0 +1,185 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Contact from '../../components/Contact.astro';
+import { furnitureProjects, PHOTO_CREDIT } from '../../data/furniture-projects';
+import heroImg from '../../assets/images/nabytek/kuchyne-orech-ostruvek.jpg';
+import '../../styles/landing.css';
+
+const siteUrl = 'https://www.pepevejlupek.cz';
+const pageUrl = `${siteUrl}/en/custom-furniture-prague/`;
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Custom furniture",
+  "name": "Custom Furniture Prague – kitchens, built-in wardrobes, hallways",
+  "description": "Custom furniture made and installed in Prague: kitchens, built-in wardrobes, hallway units, TV walls. Site survey and quote 2,990 CZK, deducted when you order.",
+  "url": pageUrl,
+  "areaServed": { "@type": "City", "name": "Prague" },
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Pepe Vejlupek – Handyman Prague",
+    "url": `${siteUrl}/en/`,
+    "telephone": "+420774399400",
+    "email": "info@pepevejlupek.cz",
+    "address": { "@type": "PostalAddress", "addressLocality": "Prague", "addressCountry": "CZ" }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "2990",
+    "priceCurrency": "CZK",
+    "description": "On-site survey and quote. The amount is deducted from the price when you place the order."
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}/en/` },
+    { "@type": "ListItem", "position": 2, "name": "Custom Furniture Prague", "item": pageUrl }
+  ]
+};
+
+const items = [
+  { title: "Custom kitchens", desc: "Kitchens fitted exactly to your space – tall units up to the ceiling, islands, integrated appliances and LED under-cabinet lighting." },
+  { title: "Built-in wardrobes", desc: "Floor-to-ceiling wardrobe walls, units for alcoves and sloped ceilings. No dust-collecting gaps." },
+  { title: "Hallways & walk-in closets", desc: "Shoe cabinets, coat niches, storage for prams and sports gear." },
+  { title: "Living room & study", desc: "TV walls, floating cabinets, desks and bookcases that match the rest of the interior." },
+  { title: "Bathroom furniture", desc: "Vanity units and tall cabinets for awkward bathrooms – or installation of ready-made IKEA pieces." },
+];
+
+const faqs = [
+  { q: "How much does the survey and quote cost?", a: "The site visit, measurement and written quote cost 2,990 CZK. If you go ahead with the order, I deduct the full amount from the furniture price." },
+  { q: "What materials do you work with?", a: "Depending on your taste and budget – lacquered or foil-wrapped MDF, laminated boards, wood veneer (e.g. walnut) or birch plywood with exposed edges." },
+  { q: "Can you build furniture to an architect's design?", a: "Yes. I work from a finished architect's project or from your own sketch – and if you don't have a design, we'll work one out together on site." },
+  { q: "How long does production take?", a: "It depends on the scope and materials. You'll get a specific production and installation date in the quote after the survey." },
+];
+---
+
+<BaseLayout
+  title="Custom Furniture Prague – kitchens, built-in wardrobes | Pepe Vejlupek"
+  description="Custom kitchens, built-in wardrobes and hallway units – made and installed in Prague. Site survey and quote 2,990 CZK, deducted when you order. See completed projects."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <main>
+
+    <section class="lp-hero">
+      <div class="lp-hero-inner lp-hero-grid">
+        <div>
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/en/">Home</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">Custom Furniture Prague</span>
+          </nav>
+          <div class="lp-badge">🪵 Made & installed</div>
+          <h1>Custom Furniture Prague</h1>
+          <p class="lp-perex">
+            Kitchens, built-in wardrobes and hallway units made to fit your apartment exactly.
+            I'll come, measure, prepare a quote – then build and install the furniture. One contact from survey to handover.
+          </p>
+          <div class="lp-buttons">
+            <a href="tel:+420774399400" class="btn btn-primary lp-btn-call">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              +420 774 399 400
+            </a>
+            <a href="#projects" class="btn btn-outline">See projects ↓</a>
+          </div>
+          <p class="lp-note">Survey and quote 2,990 CZK – deducted when you order</p>
+        </div>
+        <div class="lp-hero-img">
+          <Image src={heroImg} alt="Custom kitchen – white floor-to-ceiling units, walnut doors and an island" widths={[500, 800, 1100]} sizes="(max-width: 860px) 100vw, 520px" loading="eager" />
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>What I build to measure</h2>
+          <p>Furniture that fits the space exactly – even where catalogue furniture doesn't.</p>
+        </div>
+        <div class="lp-cards">
+          {items.map(i => (
+            <div class="lp-card">
+              <h3>{i.title}</h3>
+              <p>{i.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white" id="projects">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Completed projects</h2>
+        </div>
+        {furnitureProjects.map(p => (
+          <article class="lp-project">
+            <h3>{p.title.en}</h3>
+            <p>{p.desc.en}</p>
+            <div class="lp-gallery">
+              {p.photos.map(ph => (
+                <figure class={ph.span}>
+                  <Image src={ph.src} alt={ph.alt.en} widths={[400, 800, 1200]} sizes="(max-width: 860px) 50vw, 33vw" />
+                </figure>
+              ))}
+            </div>
+          </article>
+        ))}
+        {PHOTO_CREDIT && <p class="lp-credit">Photo: {PHOTO_CREDIT}</p>}
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>How it works</h2>
+        </div>
+        <ol class="lp-steps">
+          <li><h3>On-site survey</h3><p>I come, measure the space and we talk through your ideas, materials and budget.</p></li>
+          <li><h3>Design & quote</h3><p>I prepare a solution and an exact quote including the schedule.</p></li>
+          <li><h3>Production</h3><p>The furniture is made to the exact measurements – no compromises for standard sizes.</p></li>
+          <li><h3>Installation & handover</h3><p>Installed, adjusted, cleaned up. You get a finished interior.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white">
+      <div class="section-inner">
+        <div class="lp-why-grid">
+          <div class="lp-faq">
+            <h2>FAQ</h2>
+            {faqs.map(f => (
+              <details>
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </div>
+          <div class="lp-pricing-box">
+            <h3>Survey & quote</h3>
+            <div class="price-row">
+              <span>Site visit, measurement and quote</span>
+              <strong>2,990 CZK</strong>
+            </div>
+            <div class="price-row">
+              <span>When you place the order</span>
+              <strong>deducted from price</strong>
+            </div>
+            <p class="price-note">Furniture price depends on materials and scope – always in a written quote upfront. Not VAT registered.</p>
+            <a href="tel:+420774399400" class="btn btn-primary">Book a survey</a>
+            <p class="price-note">Have IKEA or online-shop furniture? <a href="/en/furniture-assembly-prague/">Furniture assembly →</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+
+  </main>
+</BaseLayout>

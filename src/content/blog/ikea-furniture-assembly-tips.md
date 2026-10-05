@@ -76,4 +76,4 @@ During transport or assembly, the laminate on an edge sometimes chips off. Solut
 
 ---
 
-*Don't want the hassle of assembling it yourself? Call me – I'll come, assemble it and fix it to the wall. Done right, done on time.*
+*Don't want the hassle of assembling it yourself? Call me – I'll come, assemble it and fix it to the wall. Done right, done on time. See pricing and details on the [Furniture Assembly Prague](/en/furniture-assembly-prague/) page.*

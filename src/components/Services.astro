@@ -5,7 +5,8 @@ const lang = getLang(Astro.url.pathname);
 const t = useTranslations(lang);
 
 const services = [
-  { icon: '🛋️', titleKey: 'service.furniture.title', descKey: 'service.furniture.desc' },
+  { icon: '🛋️', titleKey: 'service.furniture.title', descKey: 'service.furniture.desc', href: lang === 'en' ? '/en/furniture-assembly-prague/' : '/montaz-nabytku-praha/' },
+  { icon: '🪵', titleKey: 'service.custom.title',    descKey: 'service.custom.desc',    href: lang === 'en' ? '/en/custom-furniture-prague/' : '/nabytek-na-miru-praha/' },
   { icon: '🎨', titleKey: 'service.painting.title',  descKey: 'service.painting.desc' },
   { icon: '🔨', titleKey: 'service.repairs.title',   descKey: 'service.repairs.desc' },
   { icon: '🚿', titleKey: 'service.plumbing.title',  descKey: 'service.plumbing.desc' },
@@ -14,7 +15,7 @@ const services = [
   { icon: '💡', titleKey: 'service.lighting.title',  descKey: 'service.lighting.desc' },
   { icon: '🔌', titleKey: 'service.electrical.title',descKey: 'service.electrical.desc' },
   { icon: '🌿', titleKey: 'service.garden.title',    descKey: 'service.garden.desc' },
-] as const;
+];
 ---
 
 <section id="sluzby">
@@ -25,7 +26,7 @@ const services = [
     </div>
     <div class="services-grid">
       {services.map((s) => (
-        <ServiceCard icon={s.icon} title={t(s.titleKey)} description={t(s.descKey)} />
+        <ServiceCard icon={s.icon} title={t(s.titleKey)} description={t(s.descKey)} href={'href' in s ? s.href : undefined} />
       ))}
     </div>
   </div>

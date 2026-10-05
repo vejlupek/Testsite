@@ -1,0 +1,259 @@
+---
+import { googleReviews, formatRating, reviewsLabel } from '../../data/google-reviews';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Contact from '../../components/Contact.astro';
+import heroImg from '../../assets/images/nabytek/montaz-postylka.jpg';
+import changingImg from '../../assets/images/nabytek/montaz-prebalovaci-pult.jpg';
+import bathroomImg from '../../assets/images/nabytek/koupelna-ikea-skrinka.jpg';
+import teaserImg from '../../assets/images/nabytek/kuchyne-orech-ostruvek.jpg';
+import ReviewCard from '../../components/ReviewCard.astro';
+import { pickReviews } from '../../data/reviews';
+import '../../styles/landing.css';
+
+const siteUrl = 'https://www.pepevejlupek.cz';
+const pageUrl = `${siteUrl}/en/furniture-assembly-prague/`;
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Furniture assembly",
+  "name": "Furniture Assembly Prague",
+  "description": "IKEA, JYSK, XXXLutz and other flat-pack furniture assembled in Prague. PAX wardrobes, beds, dressers, kitchens, wall anchoring. English-speaking handyman.",
+  "url": pageUrl,
+  "areaServed": { "@type": "City", "name": "Prague" },
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Pepe Vejlupek – Handyman Prague",
+    "url": `${siteUrl}/en/`,
+    "telephone": "+420774399400",
+    "email": "info@pepevejlupek.cz",
+    "address": { "@type": "PostalAddress", "addressLocality": "Prague", "addressCountry": "CZ" },
+    "priceRange": "from 1450 CZK"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1450",
+    "priceCurrency": "CZK",
+    "description": "Minimum order including the first hour of work and travel; each additional hour 490 CZK."
+  }
+};
+
+const pageReviews = pickReviews(['nicole', 'paula']);
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}/en/` },
+    { "@type": "ListItem", "position": 2, "name": "Furniture Assembly Prague", "item": pageUrl }
+  ]
+};
+
+const items = [
+  { title: "Wardrobes & closet systems", desc: "IKEA PAX, KLEPPSTAD, BRIMNES, JYSK wardrobes and sliding doors. Levelled, hinges adjusted and anchored to the wall." },
+  { title: "Beds & kids' rooms", desc: "Double beds, bunk beds, children's furniture. A whole kids' room is usually done in one afternoon." },
+  { title: "Dressers, shelves & bookcases", desc: "MALM, HEMNES, BILLY, KALLAX. Dressers always get anchored to the wall – with kids around, it's a safety issue, not a detail." },
+  { title: "IKEA & other kitchens", desc: "METOD and other kitchen systems: cabinets, worktop, sink and tap installation." },
+  { title: "Bathroom furniture", desc: "Vanity units, mirror cabinets, tall cabinets. I can connect the basin and tap at the same time." },
+  { title: "Office & home office", desc: "Desks, standing desks, office cabinets and shelving units." },
+];
+
+const times = [
+  { item: "Dresser (e.g. MALM, 3–6 drawers)", time: "approx. 1 h" },
+  { item: "Double bed", time: "approx. 1 h" },
+  { item: "PAX wardrobe – one frame with doors", time: "approx. 1 h" },
+  { item: "PAX wardrobe combination 2–3 m", time: "3–5 h" },
+  { item: "Kids' room (bed, wardrobe, dresser, shelves)", time: "half a day" },
+  { item: "Kitchen (depending on size)", time: "1–2 days" },
+];
+
+const faqs = [
+  { q: "How much does furniture assembly cost?", a: "The minimum order is 1,450 CZK and includes the first hour of work and travel within Prague. Each additional hour is 490 CZK. Send me a list of items in advance (shop links are enough) and I'll give you an estimate of time and price." },
+  { q: "Do I need to have tools at home?", a: "No. I bring a full kit – cordless drivers, drill, spirit level, wall plugs and anchoring hardware." },
+  { q: "Will you anchor the furniture to the wall?", a: "Yes, always. Tall wardrobes and dressers without anchoring are a risk, especially with children. I choose the right fixing for your wall type (brick, concrete panel, drywall)." },
+  { q: "Do you assemble furniture that isn't from IKEA?", a: "Of course – JYSK, XXXLutz, Möbelix, Sconto, online-shop furniture, and older pieces that need taking apart and reassembling after a move." },
+  { q: "Do you speak English?", a: "Yes – you can call, text or email me in English. No need for a Czech-speaking friend to translate." },
+  { q: "Why not book assembly directly from IKEA?", a: "You can – but with me you deal directly with the person who comes, dates are often sooner, and in the same visit I can handle other jobs too: hanging shelves, a light fitting, a curtain rail or connecting the tap on a bathroom vanity." },
+  { q: "How quickly can you come?", a: "Regular assembly is usually possible within a few days. In a hurry (moving in, handing over a flat)? Call me – we'll find the earliest slot, outside normal hours if needed." },
+  { q: "A part is missing or damaged – what then?", a: "I check the contents before assembly. If something is missing or damaged, I'll tell you straight away so you can claim it. Small missing hardware (screws, dowels) I can often replace from my own stock." },
+  { q: "Can you take furniture apart and reassemble it when moving?", a: "Yes. I dismantle the furniture, label the parts so nothing goes missing, and reassemble and anchor it in your new home. The removal company handles transport; I take care of dismantling and assembly." },
+  { q: "Can you adapt furniture – shorten it, cut openings, fit an awkward spot?", a: "Small adjustments, yes: a cut-out in the back panel for a socket or pipe, shortening a shelf or trim, a sink cut-out in a worktop. If you need furniture made to fit the space exactly, see <a href=\"/en/custom-furniture-prague/\">custom furniture</a>." },
+  { q: "How do I pay and is there a guarantee?", a: "You can pay in cash or by bank transfer once the work is done. Assembly comes with a 30-day guarantee – if anything comes loose or doesn't fit, I'll come back and fix it." },
+];
+---
+
+<BaseLayout
+  title="Furniture Assembly Prague – IKEA, JYSK, kitchens | Pepe Vejlupek"
+  description="English-speaking handyman for furniture assembly in Prague. PAX wardrobes, beds, dressers and kitchens, anchored to the wall. 1,450 CZK incl. first hour and travel, then 490 CZK/h."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <main>
+
+    <section class="lp-hero">
+      <div class="lp-hero-inner lp-hero-grid">
+        <div>
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/en/">Home</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">Furniture Assembly Prague</span>
+          </nav>
+          <div class="lp-badge">🛋️ Handyman – furniture assembly</div>
+          <h1>Furniture Assembly Prague</h1>
+          <p class="lp-perex">
+            Bought furniture from IKEA, JYSK or an online shop and don't want to spend the weekend with the manual?
+            I'll come with my tools, assemble, level and anchor it to the wall. You just enjoy the finished room.
+          </p>
+          <div class="lp-buttons">
+            <a href="tel:+420774399400" class="btn btn-primary lp-btn-call">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              +420 774 399 400
+            </a>
+            <a href="#kontakt" class="btn btn-outline">✉️ Send your furniture list</a>
+          </div>
+          <p class="lp-note">I answer the phone personally · Mon–Fri 8–18 · usually available within a few days</p>
+          <div class="lp-trust">
+            <a href={googleReviews.url} target="_blank" rel="noopener" style="color:inherit;">⭐ {formatRating('en')} · {reviewsLabel('en')}</a>
+            <span class="sep">·</span>
+            <span>Hundreds of wardrobes assembled</span>
+            <span class="sep">·</span>
+            <span>All of Prague</span>
+          </div>
+        </div>
+        <div class="lp-hero-img">
+          <Image src={heroImg} alt="Pepe Vejlupek assembling a baby cot" widths={[400, 700, 1000]} sizes="(max-width: 860px) 100vw, 500px" loading="eager" class="lp-hero-portrait" />
+        </div>
+      </div>
+    </section>
+
+    <TrustBar />
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>What I assemble</h2>
+          <p>IKEA, JYSK, XXXLutz, Möbelix, Sconto, Bonami and furniture from other online shops.</p>
+        </div>
+        <div class="lp-cards">
+          {items.map(i => (
+            <div class="lp-card">
+              <h3>{i.title}</h3>
+              <p>{i.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white">
+      <div class="section-inner">
+        <div class="lp-why-grid">
+          <div>
+            <h2>How long it takes and what it costs</h2>
+            <p>You pay for the time actually worked – no per-item surcharges. Typical times from experience:</p>
+            <table class="lp-table">
+              <thead><tr><th>Furniture</th><th>Time</th></tr></thead>
+              <tbody>
+                {times.map(r => (<tr><td>{r.item}</td><td>{r.time}</td></tr>))}
+              </tbody>
+            </table>
+            <p class="lp-table-note">Times are approximate – they depend on the specific model and conditions on site. I'll give you an estimate upfront.</p>
+            <ul class="why-list">
+              <li>My own tools and anchoring hardware</li>
+              <li>Wall anchoring suited to your wall type</li>
+              <li>Doors, drawers and hinges adjusted</li>
+              <li>I clean up and stack the packaging for disposal</li>
+            </ul>
+          </div>
+          <div class="lp-pricing-box">
+            <h3>Assembly pricing</h3>
+            <div class="price-row">
+              <span>Minimum order (1st hour + travel)</span>
+              <strong>1,450 CZK</strong>
+            </div>
+            <div class="price-row">
+              <span>Each additional hour</span>
+              <strong>490 CZK</strong>
+            </div>
+            <div class="price-row">
+              <span>Materials & parking</span>
+              <strong>at cost</strong>
+            </div>
+            <p class="price-note">Not VAT registered. Price always agreed upfront.</p>
+            <a href="tel:+420774399400" class="btn btn-primary">Call to book a date</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>How it works</h2>
+        </div>
+        <ol class="lp-steps">
+          <li><h3>Send your list</h3><p>Call or message me with what needs assembling – shop links or a photo of the receipt are enough.</p></li>
+          <li><h3>Agree on date and price</h3><p>I'll estimate the time and price and we'll pick a day that suits you.</p></li>
+          <li><h3>I come and assemble</h3><p>Assembled, levelled, adjusted and anchored to the wall. Nothing for you to worry about.</p></li>
+          <li><h3>Handover</h3><p>I clean up and hand over furniture ready to use.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>What clients say</h2>
+        </div>
+        <div class="lp-reviews">
+          {pageReviews.map(r => (
+            <ReviewCard text={r.text.en} author={r.author} location={r.service.en} ariaLabel="Rating 5 out of 5 stars" note={r.original !== 'en' ? 'Translated from Czech' : undefined} />
+          ))}
+        </div>
+        <p style="text-align:center;margin-top:1.5rem;"><a href={googleReviews.url} target="_blank" rel="noopener">Read all reviews on Google →</a></p>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="lp-teaser">
+          <Image src={teaserImg} alt="Custom kitchen with walnut doors and an island – built by Pepe Vejlupek" widths={[500, 800]} sizes="(max-width: 860px) 100vw, 480px" />
+          <div class="lp-teaser-body">
+            <h2>Catalogue furniture not enough?</h2>
+            <p>I also build kitchens, built-in wardrobes and hallway units to measure – fitted to your space down to the last centimetre. Take a look at completed projects.</p>
+            <a href="/en/custom-furniture-prague/" class="btn btn-primary">Custom furniture →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white">
+      <div class="section-inner">
+        <div class="lp-why-grid">
+          <div class="lp-faq">
+            <h2>Furniture assembly FAQ</h2>
+            {faqs.map(f => (
+              <details>
+                <summary>{f.q}</summary>
+                <p set:html={f.a} />
+              </details>
+            ))}
+            <p style="margin-top:1.25rem;">Want to try it yourself? Read my <a href="/en/blog/ikea-furniture-assembly-tips/">IKEA furniture assembly tips</a>.</p>
+          </div>
+          <div class="lp-photo-stack">
+            <Image src={changingImg} alt="Assembling a Stokke changing table in a nursery" widths={[400, 700]} sizes="(max-width: 860px) 100vw, 500px" style="width:100%;height:auto;border-radius:var(--radius-xl);" />
+            <p class="lp-credit">Assembling a changing table and a cot for a nursery.</p>
+            <Image src={bathroomImg} alt="IKEA bathroom vanity unit installed with basin and tap" widths={[400, 700]} sizes="(max-width: 860px) 100vw, 500px" style="width:100%;height:auto;border-radius:var(--radius-xl);" />
+            <p class="lp-credit">A wall-hung IKEA vanity unit including basin and tap installation – from my own project. Photo: Jaroslav Kvíz</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+
+  </main>
+</BaseLayout>

@@ -1,14 +1,13 @@
 ---
 import ReviewCard from './ReviewCard.astro';
 import { getLang, useTranslations } from '../i18n';
+import { googleReviews, formatRating, reviewsLabel } from '../data/google-reviews';
 const lang = getLang(Astro.url.pathname);
 const t = useTranslations(lang);
 
-const reviews = [
-  { text: t('review1.text'), author: t('review1.author'), location: t('review1.location') },
-  { text: t('review2.text'), author: t('review2.author'), location: t('review2.location') },
-  { text: t('review3.text'), author: t('review3.author'), location: t('review3.location') },
-];
+import { homepageReviewIds, pickReviews } from '../data/reviews';
+
+const reviews = pickReviews(homepageReviewIds[lang]);
 ---
 
 <section id="reference">
@@ -16,17 +15,48 @@ const reviews = [
     <div class="section-header">
       <h2>{t('reviews.heading')}</h2>
       <p>{t('reviews.subheading')}</p>
+      <a class="google-summary" href={googleReviews.url} target="_blank" rel="noopener">
+        <span class="google-stars" aria-hidden="true">★★★★★</span>
+        <strong>{formatRating(lang)}</strong>
+        <span>{reviewsLabel(lang)}</span>
+      </a>
     </div>
     <div class="reviews-grid">
       {reviews.map((r) => (
-        <ReviewCard text={r.text} author={r.author} location={r.location} ariaLabel={t('reviews.aria')} />
+        <ReviewCard
+          text={r.text[lang]}
+          author={r.author}
+          location={r.service[lang]}
+          ariaLabel={t('reviews.aria')}
+          note={r.original !== lang ? t(r.original === 'en' ? 'reviews.translatedFromEn' : 'reviews.translatedFromCs') : undefined}
+        />
       ))}
+    </div>
+    <div class="reviews-cta">
+      <a class="btn btn-outline" href={googleReviews.url} target="_blank" rel="noopener">{t('reviews.allOnGoogle')} →</a>
     </div>
   </div>
 </section>
 
 <style>
   #reference { background: var(--bg); }
+  .google-summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+    padding: 0.45rem 1.1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.92rem;
+  }
+  .google-summary:hover { border-color: var(--primary); }
+  .google-summary strong { color: var(--color-accent); font-size: 1.05rem; }
+  .google-stars { color: #f5b301; letter-spacing: 1px; }
+  .reviews-cta { text-align: center; margin-top: 2rem; }
   .reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

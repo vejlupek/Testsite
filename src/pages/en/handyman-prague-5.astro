@@ -1,4 +1,5 @@
 ---
+import { googleReviews, formatRating, reviewsLabel } from '../../data/google-reviews';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import Services from '../../components/Services.astro';
@@ -31,12 +32,7 @@ const jsonLd = {
     { "@type": "Neighborhood", "name": "Hlubočepy" }
   ],
   "priceRange": "from 1450 CZK",
-  "openingHours": ["Mo-Fr 08:00-18:00"],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "500"
-  }
+  "openingHours": ["Mo-Fr 08:00-18:00"]
 };
 
 const breadcrumbSchema = {
@@ -89,7 +85,7 @@ const neighborhoods = [
         </div>
         <p class="lp-note">I answer the phone personally · Mon–Fri 8–18 · on-call outside hours</p>
         <div class="lp-trust">
-          <span>⭐ 4.9/5 rating</span>
+          <a href={googleReviews.url} target="_blank" rel="noopener" style="color:inherit;">⭐ {formatRating('en')} · {reviewsLabel('en')}</a>
           <span class="sep">·</span>
           <span>500+ jobs</span>
           <span class="sep">·</span>

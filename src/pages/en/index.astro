@@ -1,4 +1,5 @@
 ---
+import { formatRating, reviewsLabel } from '../../data/google-reviews';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
 import TrustBar from '../../components/TrustBar.astro';
@@ -50,18 +51,13 @@ const jsonLd = {
     { "@type": "Neighborhood", "name": "Komořany" }
   ],
   "priceRange": "from 1450 CZK",
-  "openingHours": ["Mo-Fr 08:00-18:00"],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "500"
-  }
+  "openingHours": ["Mo-Fr 08:00-18:00"]
 };
 ---
 
 <BaseLayout
-  title="Pepe Vejlupek – I'll Just Fix It | Handyman Prague"
-  description="Pepe Vejlupek – handyman in Prague. Whatever breaks, I fix it. Furniture assembly, repairs, painting, plumbing and more. Quick response, fair prices."
+  title="Handyman Prague – English-speaking, repairs & assembly | Pepe"
+  description={`English-speaking handyman in Prague ⭐ ${formatRating('en')} from ${reviewsLabel('en')}. Furniture assembly, repairs, painting, plumbing. From 1,450 CZK incl. travel, reply within 2 hours.`}
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
 

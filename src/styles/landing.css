@@ -1,0 +1,307 @@
+/* Shared styles for service landing pages (montáž nábytku, nábytek na míru + EN mirrors) */
+
+/* Hero */
+.lp-hero {
+  background: linear-gradient(145deg, #ffffff 0%, #f4f7ff 100%);
+  padding: 3rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.lp-hero-inner { max-width: 1100px; margin: 0 auto; }
+.lp-hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.lp-hero-img img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 12px 32px rgba(19, 45, 101, 0.15);
+  display: block;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.83rem;
+  color: var(--text-light);
+}
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+.lp-badge {
+  display: inline-block;
+  background: var(--color-accent-subtle);
+  border: 1px solid var(--color-accent-muted);
+  color: var(--color-accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.9rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.lp-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  font-weight: var(--font-weight-black);
+  line-height: var(--leading-tight);
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.lp-perex {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  line-height: var(--leading-relaxed);
+  max-width: 600px;
+}
+
+.lp-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+.lp-btn-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  padding: 0.85rem 2rem;
+  min-height: 52px;
+}
+
+.lp-note { font-size: 0.82rem; color: var(--text-light); margin-bottom: 1.2rem; }
+
+.lp-trust {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.88rem;
+  color: var(--text-light);
+  font-weight: 600;
+}
+.lp-trust .sep { color: var(--border); }
+
+/* Generic section heading */
+.lp-section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+.lp-section--white { background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.lp-section--bg { background: var(--bg); }
+
+/* Card grid */
+.lp-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.lp-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem 1.4rem;
+  transition: border-color var(--transition-base);
+}
+.lp-card:hover { border-left-color: var(--primary); }
+.lp-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 0.4rem;
+}
+.lp-card p { font-size: 0.88rem; color: var(--text-light); line-height: var(--leading-relaxed); margin: 0; }
+
+/* Two-column text + pricing box */
+.lp-why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.lp-section p { color: var(--text-light); margin-bottom: 0.75rem; font-size: 1rem; line-height: var(--leading-relaxed); }
+.why-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0;
+}
+.why-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.why-list li::before { content: "✓"; color: var(--primary); font-weight: 800; }
+
+.lp-pricing-box {
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem 2rem;
+  position: sticky;
+  top: 2rem;
+}
+.lp-pricing-box h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 1.2rem;
+}
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+.price-row:last-of-type { border-bottom: none; }
+.price-row strong { color: var(--primary); font-weight: 700; white-space: nowrap; }
+.price-note { font-size: 0.82rem !important; color: var(--text-light); margin-top: 0.75rem; }
+.lp-pricing-box .btn { width: 100%; justify-content: center; margin-top: 1rem; }
+
+/* Time estimates table */
+.lp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+}
+.lp-table th, .lp-table td {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.lp-table th { color: var(--color-accent); font-weight: 700; font-size: 0.85rem; }
+.lp-table td:last-child { white-space: nowrap; font-weight: 600; }
+.lp-table-note { font-size: 0.82rem !important; margin-top: 0.5rem; }
+
+/* Steps */
+.lp-steps {
+  list-style: none;
+  counter-reset: step;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  padding: 0;
+}
+.lp-steps li {
+  counter-increment: step;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem 1.4rem;
+}
+.lp-steps li::before {
+  content: counter(step);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+}
+.lp-steps h3 { font-size: 1rem; font-weight: 700; color: var(--color-accent); margin-bottom: 0.3rem; }
+.lp-steps p { font-size: 0.88rem; margin: 0; }
+
+/* Cross-link teaser (image + text) */
+.lp-teaser {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2.5rem;
+  align-items: center;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+.lp-teaser img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.lp-teaser-body { padding: 2rem 2rem 2rem 0; }
+
+/* Reviews */
+.lp-reviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Project gallery */
+.lp-project { margin-bottom: 3.5rem; }
+.lp-project:last-child { margin-bottom: 0; }
+.lp-project h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 0.4rem;
+}
+.lp-gallery {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+.lp-gallery figure { margin: 0; grid-column: span 2; }
+.lp-gallery figure.wide { grid-column: span 4; }
+.lp-gallery figure.half { grid-column: span 3; }
+.lp-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  display: block;
+  aspect-ratio: 3 / 2;
+}
+.lp-gallery figure.tall { position: relative; }
+.lp-gallery figure.tall img { position: absolute; inset: 0; aspect-ratio: auto; }
+.lp-hero-img img.lp-hero-portrait { max-height: 560px; object-fit: cover; object-position: center 30%; }
+.lp-photo-stack .lp-credit { margin-bottom: 1.5rem; }
+.lp-credit { font-size: 0.78rem !important; color: var(--text-light); margin-top: 0.75rem; }
+
+/* FAQ (static details list) */
+.lp-faq { max-width: 760px; }
+.lp-faq details {
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+}
+.lp-faq summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--color-accent);
+  font-size: 1rem;
+}
+.lp-faq details p { margin: 0.6rem 0 0; }
+
+@media (max-width: 860px) {
+  .lp-hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .lp-why-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .lp-pricing-box { position: static; }
+  .lp-teaser { grid-template-columns: 1fr; gap: 0; }
+  .lp-teaser-body { padding: 1.5rem; }
+  .lp-gallery { grid-template-columns: 1fr 1fr; }
+  .lp-gallery figure,
+  .lp-gallery figure.half { grid-column: span 1; }
+  .lp-gallery figure.wide { grid-column: span 2; }
+  .lp-gallery figure.tall img { position: static; aspect-ratio: 3 / 4; }
+}

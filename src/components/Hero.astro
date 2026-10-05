@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { googleReviews, formatRating, reviewsLabel } from '../data/google-reviews';
 import heroPhoto from '../assets/images/hero-vejlupek.png';
 import { getLang, useTranslations } from '../i18n';
 const lang = getLang(Astro.url.pathname);
@@ -21,7 +22,7 @@ const t = useTranslations(lang);
       </div>
       <p class="hero-phone-note">{t('hero.phoneNote')}</p>
       <div class="hero-trust">
-        <div class="hero-trust-item"><span>⭐ 4.9/5</span> {t('hero.rating')}</div>
+        <a class="hero-trust-item hero-trust-link" href={googleReviews.url} target="_blank" rel="noopener"><span>⭐ {formatRating(lang)}</span> {reviewsLabel(lang)}</a>
         <div class="hero-trust-sep">·</div>
         <div class="hero-trust-item"><span>500+</span> {t('hero.jobs')}</div>
         <div class="hero-trust-sep">·</div>
@@ -140,6 +141,8 @@ const t = useTranslations(lang);
   }
   .hero-trust-item span { font-weight: 700; color: var(--color-accent); }
   .hero-trust-sep { color: var(--border); font-size: 1.2rem; }
+  .hero-trust-link { text-decoration: none; }
+  .hero-trust-link:hover { text-decoration: underline; }
 
   /* Right: image */
   .hero-visual { position: relative; }

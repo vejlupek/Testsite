@@ -19,14 +19,12 @@ export const ui = {
     'hero.perex': 'Cokoliv se doma pokazí, já to dám do pořádku. Bez zbytečných řečí, za férovou cenu a přesně v domluvený čas.',
     'hero.btnWrite': '✉️ Napsat zprávu',
     'hero.phoneNote': 'Zvedám telefon osobně · Po–Pá 8–18 · mimo provozní dobu pohotovost',
-    'hero.rating': 'hodnocení',
     'hero.jobs': 'zakázek',
     'hero.responsePrefix': 'do 2 h',
     'hero.response': 'odezva',
     'hero.englishNote': '🇬🇧 English spoken',
     'hero.photoAlt': 'Pepe Vejlupek – hodinový manžel při práci',
     // TrustBar
-    'trust.rating': 'Hodnocení 4.9/5',
     'trust.jobs': '500+ zakázek',
     'trust.response': 'Odezva do 2 hodin',
     'trust.coverage': 'Celá Praha',
@@ -36,6 +34,8 @@ export const ui = {
     'services.subheading': 'Široký záběr prací – jeden člověk, spousta problémů vyřešených',
     'service.furniture.title': 'Montáž nábytku',
     'service.furniture.desc': 'Složení IKEA, Jysk a dalšího nábytku rychle a správně.',
+    'service.custom.title': 'Nábytek na míru',
+    'service.custom.desc': 'Kuchyně, vestavěné skříně a předsíně – výroba i montáž.',
     'service.painting.title': 'Malířské práce',
     'service.painting.desc': 'Malování stěn, lakování, opravy omítek – čistě a precizně.',
     'service.repairs.title': 'Drobné opravy',
@@ -66,15 +66,9 @@ export const ui = {
     'reviews.heading': 'Co říkají zákazníci',
     'reviews.subheading': 'Spokojení zákazníci jsou mou nejlepší vizitkou',
     'reviews.aria': 'Hodnocení 5 z 5 hvězdiček',
-    'review1.text': 'Pepe přišel přesně v domluvený čas, složil nám celý dětský pokoj z IKEA a uklidil po sobě. Naprosto spokojena!',
-    'review1.author': 'Markéta K.',
-    'review1.location': 'Praha 4 – Modřany',
-    'review2.text': 'Vyměnil nám rozbitý kohout, opravil dveře co špatně zavíraly a pověsil police. Vše za jedno odpoledne. Skvělé!',
-    'review2.author': 'Tomáš R.',
-    'review2.location': 'Praha 6 – Dejvice',
-    'review3.text': 'Konečně někdo, kdo přijde, udělá co slíbí a cena odpovídá domluvě. Doporučuji všem! Teď ho používám pravidelně.',
-    'review3.author': 'Jana M.',
-    'review3.location': 'Praha 2 – Vinohrady',
+    'reviews.allOnGoogle': 'Přečíst všechny recenze na Google',
+    'reviews.translatedFromEn': 'Přeloženo z angličtiny',
+    'reviews.translatedFromCs': 'Přeloženo z češtiny',
     // Pricing
     'pricing.heading': 'Ceník',
     'pricing.subheading': 'Žádné skryté poplatky – vždy domluvíme cenu předem',
@@ -152,6 +146,7 @@ export const ui = {
     'form.s8': 'Zásuvky a vypínače',
     'form.s9': 'Zahrada a okolí domu',
     'form.s10': 'Jiné',
+    'form.s11': 'Nábytek na míru',
     // Footer
     'footer.tagline': 'Hodinový manžel pro celou Prahu',
     'footer.services': 'Služby',
@@ -196,14 +191,12 @@ export const ui = {
     'hero.perex': "Whatever breaks at home, I'll take care of it. No fuss, fair price, and always on time.",
     'hero.btnWrite': '✉️ Send a message',
     'hero.phoneNote': 'I answer personally · Mon–Fri 8–18 · on-call outside hours',
-    'hero.rating': 'rating',
     'hero.jobs': 'jobs done',
     'hero.responsePrefix': '2 h',
     'hero.response': 'response',
     'hero.englishNote': '🇬🇧 English spoken',
     'hero.photoAlt': 'Pepe Vejlupek – handyman at work',
     // TrustBar
-    'trust.rating': 'Rating 4.9/5',
     'trust.jobs': '500+ jobs done',
     'trust.response': 'Response within 2 hours',
     'trust.coverage': 'All of Prague',
@@ -213,6 +206,8 @@ export const ui = {
     'services.subheading': 'Wide range of services – one person, many problems solved',
     'service.furniture.title': 'Furniture assembly',
     'service.furniture.desc': 'IKEA, JYSK and other furniture assembled quickly and correctly.',
+    'service.custom.title': 'Custom furniture',
+    'service.custom.desc': 'Kitchens, built-in wardrobes and hallway units – made and installed.',
     'service.painting.title': 'Painting',
     'service.painting.desc': 'Wall painting, varnishing, plaster repairs – clean and precise.',
     'service.repairs.title': 'Minor repairs',
@@ -243,15 +238,9 @@ export const ui = {
     'reviews.heading': 'What clients say',
     'reviews.subheading': 'Happy clients are my best advertisement',
     'reviews.aria': 'Rating 5 out of 5 stars',
-    'review1.text': "Pepe arrived exactly on time, assembled our whole children's bedroom from IKEA and tidied up afterwards. Absolutely delighted!",
-    'review1.author': 'Markéta K.',
-    'review1.location': 'Prague 4 – Modřany',
-    'review2.text': "He replaced our broken tap, fixed doors that wouldn't close properly and hung shelves. All in one afternoon. Excellent!",
-    'review2.author': 'Tomáš R.',
-    'review2.location': 'Prague 6 – Dejvice',
-    'review3.text': "Finally someone who turns up, does what they promised and charges what was agreed. Highly recommended! I use him regularly now.",
-    'review3.author': 'Jana M.',
-    'review3.location': 'Prague 2 – Vinohrady',
+    'reviews.allOnGoogle': 'Read all reviews on Google',
+    'reviews.translatedFromEn': 'Translated from English',
+    'reviews.translatedFromCs': 'Translated from Czech',
     // Pricing
     'pricing.heading': 'Pricing',
     'pricing.subheading': 'No hidden fees – price always agreed upfront',
@@ -329,6 +318,7 @@ export const ui = {
     'form.s8': 'Sockets & switches',
     'form.s9': 'Garden & outdoor',
     'form.s10': 'Other',
+    'form.s11': 'Custom furniture',
     // Footer
     'footer.tagline': 'Handyman for the whole of Prague',
     'footer.services': 'Services',
@@ -384,6 +374,8 @@ export function getAlternateLangUrl(pathname: string): string {
     if (path.startsWith('/blog/')) return '/blog/';
     if (path.startsWith('/terms')) return '/obchodni-podminky/';
     if (path === '/handyman-prague-5') return '/hodinovy-manzel-praha-5/';
+    if (path === '/furniture-assembly-prague') return '/montaz-nabytku-praha/';
+    if (path === '/custom-furniture-prague') return '/nabytek-na-miru-praha/';
     return '/';
   } else {
     if (norm === '/' || norm === '') return '/en/';
@@ -391,6 +383,8 @@ export function getAlternateLangUrl(pathname: string): string {
     if (norm.startsWith('/blog/')) return '/en/blog/';
     if (norm === '/obchodni-podminky') return '/en/terms-and-conditions/';
     if (norm === '/hodinovy-manzel-praha-5') return '/en/handyman-prague-5/';
+    if (norm === '/montaz-nabytku-praha') return '/en/furniture-assembly-prague/';
+    if (norm === '/nabytek-na-miru-praha') return '/en/custom-furniture-prague/';
     return '/en/';
   }
 }

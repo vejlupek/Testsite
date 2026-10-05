@@ -4,8 +4,10 @@ interface Props {
   author: string;
   location: string;
   ariaLabel?: string;
+  /** e.g. "Přeloženo z angličtiny" when shown in a language other than the original */
+  note?: string;
 }
-const { text, author, location, ariaLabel = 'Hodnocení 5 z 5 hvězdiček' } = Astro.props;
+const { text, author, location, ariaLabel = 'Hodnocení 5 z 5 hvězdiček', note } = Astro.props;
 ---
 
 <div class="review-card">
@@ -16,7 +18,8 @@ const { text, author, location, ariaLabel = 'Hodnocení 5 z 5 hvězdiček' } = A
   <p class="review-text">{text}</p>
   <div class="review-footer">
     <div class="review-author">{author}</div>
-    <div class="review-location">{location}</div>
+    <div class="review-location">{location} · Google</div>
+    {note && <div class="review-note">{note}</div>}
   </div>
 </div>
 
@@ -60,4 +63,7 @@ const { text, author, location, ariaLabel = 'Hodnocení 5 z 5 hvězdiček' } = A
   .review-footer { border-top: 1px solid var(--border); padding-top: 0.85rem; }
   .review-author { font-weight: 700; font-size: 0.9rem; color: var(--color-accent); }
   .review-location { font-size: 0.82rem; color: var(--text-light); margin-top: 0.15rem; }
+  .review-note { font-size: 0.75rem; color: var(--text-light); margin-top: 0.3rem; font-style: italic; }
+  .review-card { display: flex; flex-direction: column; }
+  .review-text { flex: 1; }
 </style>

@@ -76,4 +76,4 @@ Při převozu nebo montáži se někdy odloupne laminát na hraně. Řešení: s
 
 ---
 
-*Nechcete si s montáží lámat hlavu? Zavolejte – přijedu, složím a upevním ke stěně. Vše v pořádku, přesně v čas.*
+*Nechcete si s montáží lámat hlavu? Zavolejte – přijedu, složím a upevním ke stěně. Vše v pořádku, přesně v čas. Více o službě a cenách najdete na stránce [Montáž nábytku Praha](/montaz-nabytku-praha/).*

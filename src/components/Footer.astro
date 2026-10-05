@@ -6,6 +6,20 @@ const year = new Date().getFullYear();
 const homeUrl = lang === 'en' ? '/en/' : '/';
 const blogUrl = lang === 'en' ? '/en/blog/' : '/blog/';
 
+const serviceLinks = lang === 'cs' ? {
+  title: 'Služby',
+  links: [
+    { href: '/montaz-nabytku-praha/', label: 'Montáž nábytku Praha' },
+    { href: '/nabytek-na-miru-praha/', label: 'Nábytek na míru Praha' },
+  ],
+} : {
+  title: 'Services',
+  links: [
+    { href: '/en/furniture-assembly-prague/', label: 'Furniture assembly Prague' },
+    { href: '/en/custom-furniture-prague/', label: 'Custom furniture Prague' },
+  ],
+};
+
 const localLinks = lang === 'cs' ? {
   title: 'Hodinový manžel v Praze',
   links: [
@@ -42,12 +56,16 @@ const localLinks = lang === 'cs' ? {
   </div>
   <div class="footer-local">
     <div class="footer-inner footer-inner--wide">
-      <p class="footer-local-title">{localLinks.title}</p>
-      <ul class="footer-local-links">
-        {localLinks.links.map(link => (
-          <li><a href={link.href}>{link.label}</a></li>
-        ))}
-      </ul>
+      {[serviceLinks, localLinks].map(group => (
+        <div class="footer-local-group">
+          <p class="footer-local-title">{group.title}</p>
+          <ul class="footer-local-links">
+            {group.links.map(link => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   </div>
   <div class="footer-bottom">
@@ -113,6 +131,7 @@ const localLinks = lang === 'cs' ? {
     border-top: 1px solid rgba(255,255,255,0.1);
   }
   .footer-inner--wide { max-width: 960px; }
+  .footer-local-group + .footer-local-group { margin-top: 0.75rem; }
   .footer-local-title {
     font-size: 0.72rem;
     font-weight: 700;

@@ -1,0 +1,185 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Contact from '../components/Contact.astro';
+import { furnitureProjects, PHOTO_CREDIT } from '../data/furniture-projects';
+import heroImg from '../assets/images/nabytek/kuchyne-orech-ostruvek.jpg';
+import '../styles/landing.css';
+
+const siteUrl = 'https://www.pepevejlupek.cz';
+const pageUrl = `${siteUrl}/nabytek-na-miru-praha/`;
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Nábytek na míru",
+  "name": "Nábytek na míru Praha – kuchyně, vestavěné skříně, předsíně",
+  "description": "Výroba a montáž nábytku na míru v Praze: kuchyně, vestavěné skříně, předsíně, TV stěny. Zaměření a cenová nabídka 2 990 Kč, při objednávce odečteno.",
+  "url": pageUrl,
+  "areaServed": { "@type": "City", "name": "Praha" },
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Pepe Vejlupek – hodinový manžel Praha",
+    "url": `${siteUrl}/`,
+    "telephone": "+420774399400",
+    "email": "info@pepevejlupek.cz",
+    "address": { "@type": "PostalAddress", "addressLocality": "Praha", "addressCountry": "CZ" }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "2990",
+    "priceCurrency": "CZK",
+    "description": "Zaměření na místě a cenová nabídka. Při objednávce zakázky se částka odečítá."
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Domů", "item": `${siteUrl}/` },
+    { "@type": "ListItem", "position": 2, "name": "Nábytek na míru Praha", "item": pageUrl }
+  ]
+};
+
+const items = [
+  { title: "Kuchyně na míru", desc: "Linky přesně do vašeho prostoru – vysoké skříně až ke stropu, ostrůvky, integrované spotřebiče a LED osvětlení pod skříňkami." },
+  { title: "Vestavěné skříně", desc: "Šatní stěny od podlahy ke stropu, skříně do výklenků a pod šikminy. Žádné mezery, kde se práší." },
+  { title: "Předsíně a šatny", desc: "Botníky, věšákové niky, úložné prostory na kočárky i sportovní vybavení." },
+  { title: "Obývací pokoj a pracovna", desc: "TV stěny, závěsné skříňky, pracovní desky a knihovny navazující na zbytek interiéru." },
+  { title: "Koupelnový nábytek", desc: "Skříňky pod umyvadlo a vysoké skříně do atypických koupelen – nebo montáž hotových kusů z IKEA." },
+];
+
+const faqs = [
+  { q: "Kolik stojí zaměření a cenová nabídka?", a: "Výjezd na zaměření a vypracování nabídky stojí 2 990 Kč. Pokud si zakázku objednáte, celou částku vám odečtu z ceny nábytku." },
+  { q: "Z jakých materiálů vyrábíte?", a: "Podle vašich představ a rozpočtu – lakované nebo fóliované MDF, laminované desky, dýha (např. ořech) nebo březová překližka s viditelnými hranami." },
+  { q: "Můžete vyrobit nábytek podle návrhu architekta?", a: "Ano. Pracuji podle hotového projektu od architekta i podle vaší skici – a když návrh nemáte, vymyslíme ho spolu přímo na místě." },
+  { q: "Jak dlouho výroba trvá?", a: "Záleží na rozsahu a materiálu. Konkrétní termín výroby i montáže vám řeknu v nabídce po zaměření." },
+];
+---
+
+<BaseLayout
+  title="Nábytek na míru Praha – kuchyně, vestavěné skříně | Pepe Vejlupek"
+  description="Kuchyně, vestavěné skříně a předsíně na míru – výroba i montáž v Praze. Zaměření a cenová nabídka 2 990 Kč, při objednávce vám je odečtu. Ukázky realizací."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <main>
+
+    <section class="lp-hero">
+      <div class="lp-hero-inner lp-hero-grid">
+        <div>
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Domů</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">Nábytek na míru Praha</span>
+          </nav>
+          <div class="lp-badge">🪵 Výroba a montáž</div>
+          <h1>Nábytek na míru Praha</h1>
+          <p class="lp-perex">
+            Kuchyně, vestavěné skříně a předsíně vyrobené přesně do vašeho bytu.
+            Přijedu, zaměřím, připravím nabídku – a pak nábytek vyrobím i namontuji. Jeden kontakt od zaměření po předání.
+          </p>
+          <div class="lp-buttons">
+            <a href="tel:+420774399400" class="btn btn-primary lp-btn-call">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              +420 774 399 400
+            </a>
+            <a href="#realizace" class="btn btn-outline">Ukázky realizací ↓</a>
+          </div>
+          <p class="lp-note">Zaměření a nabídka 2 990 Kč – při objednávce odečteno</p>
+        </div>
+        <div class="lp-hero-img">
+          <Image src={heroImg} alt="Kuchyně na míru – bílé skříně až ke stropu, ořechová dvířka a ostrůvek" widths={[500, 800, 1100]} sizes="(max-width: 860px) 100vw, 520px" loading="eager" />
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Co vyrábím na míru</h2>
+          <p>Nábytek, který přesně sedne do prostoru – i tam, kde nábytek z katalogu nepasuje.</p>
+        </div>
+        <div class="lp-cards">
+          {items.map(i => (
+            <div class="lp-card">
+              <h3>{i.title}</h3>
+              <p>{i.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white" id="realizace">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Ukázky realizací</h2>
+        </div>
+        {furnitureProjects.map(p => (
+          <article class="lp-project">
+            <h3>{p.title.cs}</h3>
+            <p>{p.desc.cs}</p>
+            <div class="lp-gallery">
+              {p.photos.map(ph => (
+                <figure class={ph.span}>
+                  <Image src={ph.src} alt={ph.alt.cs} widths={[400, 800, 1200]} sizes="(max-width: 860px) 50vw, 33vw" />
+                </figure>
+              ))}
+            </div>
+          </article>
+        ))}
+        {PHOTO_CREDIT && <p class="lp-credit">Foto: {PHOTO_CREDIT}</p>}
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Jak to probíhá</h2>
+        </div>
+        <ol class="lp-steps">
+          <li><h3>Zaměření na místě</h3><p>Přijedu, změřím prostor, probereme vaše představy, materiály a rozpočet.</p></li>
+          <li><h3>Návrh a nabídka</h3><p>Připravím řešení a přesnou cenovou nabídku včetně termínu.</p></li>
+          <li><h3>Výroba</h3><p>Nábytek vyrobím přesně podle zaměření – žádné kompromisy kvůli standardním rozměrům.</p></li>
+          <li><h3>Montáž a předání</h3><p>Namontuji, seřídím, uklidím. Předávám hotový interiér.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white">
+      <div class="section-inner">
+        <div class="lp-why-grid">
+          <div class="lp-faq">
+            <h2>Časté otázky</h2>
+            {faqs.map(f => (
+              <details>
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </div>
+          <div class="lp-pricing-box">
+            <h3>Zaměření a nabídka</h3>
+            <div class="price-row">
+              <span>Výjezd, zaměření a cenová nabídka</span>
+              <strong>2 990 Kč</strong>
+            </div>
+            <div class="price-row">
+              <span>Při objednávce zakázky</span>
+              <strong>odečteno z ceny</strong>
+            </div>
+            <p class="price-note">Cena nábytku podle materiálu a rozsahu – vždy předem v písemné nabídce. Nejsem plátce DPH.</p>
+            <a href="tel:+420774399400" class="btn btn-primary">Objednat zaměření</a>
+            <p class="price-note">Máte nábytek z IKEA nebo e-shopu? <a href="/montaz-nabytku-praha/">Montáž nábytku →</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+
+  </main>
+</BaseLayout>
