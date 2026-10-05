@@ -13,6 +13,13 @@ const blog = defineCollection({
       translationSlug: z.string().optional(),
       cover: image().optional(),
       coverAlt: z.string().optional(),
+      /** Service-specific CTA replacing the generic one at the end of the article */
+      cta: z.object({
+        title: z.string(),
+        text: z.string(),
+        href: z.string(),
+        btn: z.string(),
+      }).optional(),
     }),
 });
 

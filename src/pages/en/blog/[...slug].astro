@@ -112,10 +112,10 @@ const breadcrumbSchema = {
       <footer class="article-footer">
         <div class="cta-box">
           <div class="cta-text">
-            <strong>{t('blog.ctaTitle')}</strong>
-            <span>{t('blog.ctaText')}</span>
+            <strong>{post.data.cta?.title ?? t('blog.ctaTitle')}</strong>
+            <span>{post.data.cta?.text ?? t('blog.ctaText')}</span>
           </div>
-          <a href={t('blog.ctaHref')} class="btn btn-primary">{t('blog.ctaBtn')}</a>
+          <a href={post.data.cta?.href ?? t('blog.ctaHref')} class="btn btn-primary">{post.data.cta?.btn ?? t('blog.ctaBtn')}</a>
         </div>
       </footer>
     </div>
