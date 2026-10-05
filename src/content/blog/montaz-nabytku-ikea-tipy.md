@@ -17,7 +17,7 @@ cta:
 
 Složil jsem stovky kusů nábytku IKEA, JYSK a dalších značek – a pořád vidím stejné chyby. V tomhle článku vám poradím, jak montáž zvládnout správně, rychle a bez zbytečné frustrace. A taky upřímně řeknu, kdy se vyplatí to nechat na mně.
 
-> **Nechcete skládat sami?** Přijedu s nářadím, smontuji, vyrovnám a ukotvím ke zdi. V Praze od 1 450 Kč včetně dopravy a první hodiny práce. → [Montáž nábytku Praha](/montaz-nabytku-praha/) · [+420 774 399 400](tel:+420774399400)
+> **Nechcete skládat sami?** Přijedu s nářadím, smontuji, vyrovnám a ukotvím ke zdi. V Praze od 1 450 Kč včetně dopravy a první hodiny práce. → [Hodinový manžel na montáž nábytku](/montaz-nabytku-praha/) · [+420 774 399 400](tel:+420774399400)
 
 ## Před montáží: příprava, která ušetří hodiny
 
@@ -98,7 +98,7 @@ U mě platíte za skutečně odpracovaný čas – minimální zakázka je **1 4
 | Šatní sestava PAX 2–3 m | 3–5 h |
 | Celý dětský pokoj | půl dne |
 
-**→ Co všechno smontuji, jak montáž probíhá a odpovědi na časté otázky najdete na stránce [Montáž nábytku Praha](/montaz-nabytku-praha/).**
+**→ Co všechno smontuji, jak montáž probíhá a odpovědi na časté otázky najdete na stránce [hodinový manžel na montáž nábytku v Praze](/montaz-nabytku-praha/).**
 
 ## Kdy montáž svěřit hodinovému manželovi
 

@@ -19,7 +19,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "serviceType": "Montáž nábytku",
-  "name": "Montáž nábytku Praha",
+  "name": "Hodinový manžel na montáž nábytku v Praze",
   "description": "Montáž nábytku IKEA, JYSK, XXXLutz a dalších značek v Praze a okolí. Skříně PAX, postele, komody, kuchyně, kotvení ke zdi.",
   "url": pageUrl,
   "areaServed": { "@type": "City", "name": "Praha" },
@@ -70,7 +70,7 @@ const times = [
 ];
 
 const faqs = [
-  { q: "Kolik stojí montáž nábytku?", a: "Minimální zakázka je 1 450 Kč a zahrnuje první hodinu práce i dopravu po Praze. Každá další hodina stojí 490 Kč. Když mi předem pošlete seznam kusů (stačí odkazy z e-shopu), řeknu vám odhad času i ceny." },
+  { q: "Kolik stojí hodinový manžel na montáž nábytku?", a: "Minimální zakázka je 1 450 Kč a zahrnuje první hodinu práce i dopravu po Praze. Každá další hodina stojí 490 Kč. Když mi předem pošlete seznam kusů (stačí odkazy z e-shopu), řeknu vám odhad času i ceny." },
   { q: "Musím mít doma nářadí?", a: "Ne. Vozím s sebou kompletní vybavení – aku šroubováky, vrtačku, vodováhu, hmoždinky i kotvicí materiál." },
   { q: "Přikotvíte nábytek ke zdi?", a: "Ano, vždy. Vysoké skříně a komody bez ukotvení jsou riziko, hlavně pokud máte děti. Podle typu zdi (cihla, panel, sádrokarton) zvolím správné kotvení." },
   { q: "Složíte i nábytek, který nevyrábí IKEA?", a: "Samozřejmě – JYSK, XXXLutz, Möbelix, Sconto, nábytek z internetu i starší kusy, které je potřeba rozebrat a znovu složit po stěhování." },
@@ -85,8 +85,9 @@ const faqs = [
 ---
 
 <BaseLayout
-  title="Montáž nábytku Praha – IKEA, JYSK, kuchyně | Pepe Vejlupek"
-  description="Hodinový manžel na montáž nábytku v Praze. Složím skříně PAX, postele, komody i kuchyně a ukotvím je ke zdi. 1 450 Kč vč. 1. hodiny a dopravy, pak 490 Kč/h."
+  ogImage="/og/montaz-nabytku.jpg"
+  title="Hodinový manžel – montáž nábytku Praha | IKEA, JYSK | Pepe Vejlupek"
+  description={`Hodinový manžel na montáž nábytku v Praze ⭐ ${formatRating('cs')} na Google. Složím skříně PAX, postele, komody i kuchyně a ukotvím je ke zdi. Od 1 450 Kč vč. dopravy.`}
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -101,8 +102,8 @@ const faqs = [
             <span aria-hidden="true">›</span>
             <span aria-current="page">Montáž nábytku Praha</span>
           </nav>
-          <div class="lp-badge">🛋️ Hodinový manžel – montáž nábytku</div>
-          <h1>Montáž nábytku Praha</h1>
+          <div class="lp-badge">🛋️ Montáž nábytku Praha</div>
+          <h1>Hodinový manžel na montáž nábytku</h1>
           <p class="lp-perex">
             Koupili jste nábytek z IKEA, JYSKu nebo e-shopu a nechcete strávit víkend nad návodem?
             Přijedu s nářadím, složím, vyrovnám a ukotvím ke zdi. Vy si jen užíváte hotový pokoj.
@@ -134,7 +135,7 @@ const faqs = [
     <section class="lp-section lp-section--bg">
       <div class="section-inner">
         <div class="section-header">
-          <h2>Jaký nábytek smontuji</h2>
+          <h2>Jaký nábytek jako hodinový manžel smontuji</h2>
           <p>IKEA, JYSK, XXXLutz, Möbelix, Sconto, Bonami i nábytek z dalších e-shopů.</p>
         </div>
         <div class="lp-cards">

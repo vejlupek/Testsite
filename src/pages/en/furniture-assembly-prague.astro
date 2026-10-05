@@ -19,7 +19,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "serviceType": "Furniture assembly",
-  "name": "Furniture Assembly Prague",
+  "name": "Handyman for Furniture Assembly in Prague",
   "description": "IKEA, JYSK, XXXLutz and other flat-pack furniture assembled in Prague. PAX wardrobes, beds, dressers, kitchens, wall anchoring. English-speaking handyman.",
   "url": pageUrl,
   "areaServed": { "@type": "City", "name": "Prague" },
@@ -70,7 +70,7 @@ const times = [
 ];
 
 const faqs = [
-  { q: "How much does furniture assembly cost?", a: "The minimum order is 1,450 CZK and includes the first hour of work and travel within Prague. Each additional hour is 490 CZK. Send me a list of items in advance (shop links are enough) and I'll give you an estimate of time and price." },
+  { q: "How much does a handyman charge for furniture assembly?", a: "The minimum order is 1,450 CZK and includes the first hour of work and travel within Prague. Each additional hour is 490 CZK. Send me a list of items in advance (shop links are enough) and I'll give you an estimate of time and price." },
   { q: "Do I need to have tools at home?", a: "No. I bring a full kit – cordless drivers, drill, spirit level, wall plugs and anchoring hardware." },
   { q: "Will you anchor the furniture to the wall?", a: "Yes, always. Tall wardrobes and dressers without anchoring are a risk, especially with children. I choose the right fixing for your wall type (brick, concrete panel, drywall)." },
   { q: "Do you assemble furniture that isn't from IKEA?", a: "Of course – JYSK, XXXLutz, Möbelix, Sconto, online-shop furniture, and older pieces that need taking apart and reassembling after a move." },
@@ -85,8 +85,9 @@ const faqs = [
 ---
 
 <BaseLayout
-  title="Furniture Assembly Prague – IKEA, JYSK, kitchens | Pepe Vejlupek"
-  description="English-speaking handyman for furniture assembly in Prague. PAX wardrobes, beds, dressers and kitchens, anchored to the wall. 1,450 CZK incl. first hour and travel, then 490 CZK/h."
+  ogImage="/og/montaz-nabytku.jpg"
+  title="Handyman – Furniture Assembly Prague | IKEA, JYSK | Pepe Vejlupek"
+  description={`English-speaking handyman for furniture assembly in Prague ⭐ ${formatRating('en')} on Google. PAX wardrobes, beds, dressers and kitchens, anchored to the wall. From 1,450 CZK incl. travel.`}
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -101,8 +102,8 @@ const faqs = [
             <span aria-hidden="true">›</span>
             <span aria-current="page">Furniture Assembly Prague</span>
           </nav>
-          <div class="lp-badge">🛋️ Handyman – furniture assembly</div>
-          <h1>Furniture Assembly Prague</h1>
+          <div class="lp-badge">🛋️ Furniture assembly Prague</div>
+          <h1>Handyman for Furniture Assembly</h1>
           <p class="lp-perex">
             Bought furniture from IKEA, JYSK or an online shop and don't want to spend the weekend with the manual?
             I'll come with my tools, assemble, level and anchor it to the wall. You just enjoy the finished room.
@@ -134,7 +135,7 @@ const faqs = [
     <section class="lp-section lp-section--bg">
       <div class="section-inner">
         <div class="section-header">
-          <h2>What I assemble</h2>
+          <h2>What I assemble as your handyman</h2>
           <p>IKEA, JYSK, XXXLutz, Möbelix, Sconto, Bonami and furniture from other online shops.</p>
         </div>
         <div class="lp-cards">

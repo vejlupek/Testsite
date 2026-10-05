@@ -17,7 +17,7 @@ cta:
 
 I've assembled hundreds of pieces of IKEA, JYSK and other flat-pack furniture – and I keep seeing the same mistakes. In this article I'll show you how to get assembly right, fast and without unnecessary frustration. And I'll be honest about when it's worth leaving it to me.
 
-> **Rather not do it yourself?** I'll come with my tools, assemble, level and anchor everything to the wall. In Prague from 1,450 CZK including travel and the first hour of work – and I speak English. → [Furniture Assembly Prague](/en/furniture-assembly-prague/) · [+420 774 399 400](tel:+420774399400)
+> **Rather not do it yourself?** I'll come with my tools, assemble, level and anchor everything to the wall. In Prague from 1,450 CZK including travel and the first hour of work – and I speak English. → [Handyman for furniture assembly](/en/furniture-assembly-prague/) · [+420 774 399 400](tel:+420774399400)
 
 ## Before you start: preparation that saves hours
 
@@ -98,7 +98,7 @@ With me you pay for the time actually worked – the minimum order is **1,450 CZ
 | PAX combination 2–3 m | 3–5 h |
 | Whole kids' room | half a day |
 
-**→ What I assemble, how it works and answers to common questions: [Furniture Assembly Prague](/en/furniture-assembly-prague/).**
+**→ What I assemble, how it works and answers to common questions: [handyman for furniture assembly in Prague](/en/furniture-assembly-prague/).**
 
 ## When to leave assembly to a handyman
 
