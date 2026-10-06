@@ -8,9 +8,16 @@ lang: cs
 translationSlug: "how-to-properly-paint-walls"
 cover: ../../assets/images/blog-painting-new.jpg
 coverAlt: "Malování stěny válečkem – správná technika a postup"
+cta:
+  title: "Nechcete malovat sami?"
+  text: "Zakryju, opravím, vymaluji a uklidím. Pokoj nebo celý byt v Praze za pevnou cenu předem."
+  href: "/malovani-praha/"
+  btn: "Poptat malování"
 ---
 
 Malování je jedna z nejčastějších prací, se kterou se na mě zákazníci obrací. A přitom si mnoho lidí říká: „To přece zvládnu sám." Zvládnout to jde – ale výsledek závisí hlavně na přípravě, ne na samotném malování.
+
+> **Nechcete malovat sami?** Vymaluji pokoj i celý byt – včetně zakrytí, oprav a úklidu, za pevnou cenu předem. → [Malování Praha](/malovani-praha/) · [+420 774 399 400](tel:+420774399400)
 
 ## Proč příprava rozhoduje
 
@@ -78,15 +85,15 @@ Malířská páska musí být dolepená pevně – jinak barva podteče. Po doko
 
 ## Kdy zavolat odborníka
 
-Malování je fyzicky náročné – strop, žebřík, velké plochy. Zavolte mě, pokud:
+Malování je fyzicky náročné – strop, žebřík, velké plochy. Zavolejte mi, pokud:
 
 - Máte velkou plochu nebo vysoký strop
 - Nevíte si rady s opravou povrchu
 - Chcete jistotu, že výsledek bude profesionální
 - Prostě na to nemáte čas
 
-Malování celého bytu 3+1 zvládám obvykle za 1–2 dny, povrch připravuji vždy pečlivě.
+Malování celého bytu 3+1 zvládám obvykle za 1–2 dny, povrch připravuji vždy pečlivě. **→ Ceník a průběh najdete na stránce [malování Praha – vymalování bytu a pokoje](/malovani-praha/).**
 
 ---
 
-*Potřebujete pomalovat byt nebo jednu místnost? Zavolejte nebo napište – rád přijedu s nabídkou.*
+*Potřebujete vymalovat byt nebo jednu místnost? Pošlete fotky na [+420 774 399 400](tel:+420774399400) a řeknu vám cenu předem. Podrobnosti na stránce [Malování Praha](/malovani-praha/).*

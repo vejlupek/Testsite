@@ -8,9 +8,16 @@ lang: cs
 translationSlug: "preparation-before-painting"
 cover: ../../assets/images/blog-wall-prep.jpg
 coverAlt: "Příprava stěny před malováním – tmelení a broušení"
+cta:
+  title: "Nechcete malovat sami?"
+  text: "Zakryju, opravím, vymaluji a uklidím. Pokoj nebo celý byt v Praze za pevnou cenu předem."
+  href: "/malovani-praha/"
+  btn: "Poptat malování"
 ---
 
 Spousta lidí si myslí, že malování je jen o válečku a barvě. Opak je pravdou – příprava stěny rozhoduje o tom, jak bude výsledek vypadat za rok, za pět let. Tady je postup, který sám dodržuji u každé zakázky.
+
+> **Nechcete malovat sami?** Vymaluji pokoj i celý byt – včetně zakrytí, oprav a úklidu, za pevnou cenu předem. → [Malování Praha](/malovani-praha/) · [+420 774 399 400](tel:+420774399400)
 
 ## 1. Odkryjte a ochraňte
 
@@ -47,4 +54,4 @@ Druhá vrstva barvy je zpravidla nutnost – naneste ji po úplném zaschnutí p
 
 ---
 
-*Nechcete se s tím párat sami? Malování nechte na mě – přijdu, připravím a odvedu čistou práci. Napište mi nebo zavolejte.*
+*Nechcete se s tím párat sami? Malování nechte na mě – přijdu, připravím a odvedu čistou práci. Ceník a průběh najdete na stránce [malování Praha](/malovani-praha/).*

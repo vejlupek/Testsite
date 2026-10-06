@@ -8,9 +8,16 @@ lang: en
 translationSlug: "jak-spravne-malovat-steny"
 cover: ../../assets/images/blog-painting-new.jpg
 coverAlt: "Painting a wall with a roller – correct technique and process"
+cta:
+  title: "Rather not paint yourself?"
+  text: "I'll cover, repair, paint and clean up. A room or a whole flat in Prague at a fixed price upfront."
+  href: "/en/painting-prague/"
+  btn: "Get a painting quote"
 ---
 
 Painting is one of the most common jobs my clients ask me about. And many people think: "I can handle that myself." You can – but the result depends mostly on preparation, not on the painting itself.
+
+> **Rather not paint yourself?** I paint single rooms and whole flats – covering, repairs and clean-up included, at a fixed price upfront. English spoken. → [Painting Prague](/en/painting-prague/) · [+420 774 399 400](tel:+420774399400)
 
 ## Why Preparation Is Everything
 
@@ -85,8 +92,8 @@ Painting is physically demanding – ceilings, ladders, large areas. Call me if:
 - You want the confidence of a professional finish
 - You simply don't have the time
 
-Painting an entire 3-bedroom flat typically takes me 1–2 days, and I always prepare the surface carefully.
+Painting an entire 3-bedroom flat typically takes me 1–2 days, and I always prepare the surface carefully. **→ Pricing and how it works: [painting Prague – rooms and apartments](/en/painting-prague/).**
 
 ---
 
-*Need to repaint your flat or a single room? Call or message me – I'll come round with a quote.*
+*Need to repaint your flat or a single room? Send photos to [+420 774 399 400](tel:+420774399400) and I'll give you a price upfront. Details on the [Painting Prague](/en/painting-prague/) page.*

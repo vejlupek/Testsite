@@ -8,9 +8,16 @@ lang: en
 translationSlug: "priprava-pred-malovani"
 cover: ../../assets/images/blog-wall-prep.jpg
 coverAlt: "Wall preparation before painting – filling and sanding"
+cta:
+  title: "Rather not paint yourself?"
+  text: "I'll cover, repair, paint and clean up. A room or a whole flat in Prague at a fixed price upfront."
+  href: "/en/painting-prague/"
+  btn: "Get a painting quote"
 ---
 
 Many people think painting is just about the roller and the paint. The opposite is true – wall preparation determines how the result will look in a year, in five years. Here is the process I follow on every single job.
+
+> **Rather not paint yourself?** I paint single rooms and whole flats – covering, repairs and clean-up included, at a fixed price upfront. English spoken. → [Painting Prague](/en/painting-prague/) · [+420 774 399 400](tel:+420774399400)
 
 ## 1. Clear and Protect
 
@@ -47,4 +54,4 @@ A second coat is generally necessary – apply it only after the first coat has 
 
 ---
 
-*Don't want to deal with it yourself? Leave the painting to me – I'll come, prepare and do a clean, professional job. Message or call me.*
+*Don't want to deal with it yourself? Leave the painting to me – I'll come, prepare and do a clean, professional job. Pricing and details on the [Painting Prague](/en/painting-prague/) page.*

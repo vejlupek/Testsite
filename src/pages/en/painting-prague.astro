@@ -1,0 +1,217 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Contact from '../../components/Contact.astro';
+import ReviewCard from '../../components/ReviewCard.astro';
+import { pickReviews } from '../../data/reviews';
+import { googleReviews, formatRating, reviewsLabel } from '../../data/google-reviews';
+import { SITE_URL, businessEntity, faqSchema } from '../../data/business';
+import heroImg from '../../assets/images/josef-vejlupek-photo.png';
+import '../../styles/landing.css';
+
+const pageUrl = `${SITE_URL}/en/painting-prague/`;
+
+const items = [
+  { title: "Room & apartment painting", desc: "White or coloured walls and ceilings – from a single room to a whole flat. Two coats, even, no streaks." },
+  { title: "Before moving in or handing over a flat", desc: "Quick repaint between tenants or before a move, so the flat is ready on time." },
+  { title: "Plaster & crack repairs", desc: "Filling holes from wall plugs, cracks and chipped corners. Sanding and primer so the new paint holds." },
+  { title: "Stains & kids' drawings", desc: "Crayon drawings, greasy marks or water stains – the right base or stain-blocking paint so nothing shows through." },
+  { title: "Coloured walls & sharp lines", desc: "Accent walls, two colours in one room, clean lines at the ceiling and around door frames." },
+  { title: "Preparation & clean-up", desc: "Floors and furniture covered, skirting and switches taped, clean-up afterwards. You come back to a finished room." },
+];
+
+const factors = [
+  "Wall and ceiling area and ceiling height",
+  "Condition of the walls – how much repair and primer is needed",
+  "White or coloured paint (colours often need an extra coat)",
+  "How much furniture is in the room and whether it needs moving",
+];
+
+const faqs = [
+  { q: "How much does it cost to paint a room or flat?", a: "For a whole room or flat I'll give you a fixed price upfront – just send photos of the rooms and rough dimensions, or I can come and take a look. Small painting jobs (one wall, filling plug holes) are charged by the hour: minimum order 1,450 CZK including travel and the first hour, then 490 CZK per hour." },
+  { q: "Do I need to move the furniture out?", a: "No. I move furniture to the middle of the room and cover it with plastic sheeting, and cover and tape the floors. Just clear small items off shelves and take pictures off the walls beforehand." },
+  { q: "Who buys the paint?", a: "Whatever suits you. I can source the paint – help you choose and charge it at cost. If you have a specific shade in mind, let me know or buy it yourself." },
+  { q: "Do you clean up after painting?", a: "Yes, clean-up is part of the job. I remove sheeting and tape, clear up and leave the room ready to use straight away." },
+  { q: "How long does it take and when can I use the room?", a: "A typical room usually takes a single day, a whole 3-bedroom flat typically 1–2 days – you'll get an exact estimate with the price. Modern interior paints dry quickly and don't smell, so you can usually use the room the same evening." },
+  { q: "Do you speak English?", a: "Yes – you can call, text or email me in English. Sending photos of the rooms is the fastest way to get a price." },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Interior painting",
+  "name": "Painting Prague – room and apartment painting",
+  "description": "Interior painting in Prague by an English-speaking handyman: rooms and flats, plaster and crack repairs, stain blocking, accent walls. Preparation, covering and clean-up included.",
+  "url": pageUrl,
+  "areaServed": { "@type": "City", "name": "Prague" },
+  "provider": businessEntity('en'),
+  "offers": {
+    "@type": "Offer",
+    "price": "1450",
+    "priceCurrency": "CZK",
+    "description": "Small jobs hourly (1,450 CZK incl. travel and first hour, then 490 CZK/h). Rooms and flats at a fixed price agreed upfront."
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/en/` },
+    { "@type": "ListItem", "position": 2, "name": "Painting Prague", "item": pageUrl }
+  ]
+};
+
+const pageReviews = pickReviews(['patrik', 'zb', 'karel']);
+---
+
+<BaseLayout
+  ogImage="/og/painting-prague.jpg"
+  title="Painting Prague – room & apartment painting | Painter Pepe Vejlupek"
+  description={`English-speaking painter in Prague for rooms and whole flats ⭐ ${formatRating('en')} on Google. Plaster repairs, stain blocking, furniture covered and clean-up included. Fixed price upfront.`}
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema(faqs))} />
+
+  <main>
+
+    <section class="lp-hero">
+      <div class="lp-hero-inner lp-hero-grid">
+        <div>
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/en/">Home</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">Painting Prague</span>
+          </nav>
+          <div class="lp-badge">🎨 Handyman – painting</div>
+          <h1>Painting Prague – rooms and apartments</h1>
+          <p class="lp-perex">
+            Need a room or a whole flat repainted, or just the kids' drawings covered up? I cover furniture and floors,
+            fix holes and cracks, paint and clean up. For a whole room or flat you know the price upfront.
+          </p>
+          <div class="lp-buttons">
+            <a href="tel:+420774399400" class="btn btn-primary lp-btn-call">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              +420 774 399 400
+            </a>
+            <a href="#kontakt" class="btn btn-outline">✉️ Send photos of the rooms</a>
+          </div>
+          <p class="lp-note">I answer the phone personally · Mon–Fri 8–18 · price based on your photos</p>
+          <div class="lp-trust">
+            <a href={googleReviews.url} target="_blank" rel="noopener" style="color:inherit;">⭐ {formatRating('en')} · {reviewsLabel('en')}</a>
+            <span class="sep">·</span>
+            <span>English spoken</span>
+            <span class="sep">·</span>
+            <span>All of Prague</span>
+          </div>
+        </div>
+        <div class="lp-hero-img">
+          <Image src={heroImg} alt="Pepe Vejlupek – handyman and painter in Prague" widths={[400, 700, 1000]} sizes="(max-width: 860px) 100vw, 500px" loading="eager" class="lp-hero-portrait" style="object-position:center 25%;" />
+        </div>
+      </div>
+    </section>
+
+    <TrustBar />
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>What the job includes</h2>
+          <p>Interior painting from preparation to clean-up – rooms, kitchens, hallways and whole flats.</p>
+        </div>
+        <div class="lp-cards">
+          {items.map(i => (
+            <div class="lp-card">
+              <h3>{i.title}</h3>
+              <p>{i.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white">
+      <div class="section-inner">
+        <div class="lp-why-grid">
+          <div>
+            <h2>How much does painting a room or flat cost</h2>
+            <p>For a whole room or flat you get a <strong>fixed price upfront</strong> – no surprises at the end. Just send photos of the rooms and rough dimensions, or I'll come and take a look. The price mainly depends on:</p>
+            <ul class="why-list">
+              {factors.map(f => <li>{f}</li>)}
+            </ul>
+            <p style="margin-top:1.25rem;">Small painting jobs – one wall, filling plug holes, covering a stain – are charged by the hour as shown on the right.</p>
+          </div>
+          <div class="lp-pricing-box">
+            <h3>Pricing</h3>
+            <div class="price-row">
+              <span>Room or whole flat</span>
+              <strong>fixed price upfront</strong>
+            </div>
+            <div class="price-row">
+              <span>Small jobs (1st hour + travel)</span>
+              <strong>1,450 CZK</strong>
+            </div>
+            <div class="price-row">
+              <span>Each additional hour</span>
+              <strong>490 CZK</strong>
+            </div>
+            <div class="price-row">
+              <span>Paint & materials</span>
+              <strong>at cost</strong>
+            </div>
+            <p class="price-note">Not VAT registered.</p>
+            <a href="#kontakt" class="btn btn-primary">Send photos for a price</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>How it works</h2>
+        </div>
+        <ol class="lp-steps">
+          <li><h3>Photos or a visit</h3><p>Send photos of the rooms and dimensions, or I'll come and see. We agree on colour and date.</p></li>
+          <li><h3>Fixed price</h3><p>You get the price and duration upfront – no extra charges later.</p></li>
+          <li><h3>Preparation</h3><p>Floors and furniture covered, skirting and switches taped, holes and cracks filled, primer applied.</p></li>
+          <li><h3>Painting & clean-up</h3><p>Two coats, then sheeting and tape removed and everything cleaned up.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>What clients say about the painting</h2>
+        </div>
+        <div class="lp-reviews" style="max-width:1100px;">
+          {pageReviews.map(r => (
+            <ReviewCard text={r.text.en} author={r.author} location={r.service.en} ariaLabel="Rating 5 out of 5 stars" note={r.original !== 'en' ? 'Translated from Czech' : undefined} />
+          ))}
+        </div>
+        <p style="text-align:center;margin-top:1.5rem;"><a href={googleReviews.url} target="_blank" rel="noopener">Read all reviews on Google →</a></p>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="lp-faq" style="max-width:760px;margin:0 auto;">
+          <h2>Painting FAQ</h2>
+          {faqs.map(f => (
+            <details>
+              <summary>{f.q}</summary>
+              <p set:html={f.a} />
+            </details>
+          ))}
+          <p style="margin-top:1.25rem;">Want to paint yourself? Read my guides <a href="/en/blog/how-to-properly-paint-walls/">how to paint walls properly</a> and <a href="/en/blog/preparation-before-painting/">wall preparation before painting</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+
+  </main>
+</BaseLayout>
