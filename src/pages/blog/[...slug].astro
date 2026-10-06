@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
+import { BUSINESS_ID } from '../../data/business';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { useTranslations } from '../../i18n';
 const t = useTranslations('cs');
@@ -21,7 +22,7 @@ function formatDate(date: Date) {
 }
 
 const siteUrl = 'https://www.pepevejlupek.cz';
-const postUrl = `${siteUrl}/blog/${post.slug}`;
+const postUrl = `${siteUrl}/blog/${post.slug}/`;
 const alternateUrl = post.data.translationSlug
   ? `/en/blog/${post.data.translationSlug}/`
   : undefined;
@@ -32,6 +33,7 @@ const articleSchema = {
   "headline": post.data.title,
   "description": post.data.description,
   "datePublished": post.data.pubDate.toISOString(),
+  "inLanguage": "cs",
   "url": postUrl,
   "author": {
     "@type": "Person",
@@ -40,17 +42,22 @@ const articleSchema = {
   },
   "publisher": {
     "@type": "LocalBusiness",
+    "@id": BUSINESS_ID,
     "name": "Pepe Vejlupek – hodinový manžel Praha",
     "url": siteUrl,
   },
 };
 
+const ogImage = post.data.cover
+  ? (await getImage({ src: post.data.cover, width: 1200, height: 630, fit: 'cover', format: 'jpg' })).src
+  : undefined;
+
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Domů", "item": siteUrl },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteUrl}/blog` },
+    { "@type": "ListItem", "position": 1, "name": "Domů", "item": `${siteUrl}/` },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteUrl}/blog/` },
     { "@type": "ListItem", "position": 3, "name": post.data.title, "item": postUrl },
   ],
 };
@@ -60,8 +67,9 @@ const breadcrumbSchema = {
   title={`${post.data.title} | Blog – Pepe Vejlupek`}
   description={post.data.description}
   alternateUrl={alternateUrl}
+  ogImage={ogImage}
 >
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(ogImage ? { ...articleSchema, image: `${siteUrl}${ogImage}` } : articleSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
   <main>
     {post.data.cover && (
@@ -85,7 +93,7 @@ const breadcrumbSchema = {
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Domů</a>
         <span aria-hidden="true">›</span>
-        <a href="/blog">Blog</a>
+        <a href="/blog/">Blog</a>
         <span aria-hidden="true">›</span>
         <span aria-current="page">{post.data.title}</span>
       </nav>

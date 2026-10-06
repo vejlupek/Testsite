@@ -1,4 +1,5 @@
 ---
+import { businessEntity } from '../data/business';
 import { formatRating, reviewsLabel } from '../data/google-reviews';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
@@ -12,17 +13,8 @@ import Contact from '../components/Contact.astro';
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Pepe Vejlupek – hodinový manžel Praha",
+  ...businessEntity('cs'),
   "description": "Hodinový manžel pro celou Prahu. Montáž nábytku, opravy, malování, instalatérské práce.",
-  "url": "https://www.pepevejlupek.cz",
-  "telephone": "+420774399400",
-  "email": "info@pepevejlupek.cz",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Praha",
-    "addressCountry": "CZ"
-  },
   "areaServed": [
     { "@type": "City", "name": "Praha" },
     { "@type": "AdministrativeArea", "name": "Praha 1" },
@@ -49,9 +41,7 @@ const jsonLd = {
     { "@type": "Neighborhood", "name": "Strašnice" },
     { "@type": "Neighborhood", "name": "Modřany" },
     { "@type": "Neighborhood", "name": "Komořany" }
-  ],
-  "priceRange": "od 1450 Kč",
-  "openingHours": ["Mo-Fr 08:00-18:00"]
+  ]
 };
 ---
 

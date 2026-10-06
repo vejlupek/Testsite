@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Contact from '../components/Contact.astro';
 import { furnitureProjects, PHOTO_CREDIT } from '../data/furniture-projects';
 import heroImg from '../assets/images/nabytek/kuchyne-orech-ostruvek.jpg';
+import { businessEntity, faqSchema } from '../data/business';
 import '../styles/landing.css';
 
 const siteUrl = 'https://www.pepevejlupek.cz';
@@ -17,14 +18,7 @@ const serviceSchema = {
   "description": "Výroba a montáž nábytku na míru v Praze: kuchyně, vestavěné skříně, předsíně, TV stěny. Zaměření a cenová nabídka 2 990 Kč, při objednávce odečteno.",
   "url": pageUrl,
   "areaServed": { "@type": "City", "name": "Praha" },
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": "Pepe Vejlupek – hodinový manžel Praha",
-    "url": `${siteUrl}/`,
-    "telephone": "+420774399400",
-    "email": "info@pepevejlupek.cz",
-    "address": { "@type": "PostalAddress", "addressLocality": "Praha", "addressCountry": "CZ" }
-  },
+  "provider": businessEntity('cs'),
   "offers": {
     "@type": "Offer",
     "price": "2990",
@@ -65,6 +59,7 @@ const faqs = [
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema(faqs))} />
 
   <main>
 

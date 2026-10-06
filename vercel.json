@@ -49,5 +49,27 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/blog/vymena-vodovodn%C3%AD-baterie",
+      "destination": "/blog/vymena-vodovodni-baterie/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vymena-vodovodn%C3%AD-baterie/",
+      "destination": "/blog/vymena-vodovodni-baterie/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vymena-vodovodní-baterie",
+      "destination": "/blog/vymena-vodovodni-baterie/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vymena-vodovodní-baterie/",
+      "destination": "/blog/vymena-vodovodni-baterie/",
+      "permanent": true
+    }
   ]
 }

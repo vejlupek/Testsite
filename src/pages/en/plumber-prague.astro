@@ -1,0 +1,237 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Contact from '../../components/Contact.astro';
+import ReviewCard from '../../components/ReviewCard.astro';
+import { pickReviews } from '../../data/reviews';
+import { googleReviews, formatRating, reviewsLabel } from '../../data/google-reviews';
+import { SITE_URL, businessEntity, faqSchema } from '../../data/business';
+import heroImg from '../../assets/images/instalater/vymena-termostaticke-kartuse.jpg';
+import sinkImg from '../../assets/images/nabytek/drez-detail.jpg';
+import bathroomImg from '../../assets/images/nabytek/koupelna-ikea-skrinka.jpg';
+import '../../styles/landing.css';
+
+const pageUrl = `${SITE_URL}/en/plumber-prague/`;
+
+const items = [
+  { title: "Tap & mixer replacement", desc: "Basin, kitchen sink, bath and shower mixers – deck-mounted or wall-mounted, single-lever or thermostatic. Old one out, new one in, checked for leaks." },
+  { title: "Dripping tap repair", desc: "Often you don't need a whole new tap – a new cartridge, washer or aerator does the job. I'll tell you on the spot what makes sense." },
+  { title: "Thermostatic mixers", desc: "Thermostatic cartridge replacement when the shower won't hold its temperature or drips. Temperature calibration and filter cleaning." },
+  { title: "Toilets & flushing", desc: "Running cistern, fill and flush valve replacement, flush buttons, toilet seats." },
+  { title: "Traps & slow drains", desc: "Replacing or cleaning traps under basins, sinks and baths. A slow drain can usually be fixed without any demolition." },
+  { title: "Isolation valves & hoses", desc: "Replacing seized or dripping isolation valves and flexible hoses – cheap prevention against flooding the neighbours." },
+  { title: "Washing machine & dishwasher", desc: "Connecting water supply and drain for a washing machine or dishwasher, hose replacement." },
+  { title: "Basins & bathroom furniture", desc: "Installing a basin and vanity unit including tap and waste connection." },
+];
+
+const times = [
+  { item: "Basin or kitchen sink mixer replacement", time: "approx. 1 h" },
+  { item: "Wall-mounted bath or shower mixer replacement", time: "1–1.5 h" },
+  { item: "Thermostatic cartridge replacement", time: "under 1 h" },
+  { item: "Dripping tap repair (cartridge, washer)", time: "under 1 h" },
+  { item: "Trap replacement", time: "approx. 0.5 h" },
+  { item: "Running toilet cistern repair", time: "approx. 1 h" },
+  { item: "Isolation valve replacement (pair)", time: "approx. 1 h" },
+];
+
+const faqs = [
+  { q: "How much does it cost to replace a tap?", a: "Labour: the minimum order of 1,450 CZK includes travel within Prague and the first hour – replacing a basin or kitchen tap usually fits within it. A wall-mounted bath mixer may take longer; each additional hour is 490 CZK. The tap and small materials are charged separately." },
+  { q: "Should I buy the tap myself, or will you bring it?", a: "Either works. If you buy it yourself, send me the link – I'll check it fits your basin or the spacing of the wall connections (standard for wall-mounted mixers is 150 mm). Or I can source the tap for you." },
+  { q: "My tap is dripping – does the whole tap need replacing?", a: "Not always. Single-lever mixers usually just need a new cartridge, older two-handle taps a new washer. If the tap is old or corroded, I'll recommend replacing it – and tell you straight away which option is cheaper." },
+  { q: "Water is leaking – what should I do before you arrive?", a: "Close the isolation valve under the basin or toilet, or the main water valve in the flat. Then call me – for urgent cases I try to come as soon as possible, usually within 2 hours." },
+  { q: "Do you do larger plumbing jobs?", a: "I focus on minor plumbing work and repairs in the home. I don't work on gas appliances or full pipework during renovations – in those cases I'm happy to recommend a trusted plumber." },
+  { q: "Do you speak English?", a: "Yes – you can call, text or email me in English. Sending a photo of the problem is the quickest way to get an estimate." },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Plumbing",
+  "name": "Plumber Prague – tap replacement and minor plumbing repairs",
+  "description": "Minor plumbing work in Prague by an English-speaking handyman: basin, sink, bath and shower tap replacement, dripping tap repair, thermostatic cartridges, traps, toilet cisterns, isolation valves.",
+  "url": pageUrl,
+  "areaServed": { "@type": "City", "name": "Prague" },
+  "provider": businessEntity('en'),
+  "offers": {
+    "@type": "Offer",
+    "price": "1450",
+    "priceCurrency": "CZK",
+    "description": "Minimum order including travel and the first hour of work; each additional hour 490 CZK. Materials extra."
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/en/` },
+    { "@type": "ListItem", "position": 2, "name": "Plumber Prague", "item": pageUrl }
+  ]
+};
+
+const pageReviews = pickReviews(['karel', 'jeff']);
+---
+
+<BaseLayout
+  ogImage="/og/plumber-prague.jpg"
+  title="Plumber Prague – tap replacement & repairs, English-speaking | Pepe"
+  description={`English-speaking handyman for plumbing in Prague: tap and mixer replacement, dripping taps, running toilets, traps ⭐ ${formatRating('en')} on Google. From 1,450 CZK incl. travel.`}
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema(faqs))} />
+
+  <main>
+
+    <section class="lp-hero">
+      <div class="lp-hero-inner lp-hero-grid">
+        <div>
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/en/">Home</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">Plumber Prague</span>
+          </nav>
+          <div class="lp-badge">🚿 Handyman – plumbing</div>
+          <h1>Plumber Prague – tap replacement and minor repairs</h1>
+          <p class="lp-perex">
+            Dripping tap, running toilet or a new basin mixer? I'm an English-speaking handyman experienced in minor
+            plumbing. I'll come, replace, seal and clean up – usually within an hour.
+          </p>
+          <div class="lp-buttons">
+            <a href="tel:+420774399400" class="btn btn-primary lp-btn-call">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              +420 774 399 400
+            </a>
+            <a href="#kontakt" class="btn btn-outline">✉️ Send a photo of the problem</a>
+          </div>
+          <p class="lp-note">I answer the phone personally · Mon–Fri 8–18 · urgent cases usually within 2 hours</p>
+          <div class="lp-trust">
+            <a href={googleReviews.url} target="_blank" rel="noopener" style="color:inherit;">⭐ {formatRating('en')} · {reviewsLabel('en')}</a>
+            <span class="sep">·</span>
+            <span>English spoken</span>
+            <span class="sep">·</span>
+            <span>All of Prague</span>
+          </div>
+        </div>
+        <div class="lp-hero-img">
+          <Image src={heroImg} alt="Pepe Vejlupek replacing a thermostatic cartridge in a shower mixer" widths={[400, 700, 1000]} sizes="(max-width: 860px) 100vw, 500px" loading="eager" class="lp-hero-portrait" style="object-position:center 75%;" />
+        </div>
+      </div>
+    </section>
+
+    <TrustBar />
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Plumbing jobs I do</h2>
+          <p>Minor repairs and replacements in the kitchen, bathroom and toilet – fast and without unnecessary demolition.</p>
+        </div>
+        <div class="lp-cards">
+          {items.map(i => (
+            <div class="lp-card">
+              <h3>{i.title}</h3>
+              <p>{i.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white">
+      <div class="section-inner">
+        <div class="lp-why-grid">
+          <div>
+            <h2>How much does tap replacement cost</h2>
+            <p>Most minor plumbing jobs fit within the first hour – so you pay <strong>1,450 CZK including travel</strong> plus materials. Typical times:</p>
+            <table class="lp-table">
+              <thead><tr><th>Job</th><th>Time</th></tr></thead>
+              <tbody>
+                {times.map(r => (<tr><td>{r.item}</td><td>{r.time}</td></tr>))}
+              </tbody>
+            </table>
+            <p class="lp-table-note">Times are approximate – seized connections or old pipework can take longer. Send a photo and I'll give you an estimate upfront.</p>
+            <ul class="why-list">
+              <li>My own tools, washers and PTFE tape</li>
+              <li>Leak check after every replacement</li>
+              <li>Advice on choosing a tap that fits</li>
+              <li>I clean up after myself</li>
+            </ul>
+          </div>
+          <div class="lp-pricing-box">
+            <h3>Pricing</h3>
+            <div class="price-row">
+              <span>Minimum order (1st hour + travel)</span>
+              <strong>1,450 CZK</strong>
+            </div>
+            <div class="price-row">
+              <span>Each additional hour</span>
+              <strong>490 CZK</strong>
+            </div>
+            <div class="price-row">
+              <span>Materials (tap, valves, trap)</span>
+              <strong>at cost</strong>
+            </div>
+            <p class="price-note">Not VAT registered. Price always agreed upfront.</p>
+            <a href="tel:+420774399400" class="btn btn-primary">Call to book a date</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>How it works</h2>
+        </div>
+        <ol class="lp-steps">
+          <li><h3>Send a photo</h3><p>Call or send a photo of the problem or the tap you want replaced.</p></li>
+          <li><h3>Agree on date and price</h3><p>I'll estimate the time and price, and tell you what to buy if needed.</p></li>
+          <li><h3>I come and fix it</h3><p>Water off, replace, seal and test – all with my own tools.</p></li>
+          <li><h3>Check & clean-up</h3><p>We check for leaks together and I clean up after myself.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>What clients say</h2>
+        </div>
+        <div class="lp-reviews">
+          {pageReviews.map(r => (
+            <ReviewCard text={r.text.en} author={r.author} location={r.service.en} ariaLabel="Rating 5 out of 5 stars" note={r.original !== 'en' ? 'Translated from Czech' : undefined} />
+          ))}
+        </div>
+        <p style="text-align:center;margin-top:1.5rem;"><a href={googleReviews.url} target="_blank" rel="noopener">Read all reviews on Google →</a></p>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="lp-why-grid">
+          <div class="lp-faq">
+            <h2>Plumbing FAQ</h2>
+            {faqs.map(f => (
+              <details>
+                <summary>{f.q}</summary>
+                <p set:html={f.a} />
+              </details>
+            ))}
+            <p style="margin-top:1.25rem;">Want to replace the tap yourself? Read my guide <a href="/en/blog/replacing-a-faucet-yourself-or-call-a-pro/">replacing a faucet step by step</a>.</p>
+          </div>
+          <div class="lp-photo-stack">
+            <Image src={sinkImg} alt="Kitchen sink mixer with pull-out spray installed in a custom kitchen" widths={[400, 700]} sizes="(max-width: 860px) 100vw, 500px" style="width:100%;height:auto;border-radius:var(--radius-xl);" />
+            <p class="lp-credit">Sink and mixer installed in a custom kitchen. Photo: Jaroslav Kvíz</p>
+            <Image src={bathroomImg} alt="Countertop basin with a deck-mounted mixer and wall-hung vanity unit" widths={[400, 700]} sizes="(max-width: 860px) 100vw, 500px" style="width:100%;height:auto;border-radius:var(--radius-xl);" />
+            <p class="lp-credit">Vanity unit installed including basin and tap. Photo: Jaroslav Kvíz</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+
+  </main>
+</BaseLayout>

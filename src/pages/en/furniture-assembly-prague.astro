@@ -10,6 +10,7 @@ import bathroomImg from '../../assets/images/nabytek/koupelna-ikea-skrinka.jpg';
 import teaserImg from '../../assets/images/nabytek/kuchyne-orech-ostruvek.jpg';
 import ReviewCard from '../../components/ReviewCard.astro';
 import { pickReviews } from '../../data/reviews';
+import { businessEntity, faqSchema } from '../../data/business';
 import '../../styles/landing.css';
 
 const siteUrl = 'https://www.pepevejlupek.cz';
@@ -23,15 +24,7 @@ const serviceSchema = {
   "description": "IKEA, JYSK, XXXLutz and other flat-pack furniture assembled in Prague. PAX wardrobes, beds, dressers, kitchens, wall anchoring. English-speaking handyman.",
   "url": pageUrl,
   "areaServed": { "@type": "City", "name": "Prague" },
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": "Pepe Vejlupek – Handyman Prague",
-    "url": `${siteUrl}/en/`,
-    "telephone": "+420774399400",
-    "email": "info@pepevejlupek.cz",
-    "address": { "@type": "PostalAddress", "addressLocality": "Prague", "addressCountry": "CZ" },
-    "priceRange": "from 1450 CZK"
-  },
+  "provider": businessEntity('en'),
   "offers": {
     "@type": "Offer",
     "price": "1450",
@@ -91,6 +84,7 @@ const faqs = [
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema(faqs))} />
 
   <main>
 

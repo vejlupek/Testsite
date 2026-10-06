@@ -1,0 +1,237 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Contact from '../components/Contact.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import { pickReviews } from '../data/reviews';
+import { googleReviews, formatRating, reviewsLabel } from '../data/google-reviews';
+import { SITE_URL, businessEntity, faqSchema } from '../data/business';
+import heroImg from '../assets/images/instalater/vymena-termostaticke-kartuse.jpg';
+import sinkImg from '../assets/images/nabytek/drez-detail.jpg';
+import bathroomImg from '../assets/images/nabytek/koupelna-ikea-skrinka.jpg';
+import '../styles/landing.css';
+
+const pageUrl = `${SITE_URL}/instalaterske-prace-praha/`;
+
+const items = [
+  { title: "Výměna vodovodní baterie", desc: "Baterie u umyvadla, dřezu, vany i ve sprše – stojánkové i nástěnné, pákové i termostatické. Starou demontuji, novou osadím a vyzkouším těsnost." },
+  { title: "Kapající kohoutek", desc: "Často nemusíte měnit celou baterii – stačí nová kartuše, těsnění nebo perlátor. Řeknu vám na místě, co se vyplatí." },
+  { title: "Termostatické baterie", desc: "Výměna termostatické kartuše, když sprcha nedrží teplotu nebo kape. Seřízení teploty a vyčištění sítek." },
+  { title: "WC a splachování", desc: "Protékající nádržka, výměna napouštěcího a vypouštěcího ventilu, tlačítka, WC prkénka." },
+  { title: "Sifony a pomalý odtok", desc: "Výměna nebo vyčištění sifonu u umyvadla, dřezu a vany. Pomalý odtok obvykle vyřeším bez bourání." },
+  { title: "Rohové ventily a hadičky", desc: "Výměna zatuhlých nebo kapajících rohových ventilů a flexi hadiček – prevence, která šetří vytopené sousedy." },
+  { title: "Pračka a myčka", desc: "Připojení přívodu vody a odpadu pračky nebo myčky, výměna hadic." },
+  { title: "Umyvadla a koupelnový nábytek", desc: "Montáž umyvadla a skříňky pod umyvadlo včetně napojení baterie a odpadu." },
+];
+
+const times = [
+  { item: "Výměna baterie u umyvadla nebo dřezu", time: "cca 1 h" },
+  { item: "Výměna vanové nebo sprchové nástěnné baterie", time: "1–1,5 h" },
+  { item: "Výměna termostatické kartuše", time: "do 1 h" },
+  { item: "Oprava kapajícího kohoutku (kartuše, těsnění)", time: "do 1 h" },
+  { item: "Výměna sifonu", time: "cca 0,5 h" },
+  { item: "Oprava protékající WC nádržky", time: "cca 1 h" },
+  { item: "Výměna rohových ventilů (pár)", time: "cca 1 h" },
+];
+
+const faqs = [
+  { q: "Kolik stojí výměna vodovodní baterie?", a: "Práce: minimální zakázka 1 450 Kč zahrnuje dopravu po Praze a první hodinu – výměna baterie u umyvadla nebo dřezu se do ní obvykle vejde. Nástěnná vanová baterie může trvat déle, každá další hodina stojí 490 Kč. Baterie a drobný materiál se platí zvlášť." },
+  { q: "Mám baterii koupit sám, nebo ji přivezete?", a: "Obojí je možné. Pokud kupujete sami, pošlete mi odkaz – zkontroluji, že sedí k vašemu umyvadlu nebo rozteči přípojek ve zdi (u nástěnných baterií je standard 150 mm). Případně baterii zajistím a účtuji ji za nákupní cenu." },
+  { q: "Kape mi kohoutek – musí se měnit celá baterie?", a: "Ne vždy. U pákových baterií obvykle stačí vyměnit kartuši, u starších kohoutkových těsnění. Pokud je baterie stará nebo zkorodovaná, doporučím výměnu – a řeknu vám rovnou, co vyjde levněji." },
+  { q: "Teče mi voda – co mám udělat, než přijedete?", a: "Zavřete rohový ventil pod umyvadlem nebo WC, případně hlavní uzávěr vody v bytě. Pak zavolejte – u urgentních případů se snažím přijet co nejdřív, obvykle do 2 hodin." },
+  { q: "Děláte i větší instalatérské práce?", a: "Zaměřuji se na drobné instalatérské práce a opravy v bytě. Plynové spotřebiče a kompletní rozvody při rekonstrukci nedělám – v takovém případě vám rád doporučím ověřeného instalatéra." },
+  { q: "Jak se platí a dáváte záruku?", a: "Platit můžete hotově nebo převodem po dokončení práce. Na práci poskytuji 30denní záruku – když něco začne kapat, přijedu to opravit." },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Instalatérské práce",
+  "name": "Instalatérské práce Praha – výměna baterie a kohoutku",
+  "description": "Drobné instalatérské práce v Praze: výměna vodovodní baterie u umyvadla, dřezu, vany a sprchy, oprava kapajícího kohoutku, termostatické kartuše, sifony, WC nádržky, rohové ventily.",
+  "url": pageUrl,
+  "areaServed": { "@type": "City", "name": "Praha" },
+  "provider": businessEntity('cs'),
+  "offers": {
+    "@type": "Offer",
+    "price": "1450",
+    "priceCurrency": "CZK",
+    "description": "Minimální zakázka včetně dopravy a 1. hodiny práce, každá další hodina 490 Kč. Materiál zvlášť."
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Domů", "item": `${SITE_URL}/` },
+    { "@type": "ListItem", "position": 2, "name": "Instalatérské práce Praha", "item": pageUrl }
+  ]
+};
+
+const pageReviews = pickReviews(['karel', 'ella']);
+---
+
+<BaseLayout
+  ogImage="/og/instalaterske-prace.jpg"
+  title="Instalatérské práce Praha – výměna baterie a kohoutku | Pepe Vejlupek"
+  description={`Výměna vodovodní baterie, oprava kapajícího kohoutku, WC nádržky a sifonu v Praze ⭐ ${formatRating('cs')} na Google. Od 1 450 Kč vč. dopravy a 1. hodiny práce.`}
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema(faqs))} />
+
+  <main>
+
+    <section class="lp-hero">
+      <div class="lp-hero-inner lp-hero-grid">
+        <div>
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Domů</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">Instalatérské práce Praha</span>
+          </nav>
+          <div class="lp-badge">🚿 Hodinový manžel – instalatérské práce</div>
+          <h1>Instalatérské práce Praha – výměna baterie a kohoutku</h1>
+          <p class="lp-perex">
+            Kapající kohoutek, protékající WC nebo nová baterie k umyvadlu? Jsem hodinový manžel s praxí v drobných
+            instalatérských pracích. Přijedu, vyměním, utěsním a po sobě uklidím – většinou do hodiny.
+          </p>
+          <div class="lp-buttons">
+            <a href="tel:+420774399400" class="btn btn-primary lp-btn-call">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              +420 774 399 400
+            </a>
+            <a href="#kontakt" class="btn btn-outline">✉️ Poslat fotku závady</a>
+          </div>
+          <p class="lp-note">Zvedám telefon osobně · Po–Pá 8–18 · urgentní případy obvykle do 2 hodin</p>
+          <div class="lp-trust">
+            <a href={googleReviews.url} target="_blank" rel="noopener" style="color:inherit;">⭐ {formatRating('cs')} · {reviewsLabel('cs')}</a>
+            <span class="sep">·</span>
+            <span>Vlastní nářadí</span>
+            <span class="sep">·</span>
+            <span>Celá Praha</span>
+          </div>
+        </div>
+        <div class="lp-hero-img">
+          <Image src={heroImg} alt="Pepe Vejlupek při výměně termostatické kartuše ve sprchové baterii" widths={[400, 700, 1000]} sizes="(max-width: 860px) 100vw, 500px" loading="eager" class="lp-hero-portrait" style="object-position:center 75%;" />
+        </div>
+      </div>
+    </section>
+
+    <TrustBar />
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Jaké instalatérské práce dělám</h2>
+          <p>Drobné opravy a výměny v kuchyni, koupelně a na WC – rychle a bez zbytečného bourání.</p>
+        </div>
+        <div class="lp-cards">
+          {items.map(i => (
+            <div class="lp-card">
+              <h3>{i.title}</h3>
+              <p>{i.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white">
+      <div class="section-inner">
+        <div class="lp-why-grid">
+          <div>
+            <h2>Kolik stojí výměna baterie a další práce</h2>
+            <p>Většina drobných instalatérských prací se vejde do první hodiny – zaplatíte tedy <strong>1 450 Kč včetně dopravy</strong> plus materiál. Orientační časy z praxe:</p>
+            <table class="lp-table">
+              <thead><tr><th>Práce</th><th>Čas</th></tr></thead>
+              <tbody>
+                {times.map(r => (<tr><td>{r.item}</td><td>{r.time}</td></tr>))}
+              </tbody>
+            </table>
+            <p class="lp-table-note">Časy jsou orientační – u zarezlých přípojek nebo starých rozvodů může práce trvat déle. Odhad vám řeknu předem, stačí poslat fotku.</p>
+            <ul class="why-list">
+              <li>Vlastní nářadí, těsnění a teflon s sebou</li>
+              <li>Kontrola těsnosti po každé výměně</li>
+              <li>Poradím s výběrem baterie, aby pasovala</li>
+              <li>Po sobě uklidím</li>
+            </ul>
+          </div>
+          <div class="lp-pricing-box">
+            <h3>Ceník</h3>
+            <div class="price-row">
+              <span>Minimální zakázka (1. hodina + doprava)</span>
+              <strong>1 450 Kč</strong>
+            </div>
+            <div class="price-row">
+              <span>Každá další hodina</span>
+              <strong>490 Kč</strong>
+            </div>
+            <div class="price-row">
+              <span>Materiál (baterie, ventily, sifon)</span>
+              <strong>dle skutečnosti</strong>
+            </div>
+            <p class="price-note">Nejsem plátce DPH. Cenu vždy domluvíme předem.</p>
+            <a href="tel:+420774399400" class="btn btn-primary">Zavolat a domluvit termín</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Jak to probíhá</h2>
+        </div>
+        <ol class="lp-steps">
+          <li><h3>Pošlete fotku</h3><p>Zavolejte nebo pošlete fotku závady či baterie, kterou chcete vyměnit.</p></li>
+          <li><h3>Domluvíme termín a cenu</h3><p>Řeknu vám odhad času, ceny a případně co koupit.</p></li>
+          <li><h3>Přijedu a opravím</h3><p>Uzavřu vodu, vyměním, utěsním a vyzkouším – vše s vlastním nářadím.</p></li>
+          <li><h3>Kontrola a úklid</h3><p>Zkontrolujeme spolu těsnost a po sobě uklidím.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--white">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Co říkají zákazníci</h2>
+        </div>
+        <div class="lp-reviews">
+          {pageReviews.map(r => (
+            <ReviewCard text={r.text.cs} author={r.author} location={r.service.cs} ariaLabel="Hodnocení 5 z 5 hvězdiček" />
+          ))}
+        </div>
+        <p style="text-align:center;margin-top:1.5rem;"><a href={googleReviews.url} target="_blank" rel="noopener">Přečíst všechny recenze na Google →</a></p>
+      </div>
+    </section>
+
+    <section class="lp-section lp-section--bg">
+      <div class="section-inner">
+        <div class="lp-why-grid">
+          <div class="lp-faq">
+            <h2>Časté otázky k instalatérským pracím</h2>
+            {faqs.map(f => (
+              <details>
+                <summary>{f.q}</summary>
+                <p set:html={f.a} />
+              </details>
+            ))}
+            <p style="margin-top:1.25rem;">Chcete baterii vyměnit sami? Přečtěte si můj návod <a href="/blog/vymena-vodovodni-baterie/">výměna vodovodní baterie krok za krokem</a>.</p>
+          </div>
+          <div class="lp-photo-stack">
+            <Image src={sinkImg} alt="Dřezová baterie s vytahovací sprškou osazená v kuchyni na míru" widths={[400, 700]} sizes="(max-width: 860px) 100vw, 500px" style="width:100%;height:auto;border-radius:var(--radius-xl);" />
+            <p class="lp-credit">Osazení dřezu a dřezové baterie v kuchyni na míru. Foto: Jaroslav Kvíz</p>
+            <Image src={bathroomImg} alt="Umyvadlo na desce se stojánkovou baterií a závěsnou koupelnovou skříňkou" widths={[400, 700]} sizes="(max-width: 860px) 100vw, 500px" style="width:100%;height:auto;border-radius:var(--radius-xl);" />
+            <p class="lp-credit">Montáž koupelnové skříňky včetně osazení umyvadla a baterie. Foto: Jaroslav Kvíz</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+
+  </main>
+</BaseLayout>

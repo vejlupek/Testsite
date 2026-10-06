@@ -1,16 +1,34 @@
 ---
-title: "Replacing a Faucet: Do It Yourself or Call a Pro?"
-description: "Dripping tap or worn-out faucet? Replacing a bathroom or kitchen tap is one of the most common plumbing jobs. I'll tell you when you can handle it yourself and when it's better to call someone."
+title: "Replacing a Faucet: How to Do It Yourself – and When to Call a Plumber"
+description: "How to replace a basin, kitchen or bath tap step by step, and when a new cartridge is enough. Rather not do it yourself? Tap replacement in Prague from 1,450 CZK."
 pubDate: 2025-02-10
 tags: ["plumbing", "tips", "repairs"]
 draft: false
 lang: en
-translationSlug: "vymena-vodovodní-baterie"
+translationSlug: "vymena-vodovodni-baterie"
 cover: ../../assets/images/blog-faucet.jpg
 coverAlt: "Bathroom faucet – replacing a tap"
+cta:
+  title: "Rather not replace it yourself?"
+  text: "I'll come with my tools, replace, seal and test it. Tap replacement in Prague from 1,450 CZK including travel."
+  href: "/en/plumber-prague/"
+  btn: "Book tap replacement"
 ---
 
 A dripping tap or an old basin mixer – every home has them eventually. Replacing a faucet is one of those jobs a handy DIYer can do themselves. But there are situations where it pays to call a professional.
+
+> **Rather not deal with it yourself?** I usually replace a basin or kitchen tap within an hour – in Prague for 1,450 CZK including travel, plus the tap. English spoken. → [Plumber Prague](/en/plumber-prague/) · [+420 774 399 400](tel:+420774399400)
+
+## Dripping tap: do you need a whole new one?
+
+Often not. A dripping single-lever mixer usually has a worn **cartridge** – replace it for a few hundred crowns and the tap keeps going. Older two-handle taps just need a new **washer**. Replacing the whole tap makes sense when it's corroded, cracked, or you simply want a new look.
+
+## Which type of tap are you replacing
+
+- **Deck-mounted basin mixer** – the easiest swap; held by a nut under the basin and connected with flexible hoses to the isolation valves.
+- **Kitchen sink mixer** – same principle, just with worse access inside the cabinet.
+- **Wall-mounted bath and shower mixer** – screws onto two offset connectors in the wall. Standard spacing is 150 mm; the offsets allow small adjustments.
+- **Thermostatic mixer** – if the shower won't hold its temperature, often a new **thermostatic cartridge** and clean filters are all it takes.
 
 ## When You Can Replace It Yourself
 
@@ -61,6 +79,8 @@ There are situations where faucet replacement goes beyond DIY territory:
 - **Installation is 20+ years old** – older copper or lead pipes are brittle
 - **Water leak behind the wall** – always a job for a professional
 
+Seized connections, stuck isolation valves and wall-mounted mixer replacements are all part of my [plumbing services in Prague](/en/plumber-prague/) – send a photo and I'll give you an estimate.
+
 ## How to Avoid Problems in Future
 
 - A quality faucet will last 10–15 years. Don't buy the cheapest option – mid-range is worth it
@@ -69,8 +89,10 @@ There are situations where faucet replacement goes beyond DIY territory:
 
 ## How Much Does It Cost?
 
-A new faucet ranges from around CZK 500 (basic) to CZK 3,000+ (designer or thermostatic). Installation by me usually works out to 1–2 hours of labour. Call or message me for an online estimate.
+A new faucet ranges from around CZK 500 (basic) to CZK 3,000+ (designer or thermostatic). Replacing a basin or kitchen tap usually fits within my first hour – so **1,450 CZK including travel**. A wall-mounted bath mixer takes 1–1.5 hours.
+
+**→ Pricing and all the plumbing jobs I do: [plumber Prague – tap replacement and minor repairs](/en/plumber-prague/).**
 
 ---
 
-*Got a dripping tap or want to replace an old faucet? Message or call – I'll come quickly and at a fair price.*
+*Got a dripping tap or want to replace an old faucet? Call [+420 774 399 400](tel:+420774399400) or send a photo – details on the [Plumber Prague](/en/plumber-prague/) page.*

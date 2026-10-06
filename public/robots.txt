@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pepevejlupek.cz/sitemap-index.xml
+Sitemap: https://www.pepevejlupek.cz/sitemap-index.xml

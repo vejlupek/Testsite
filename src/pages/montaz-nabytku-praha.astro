@@ -10,6 +10,7 @@ import bathroomImg from '../assets/images/nabytek/koupelna-ikea-skrinka.jpg';
 import teaserImg from '../assets/images/nabytek/kuchyne-orech-ostruvek.jpg';
 import ReviewCard from '../components/ReviewCard.astro';
 import { pickReviews } from '../data/reviews';
+import { businessEntity, faqSchema } from '../data/business';
 import '../styles/landing.css';
 
 const siteUrl = 'https://www.pepevejlupek.cz';
@@ -23,15 +24,7 @@ const serviceSchema = {
   "description": "Montáž nábytku IKEA, JYSK, XXXLutz a dalších značek v Praze a okolí. Skříně PAX, postele, komody, kuchyně, kotvení ke zdi.",
   "url": pageUrl,
   "areaServed": { "@type": "City", "name": "Praha" },
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": "Pepe Vejlupek – hodinový manžel Praha",
-    "url": `${siteUrl}/`,
-    "telephone": "+420774399400",
-    "email": "info@pepevejlupek.cz",
-    "address": { "@type": "PostalAddress", "addressLocality": "Praha", "addressCountry": "CZ" },
-    "priceRange": "od 1450 Kč"
-  },
+  "provider": businessEntity('cs'),
   "offers": {
     "@type": "Offer",
     "price": "1450",
@@ -91,6 +84,7 @@ const faqs = [
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema(faqs))} />
 
   <main>
 

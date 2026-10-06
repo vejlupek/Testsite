@@ -1,4 +1,5 @@
 ---
+import { businessEntity } from '../../data/business';
 import { formatRating, reviewsLabel } from '../../data/google-reviews';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
@@ -12,17 +13,8 @@ import Contact from '../../components/Contact.astro';
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Pepe Vejlupek – Handyman Prague",
+  ...businessEntity('en'),
   "description": "Handyman service for all of Prague. Furniture assembly, repairs, painting, plumbing and much more.",
-  "url": "https://www.pepevejlupek.cz/en/",
-  "telephone": "+420774399400",
-  "email": "info@pepevejlupek.cz",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Prague",
-    "addressCountry": "CZ"
-  },
   "areaServed": [
     { "@type": "City", "name": "Prague" },
     { "@type": "AdministrativeArea", "name": "Prague 1" },
@@ -49,9 +41,7 @@ const jsonLd = {
     { "@type": "Neighborhood", "name": "Strašnice" },
     { "@type": "Neighborhood", "name": "Modřany" },
     { "@type": "Neighborhood", "name": "Komořany" }
-  ],
-  "priceRange": "from 1450 CZK",
-  "openingHours": ["Mo-Fr 08:00-18:00"]
+  ]
 };
 ---
 

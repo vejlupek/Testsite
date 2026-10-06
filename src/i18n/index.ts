@@ -376,6 +376,7 @@ export function getAlternateLangUrl(pathname: string): string {
     if (path === '/handyman-prague-5') return '/hodinovy-manzel-praha-5/';
     if (path === '/furniture-assembly-prague') return '/montaz-nabytku-praha/';
     if (path === '/custom-furniture-prague') return '/nabytek-na-miru-praha/';
+    if (path === '/plumber-prague') return '/instalaterske-prace-praha/';
     return '/';
   } else {
     if (norm === '/' || norm === '') return '/en/';
@@ -385,6 +386,7 @@ export function getAlternateLangUrl(pathname: string): string {
     if (norm === '/hodinovy-manzel-praha-5') return '/en/handyman-prague-5/';
     if (norm === '/montaz-nabytku-praha') return '/en/furniture-assembly-prague/';
     if (norm === '/nabytek-na-miru-praha') return '/en/custom-furniture-prague/';
+    if (norm === '/instalaterske-prace-praha') return '/en/plumber-prague/';
     return '/en/';
   }
 }
